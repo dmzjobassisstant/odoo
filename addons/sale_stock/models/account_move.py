@@ -72,7 +72,7 @@ class AccountMove(models.Model):
             is_stock_return = (
                     self.move_type == 'out_invoice' and (sml.location_id.usage, sml.location_dest_id.usage) == ('customer', 'internal')
                     or
-                    self.move_type == 'out_refund' and (sml.location_id.usage, sml.location_dest_id.usage) == ('internal', 'customer')
+                    self.move_type == 'out_refund' and sml.location_dest_id.usage == 'customer' and sml.location_id.usage in ('internal', 'supplier')
             )
             if is_stock_return:
                 returned_qty = min(qties_per_lot[sml.lot_id], quantity)
@@ -168,6 +168,7 @@ class AccountMoveLine(models.Model):
         )
         posted_cogs_qty_prod_uom = sum(posted_cogs_lines.mapped(
             lambda line: line.product_uom_id._compute_quantity(line.quantity, line.product_id.uom_id)
+             * (-1 if line.move_id.move_type == "out_refund" else 1)
         ))
         return posted_cogs_qty_prod_uom + super()._get_cogs_qty()
 
@@ -179,3 +180,14 @@ class AccountMoveLine(models.Model):
             lambda line: line.display_type == 'cogs' and line.account_id == valuation_account and line.cogs_origin_id.sale_line_ids & sale_lines
         ).mapped('balance'))
         return posted_cogs_value + super()._get_posted_cogs_value()
+
+    def _get_lines_from_original_invoice(self):
+        original_lines = super()._get_lines_from_original_invoice()
+        if self.move_id.move_type == 'out_refund' and not self.move_id.reversed_entry_id:
+            original_lines += self.sale_line_ids.invoice_lines.move_id.filtered(
+                lambda m: m.move_type == "out_invoice"
+            ).line_ids.filtered(
+                lambda l: l.display_type == 'cogs' and l.product_id == self.product_id and
+                l.product_uom_id == self.product_uom_id and l.price_unit >= 0
+            )
+        return original_lines

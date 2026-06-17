@@ -134,6 +134,9 @@ class ProductTemplate(models.Model):
         compute='_compute_base_unit_count',
         inverse='_set_base_unit_count',
         store=True,
+        # Force NUMERIC with unlimited precision, as for `uom.uom.relative_factor`,
+        # to support very small ratios, e.g. one unit in a box of 10000.
+        digits=0,
         required=True,
         default=0,
     )
@@ -956,7 +959,10 @@ class ProductTemplate(models.Model):
             list_price = self.env['ir.qweb.field.monetary'].value_to_html(
                 combination_info['list_price'], monetary_options
             )
-        if combination_info.get('compare_list_price'):
+        if (
+            combination_info.get('compare_list_price')
+            and combination_info.get('compare_list_price') > combination_info.get('price')
+        ):
             list_price = self.env['ir.qweb.field.monetary'].value_to_html(
                 combination_info['compare_list_price'], monetary_options
             )

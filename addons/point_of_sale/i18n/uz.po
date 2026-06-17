@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-01 17:35+0000\n"
+"POT-Creation-Date: 2026-06-12 17:35+0000\n"
 "PO-Revision-Date: 2025-10-08 18:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -530,13 +530,6 @@ msgstr "Bu nomdagi qayd allaqachon mavjud"
 #, fuzzy
 msgid "A payment with this uuid already exists"
 msgstr "Bu UUID bilan to‘lov allaqachon mavjud"
-
-#. module: point_of_sale
-#. odoo-javascript
-#: code:addons/point_of_sale/static/src/app/screens/feedback_screen/feedback_screen.js:0
-#, fuzzy
-msgid "A request is still being processed in the background. Please wait."
-msgstr "So‘rov hali fonda qayta ishlanmoqda. Iltimos, kuting."
 
 #. module: point_of_sale
 #: model_terms:ir.actions.act_window,help:point_of_sale.action_pos_session
@@ -3838,6 +3831,18 @@ msgstr "Yuklab olish"
 #. module: point_of_sale
 #. odoo-javascript
 #: code:addons/point_of_sale/static/src/app/utils/debug/debug_widget.xml:0
+msgid "Download IDB Errors"
+msgstr ""
+
+#. module: point_of_sale
+#. odoo-javascript
+#: code:addons/point_of_sale/static/src/app/utils/debug/debug_widget.xml:0
+msgid "Download IndexedDB error logs from localStorage"
+msgstr ""
+
+#. module: point_of_sale
+#. odoo-javascript
+#: code:addons/point_of_sale/static/src/app/utils/debug/debug_widget.xml:0
 msgid "Download Logs"
 msgstr ""
 
@@ -4101,13 +4106,6 @@ msgstr "Xato! Rekursiv toifalarni yarata olmaysiz."
 #, fuzzy
 msgid "Error: no internet connection."
 msgstr "Xato: internet aloqasi yo‘q."
-
-#. module: point_of_sale
-#. odoo-javascript
-#: code:addons/point_of_sale/static/src/app/screens/feedback_screen/feedback_screen.xml:0
-#, fuzzy
-msgid "Everything is ready to go!"
-msgstr "Hamma narsa ishga tayyor!"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -4597,6 +4595,11 @@ msgstr "Xabarga ega"
 #, fuzzy
 msgid "Has Refundable Lines"
 msgstr "Qaytariladigan qatorlarga ega"
+
+#. module: point_of_sale
+#: model:ir.model.fields,field_description:point_of_sale.field_stock_picking_type__has_stock_reports_to_print
+msgid "Has Stock Reports To Print"
+msgstr ""
 
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.res_config_settings_view_form
@@ -8491,6 +8494,12 @@ msgid "Proceed Anyway"
 msgstr "Baribir davom etish"
 
 #. module: point_of_sale
+#. odoo-javascript
+#: code:addons/point_of_sale/static/src/app/screens/feedback_screen/feedback_screen.xml:0
+msgid "Processing..."
+msgstr ""
+
+#. module: point_of_sale
 #: model:ir.model,name:point_of_sale.model_product_template
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_order_line__product_id
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_pack_operation_lot__product_id
@@ -10077,13 +10086,6 @@ msgstr ""
 
 #. module: point_of_sale
 #. odoo-javascript
-#: code:addons/point_of_sale/static/src/app/screens/feedback_screen/feedback_screen.xml:0
-#, fuzzy
-msgid "Some process are still running in background, please wait..."
-msgstr "Ba'zi jarayonlar hali orqa fonda bajarilmoqda, iltimos kuting..."
-
-#. module: point_of_sale
-#. odoo-javascript
 #: code:addons/point_of_sale/static/src/app/utils/order_payment_validation.js:0
 #, fuzzy
 msgid "Some required information is missing."
@@ -11476,6 +11478,13 @@ msgstr ""
 
 #. module: point_of_sale
 #. odoo-javascript
+#: code:addons/point_of_sale/static/src/app/services/pos_store.js:0
+msgid ""
+"This order is currently syncing, please wait a moment before loading it."
+msgstr ""
+
+#. module: point_of_sale
+#. odoo-javascript
 #: code:addons/point_of_sale/static/src/app/screens/receipt_screen/receipt_screen.js:0
 #, fuzzy
 msgid ""
@@ -12139,6 +12148,7 @@ msgstr "QQS"
 #. module: point_of_sale
 #. odoo-javascript
 #: code:addons/point_of_sale/static/src/app/components/popups/product_info_popup/product_info_popup.js:0
+#: model_terms:ir.ui.view,arch_db:point_of_sale.pos_session_sales_details
 #, fuzzy
 msgid "VAT:"
 msgstr "QQS:"
@@ -12149,6 +12159,14 @@ msgstr "QQS:"
 #, fuzzy
 msgid "Validate"
 msgstr "Tasdiqlash"
+
+#. module: point_of_sale
+#. odoo-python
+#: code:addons/point_of_sale/models/pos_payment_method.py:0
+msgid ""
+"Validation Error: You cannot assign the same Cash payment method to multiple "
+"POS Shops. Please create a separate Cash payment method for each shop."
+msgstr ""
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_bill__value
@@ -12641,6 +12659,12 @@ msgstr ""
 #. module: point_of_sale
 #. odoo-python
 #: code:addons/point_of_sale/models/pos_session.py:0
+msgid "You don't have the access rights to perform a cash in/out."
+msgstr ""
+
+#. module: point_of_sale
+#. odoo-python
+#: code:addons/point_of_sale/models/pos_session.py:0
 #, fuzzy
 msgid ""
 "You have enabled the \"Identify Customer\" option for %(payment_method)s "
@@ -13116,6 +13140,18 @@ msgstr ""
 #: code:addons/point_of_sale/static/src/customer_display/customer_display.xml:0
 msgid "x"
 msgstr ""
+
+#, fuzzy
+#~ msgid "A request is still being processed in the background. Please wait."
+#~ msgstr "So‘rov hali fonda qayta ishlanmoqda. Iltimos, kuting."
+
+#, fuzzy
+#~ msgid "Everything is ready to go!"
+#~ msgstr "Hamma narsa ishga tayyor!"
+
+#, fuzzy
+#~ msgid "Some process are still running in background, please wait..."
+#~ msgstr "Ba'zi jarayonlar hali orqa fonda bajarilmoqda, iltimos kuting..."
 
 #, fuzzy
 #~ msgid "Action cancelled (%s)"

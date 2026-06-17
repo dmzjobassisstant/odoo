@@ -5,14 +5,14 @@
 # Translators:
 # "Dylan Kiss (dyki)" <dyki@odoo.com>, 2025.
 # "Anastasiia Koroleva (koan)" <koan@odoo.com>, 2025, 2026.
-# Weblate <noreply-mt-weblate@weblate.org>, 2025.
+# Weblate <noreply-mt-weblate@weblate.org>, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-24 14:12+0000\n"
-"PO-Revision-Date: 2026-04-24 21:00+0000\n"
-"Last-Translator: \"Anastasiia Koroleva (koan)\" <koan@odoo.com>\n"
+"PO-Revision-Date: 2026-06-13 17:32+0000\n"
+"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
 "Language-Team: Russian <https://translate.odoo.com/projects/odoo-19/base/ru/>"
 "\n"
 "Language: ru\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
-"X-Generator: Weblate 5.17\n"
+"X-Generator: Weblate 2026.6.1\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_at_reports
@@ -5182,6 +5182,17 @@ msgid ""
 "tasks\n"
 "and more.\n"
 msgstr ""
+"\n"
+"Подключайте и управляйте всеми базами данных ваших клиентов\n"
+"============================================\n"
+"\n"
+"Модуль Базы данных позволяет подключаться ко всем базам данных ваших "
+"клиентов и управлять ими из\n"
+"единого рабочего пространства Odoo. Независимо от того, являетесь ли вы "
+"бухгалтерской фирмой или партнером Odoo,\n"
+"вы можете легко отслеживать, кто управляет каждой базой данных, следить за "
+"табелями учета рабочего времени, задачами\n"
+"и не только.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_uk_reports_cis
@@ -8755,34 +8766,34 @@ msgid ""
 "* Monthly Turnover (Graph)\n"
 msgstr ""
 "\n"
-"Управление коммерческими предложениями и заказами\n"
+"Управление коммерческими предложениями и заказами на продажу\n"
 "==================================\n"
 "\n"
-"Это приложение позволяет эффективно управлять целями продаж, отслеживая все "
-"заказы и историю продаж.\n"
+"Этот модуль позволяет эффективно управлять целями продаж,\n"
+"отслеживая все заказы и историю продаж.\n"
 "\n"
-"Оно охватывает весь процесс продаж:\n"
+"Он поддерживает полный цикл документооборота продаж:\n"
 "\n"
 "* **Коммерческое предложение** -> **Заказ на продажу** -> **Счет**\n"
 "\n"
-"Настройки (только при установленном модуле управления складом)\n"
+"Настройки (только при установленном модуле Склад)\n"
 "------------------------------------------------------\n"
 "\n"
-"Если у вас установлен модуль управления складом, доступны следующие "
-"параметры:\n"
+"Если у вас установлен модуль Склад, вы можете использовать следующие "
+"настройки:\n"
 "\n"
-"* Доставка: выбор между полной или частичной доставкой\n"
-"* Выставление счетов: выбор способа оплаты счетов\n"
-"* Инкотермс: международные коммерческие условия\n"
+"* Доставка: выбор отгрузки единой партией или частичной доставки\n"
+"* Выставление счетов: выбор метода оплаты счетов\n"
+"* Инкотермс: международные правила торговли\n"
 "\n"
 "\n"
-"С помощью этого модуля вы можете персонализировать отчеты по заказам и "
-"счетам,\n"
+"С помощью этого модуля вы можете настраивать печатные формы заказов на "
+"продажу и счетов,\n"
 "используя категории, промежуточные итоги или разрывы страниц.\n"
 "\n"
-"Панель управления для менеджера по продажам включает:\n"
+"Дашборд для менеджера по продажам включает:\n"
 "------------------------------------------------\n"
-"* Мои предложения\n"
+"* Мои коммерческие предложения\n"
 "* Ежемесячный оборот (график)\n"
 
 #. module: base
@@ -8827,11 +8838,15 @@ msgstr ""
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_sale_mrp
+#, fuzzy
 msgid ""
 "\n"
 "Manage the inventory of your Kit products and display their availability "
 "status in your eCommerce store.\n"
 msgstr ""
+"\n"
+"Управляйте запасами ваших наборов и отображайте статус их наличия в вашем "
+"интернет-магазине.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_sale_stock
@@ -8880,6 +8895,34 @@ msgid ""
 "also possible in order to automatically create a meeting when a time off "
 "request is accepted by setting up a type of meeting in time off Type.\n"
 msgstr ""
+"\n"
+"Управление запросами и распределением отпусков\n"
+"========================================\n"
+"\n"
+"Этот модуль позволяет контролировать график отпусков и отгулов в вашей "
+"компании. С его помощью сотрудники могут отправлять запросы на отдых, а "
+"менеджеры – рассматривать их, одобряя или отклоняя. Таким образом, вы "
+"получаете полный контроль над планированием графиков отсутствия сотрудников "
+"как во всей компании, так и в отдельных отделах.\n"
+"\n"
+"Вы можете настроить несколько видов отсутствия (больничный, оплачиваемый "
+"отпуск и т. д.) и быстро распределять дни между сотрудниками или отделами с "
+"помощью функции «Распределение отпусков». Кроме того, сотрудник может сам "
+"запросить дополнительные дни отдыха, создав новый запрос на распределение. В "
+"случае одобрения такого запроса менеджером, общее количество доступных дней "
+"для данного типа отпуска у сотрудника увеличится.\n"
+"\n"
+"Вы можете отслеживать графики отпусков в различных разрезах с помощью "
+"следующих отчетов:\n"
+"\n"
+"Сводка по отпускам (и отсутствиям)\n"
+"Отпуска по департаментам (отделам)\n"
+"Анализ отпусков\n"
+"\n"
+"Также доступна синхронизация со внутренним календарем. При привязке "
+"определенного типа встречи к типу отпуска, система будет автоматически "
+"создавать событие в календаре, как только запрос сотрудника на отпуск будет "
+"одобрен.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_mail_group
@@ -8965,6 +9008,27 @@ msgid ""
 "will\n"
 "procure.\n"
 msgstr ""
+"\n"
+"Основной производственный график\n"
+"==========================\n"
+"\n"
+"Иногда возникает необходимость создать заказы на закупку компонентов для "
+"тех\n"
+"производственных заказов, которые будут сформированы лишь позже.  Или же "
+"запустить производственные заказы_\n"
+"до того, как поступят соответствующие заказы от клиентов.  Решением в данной "
+"ситуации является прогнозирование\n"
+"продаж, на основе которого вы сможете заранее создавать определенные "
+"производственные\n"
+"заказы или заказы на закупку.\n"
+"\n"
+"Вам необходимо выбрать товары, которые вы хотите добавить в отчет.  Также вы "
+"может\n"
+"определить период формирования отчета: день, неделя, месяц и т. д.  Кроме "
+"того, система позволяет задат\n"
+"страховой запас, минимальный объем поставки и вручную скорректировать объем "
+"планируемых к закупке или производству\n"
+"позиций.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_mr_reports
@@ -15959,8 +16023,9 @@ msgstr "«new» зарезервировано и не может использ
 #. module: base
 #. odoo-python
 #: code:addons/fields.py:0 code:addons/fields_relational.py:0
+#, fuzzy
 msgid "(Record: %(record)s, User: %(user)s)"
-msgstr ""
+msgstr "(Запись: %(record)s, Пользователь: %(user)s)"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
@@ -15996,10 +16061,13 @@ msgstr "- %(description)s (%(model)s)"
 #. module: base
 #. odoo-python
 #: code:addons/models.py:0
+#, fuzzy
 msgid ""
 "- Only a root company can be set on “%(record)s”. Currently set to “%"
 "(company)s”"
 msgstr ""
+"- На “%(record)s” может быть установлена только корневая компания. Текущая "
+"установлена как “%(company)s”"
 
 #. module: base
 #. odoo-python
@@ -16354,8 +16422,9 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:base.res_partner_kanban_view
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 #: model_terms:ir.ui.view,arch_db:base.view_users_simple_form
+#, fuzzy
 msgid "<i class=\"fa fa-fw me-1 fa-phone text-primary\" title=\"Phone\"/>"
-msgstr ""
+msgstr "<i class=\"fa fa-fw me-1 fa-phone text-primary\" title=\"Телефон\"/>"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
@@ -16379,8 +16448,9 @@ msgstr ""
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_server_action_form
+#, fuzzy
 msgid "<i class=\"fa fa-warning pe-2\" title=\"Warning\"/>"
-msgstr ""
+msgstr "<i class=\"fa fa-warning pe-2\" title=\"Предупреждение\"/>"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_currency_kanban
@@ -17265,8 +17335,9 @@ msgstr "Максимальная длительность ключей API в д
 #. module: base
 #. odoo-python
 #: code:addons/fields_binary.py:0
+#, fuzzy
 msgid "ASCII characters are required for %(value)s in %(field)s"
-msgstr ""
+msgstr "Для %(value)s в %(field)s требуются символы ASCII"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_model_search
@@ -17595,21 +17666,30 @@ msgstr "Интеграция бухгалтерии и автопарка"
 #. module: base
 #: model_terms:res.partner,website_description:base.res_partner_2
 #: model_terms:res.partner,website_description:base.res_partner_4
+#, fuzzy
 msgid ""
 "Acme Corporation designs, develops, integrates and supports HR and Supply\n"
 "                Chain processes in order to make our customers more "
 "productive,\n"
 "                responsive and profitable."
 msgstr ""
+"Acme Corporation проектирует, разрабатывает, внедряет и поддерживает "
+"процессы управления персоналом и цепочками\n"
+"                поставок, чтобы сделать наших клиентов более\n"
+"                продуктивными и прибыльными."
 
 #. module: base
 #: model:res.partner,website_short_description:base.res_partner_2
 #: model:res.partner,website_short_description:base.res_partner_4
+#, fuzzy
 msgid ""
 "Acme Corporation designs, develops, integrates and supports HR and Supply "
 "Chain processes in order to make our customers more productive, responsive "
 "and profitable."
 msgstr ""
+"Acme Corporation проектирует, разрабатывает, внедряет и поддерживает "
+"процессы управления персоналом и цепочками поставок, чтобы сделать наших "
+"клиентов более продуктивными и прибыльными."
 
 #. module: base
 #: model_terms:res.partner,website_description:base.res_partner_2
@@ -17839,8 +17919,9 @@ msgstr "Добавить OdooBot в обсуждения"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_account_add_gln
+#, fuzzy
 msgid "Add Partner GLN"
-msgstr ""
+msgstr "Добавить GLN партнера"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_crm_sms
@@ -18053,8 +18134,9 @@ msgstr "Добавление"
 
 #. module: base
 #: model:res.partner,website_short_description:base.res_partner_address_31
+#, fuzzy
 msgid "Addison Olson is a mighty sales representative at Acme Corporation."
-msgstr ""
+msgstr "Эддисон Олсон – ведущий торговый представитель в Acme Corporation."
 
 #. module: base
 #: model_terms:res.partner,website_description:base.res_partner_address_31
@@ -18483,7 +18565,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_odoo_experts
 msgid "Advisor, Corporate, Service, Business, Finance, IT"
-msgstr ""
+msgstr "Консультант, Корпоративный сектор, Услуги, Бизнес, Финансы, ИТ"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_module_module__license__agpl-3
@@ -20032,10 +20114,13 @@ msgstr ""
 #. module: base
 #. odoo-python
 #: code:addons/base/models/ir_model.py:0
+#, fuzzy
 msgid ""
 "An error occurred while evaluating the domain:\n"
 "%(error)s"
 msgstr ""
+"Произошла ошибка при вычислении домена:\n"
+"%(error)s"
 
 #. module: base
 #. odoo-python
@@ -20087,12 +20172,12 @@ msgstr "Андорра"
 #. module: base
 #: model:ir.module.module,description:base.module_theme_anelusia
 msgid "Anelusia Fashion Theme"
-msgstr ""
+msgstr "Тема Anelusia Fashion"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_anelusia
 msgid "Anelusia Theme"
-msgstr ""
+msgstr "Тема Anelusia"
 
 #. module: base
 #: model:res.country,name:base.ao
@@ -20242,8 +20327,9 @@ msgstr "Календарь записей Google"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_appointment_google_reserve
+#, fuzzy
 msgid "Appointment Google Reserve"
-msgstr ""
+msgstr "Запись на прием через Google Reserve"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_appointment_crm
@@ -20355,7 +20441,7 @@ msgstr "Архив для сравнения"
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_enark
 msgid "Architect, Corporate, Business, Finance, Services"
-msgstr ""
+msgstr "Архитектор, Корпоративный сектор, Бизнес, Финансы, Услуги"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_view_form
@@ -20483,16 +20569,18 @@ msgstr "Армения"
 msgid ""
 "Artist, Arts, Galleries, Creative, Paintings, Photography, Shows, Stores"
 msgstr ""
+"Художники, Искусство, Галереи, Творчество, Живопись, Фотография, Шоу, "
+"Магазины"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_artists
 msgid "Artists Theme"
-msgstr ""
+msgstr "Тема Artists"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_artists
 msgid "Artists Theme - Art Galleries, Photography, Painting"
-msgstr ""
+msgstr "Тема Artists – Художественные галереи, Фотография, Живопись"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_art_craft
@@ -21568,12 +21656,13 @@ msgstr "Доступные модели"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_avantgarde
 msgid "Avantgarde Theme"
-msgstr ""
+msgstr "Тема Avantgarde"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_avantgarde
 msgid "Avantgarde is a sophisticated theme to inspire and impress"
 msgstr ""
+"Avantgarde – это изысканная тема для вдохновения и произведения впечатления"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_avatar_mixin__avatar_1920
@@ -21669,12 +21758,12 @@ msgstr "Avatax для геолокации"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_aviato
 msgid "Aviato Theme"
-msgstr ""
+msgstr "Тема Aviato"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_aviato
 msgid "Aviato Theme - Responsive Bootstrap Theme for Odoo CMS"
-msgstr ""
+msgstr "Тема Aviato – адаптивная тема Bootstrap для CMS Odoo"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_documents_fsm
@@ -21843,6 +21932,8 @@ msgstr "Бани"
 #: model:ir.module.module,summary:base.module_theme_notes
 msgid "Band, Musics, Sound, Concerts, Artists, Records, Event, Food, Stores"
 msgstr ""
+"Музыкальные группы, Музыка, Звук, Концерты, Музыканты, Записи, Мероприятия, "
+"Еда, Магазины"
 
 #. module: base
 #: model:res.country,name:base.bd
@@ -22121,7 +22212,7 @@ msgstr "Пакетное перемещение, перевозчик"
 #: model:ir.module.module,description:base.module_theme_bewise
 #: model:ir.module.module,shortdesc:base.module_theme_bewise
 msgid "Be Wise Theme"
-msgstr ""
+msgstr "Тема Be Wise"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_view_form
@@ -22141,17 +22232,17 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_beauty
 msgid "Beauty Theme"
-msgstr ""
+msgstr "Тема Beauty"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_beauty
 msgid "Beauty Theme - Cosmetics, Beauty, Make Up, Hairdresser"
-msgstr ""
+msgstr "Тема Beauty – Косметика, Красота, Макияж, Парикмахерская"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_beauty
 msgid "Beauty, Health, Care, Make Up, Cosmetics, Hair Dressers, Stores"
-msgstr ""
+msgstr "Красота, Здоровье, Уход, Макияж, Косметика, Парикмахерские, Магазины"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_asset__directive__before
@@ -22418,17 +22509,17 @@ msgstr "Быр"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_bistro
 msgid "Bistro Theme"
-msgstr ""
+msgstr "Тема Bistro"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_bistro
 msgid "Bistro Theme - Restaurant, Food/Drink, Catering, Food trucks"
-msgstr ""
+msgstr "Тема Bistro – Ресторан, Еда и напитки, Кейтеринг, Фудтраки"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_bistro
 msgid "Bistro, Restaurant, Bar, Pub, Cafe, Food, Catering"
-msgstr ""
+msgstr "Бистро, Ресторан, Бар, Паб, Кафе, Еда, Кейтеринг"
 
 #. module: base
 #. odoo-python
@@ -22488,7 +22579,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,description:base.module_theme_bookstore
 msgid "Books, Magazines, Music"
-msgstr ""
+msgstr "Книги, Журналы, Музыка"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_bookstore
@@ -22498,7 +22589,7 @@ msgstr "Книжный магазин"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_bookstore
 msgid "Bookstore Theme"
-msgstr ""
+msgstr "Тема Bookstore"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_actions_server__update_boolean_value
@@ -22538,8 +22629,9 @@ msgstr "Остров Буве"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_bowling
+#, fuzzy
 msgid "Bowling Alley"
-msgstr ""
+msgstr "Боулинг-центр"
 
 #. module: base
 #. odoo-python
@@ -22934,12 +23026,12 @@ msgstr "Бутут"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_buzzy
 msgid "Buzzy Theme"
-msgstr ""
+msgstr "Тема Buzzy"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_buzzy
 msgid "Buzzy Theme - Responsive Bootstrap Theme for Odoo CMS"
-msgstr ""
+msgstr "Тема Buzzy – адаптивная тема Bootstrap для CMS Odoo"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.module_form
@@ -23338,8 +23430,9 @@ msgstr "Категория"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_catering
+#, fuzzy
 msgid "Catering"
-msgstr ""
+msgstr "Кейтеринг"
 
 #. module: base
 #: model:res.country,name:base.ky
@@ -23850,13 +23943,13 @@ msgstr "Город"
 #: model:ir.module.module,description:base.module_theme_clean
 #: model:ir.module.module,shortdesc:base.module_theme_clean
 msgid "Clean Theme"
-msgstr ""
+msgstr "Тема Clean"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_cobalt
 #: model:ir.module.module,description:base.module_theme_paptic
 msgid "Clean and sharp design."
-msgstr ""
+msgstr "Чистый и лаконичный дизайн."
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_cleaning_services
@@ -23865,8 +23958,9 @@ msgstr "Услуги по уборке"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_partner_bank__clearing_number
+#, fuzzy
 msgid "Clearing Number"
-msgstr ""
+msgstr "Номер выравнивания"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_actions_server__update_m2m_operation__clear
@@ -23936,8 +24030,9 @@ msgstr "Облачное хранилище Google"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_cloud_storage_migration
+#, fuzzy
 msgid "Cloud Storage Migration"
-msgstr ""
+msgstr "Миграция в облачное хранилище"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_cf_turnstile
@@ -23947,7 +24042,7 @@ msgstr "Cloudflare Turnstile"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_cobalt
 msgid "Cobalt Theme"
-msgstr ""
+msgstr "Тема Cobalt"
 
 #. module: base
 #: model:res.country,name:base.cc
@@ -24640,18 +24735,20 @@ msgstr "Строительство"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_construction
+#, fuzzy
 msgid "Construction Builder"
-msgstr ""
+msgstr "Строительный подрядчик"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_construction_developer
+#, fuzzy
 msgid "Construction Developer"
-msgstr ""
+msgstr "Строительная компания"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_paptic
 msgid "Consultancy, Design, Tech, Computers, IT, Blogs"
-msgstr ""
+msgstr "Консалтинг, Дизайн, Технологии, Компьютеры, ИТ, Блоги"
 
 #. module: base
 #: model:res.partner.category,name:base.res_partner_category_8
@@ -24814,7 +24911,7 @@ msgstr "Корпоративные подарки"
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_buzzy
 msgid "Corporate, Services, Technology, Shapes, Illustrations"
-msgstr ""
+msgstr "Корпоративный сектор, Услуги, Технологии, Фигуры, Иллюстрации"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_cosmetics_store
@@ -24850,11 +24947,15 @@ msgstr "Не удалось создать контакт без адреса э
 #. module: base
 #. odoo-python
 #: code:addons/fields_relational.py:0
+#, fuzzy
 msgid ""
 "Couldn't generate a company-dependent domain for field %s. The model doesn't "
 "have a 'company_id' or 'company_ids' field, and isn't company-dependent "
 "either."
 msgstr ""
+"Не удалось создать зависимый от компании домен для поля %s. У модели нет "
+"полей «company_id» или «company_ids», и она также не является зависимой от "
+"компании."
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_model__count
@@ -24913,8 +25014,9 @@ msgstr "Группа стран"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_country__country_group_codes
+#, fuzzy
 msgid "Country Group Codes"
-msgstr ""
+msgstr "Коды групп стран"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_country__country_group_ids
@@ -25077,7 +25179,7 @@ msgstr "Создать нового поставщика в вашей адре�
 #. module: base
 #: model:ir.module.module,summary:base.module_test_themes
 msgid "Create a new website for each Odoo theme for an easy preview."
-msgstr ""
+msgstr "Создайте новый вебсайт для каждой темы Odoo для удобного предпросмотра."
 
 #. module: base
 #: model_terms:ir.actions.act_window,help:base.res_partner_industry_action
@@ -25616,7 +25718,7 @@ msgstr "Пользовательские ярлыки"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_test_custo
 msgid "Custom Theme (Testing suite)"
-msgstr ""
+msgstr "Пользовательская тема (Тестовый набор)"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_actions_server__selection_value
@@ -25880,8 +25982,9 @@ msgstr "Структура базы данных"
 #. module: base
 #: model:ir.module.category,name:base.module_category_services_databases
 #: model:ir.module.module,shortdesc:base.module_databases
+#, fuzzy
 msgid "Databases"
-msgstr ""
+msgstr "Базы данных"
 
 #. module: base
 #. odoo-python
@@ -26049,8 +26152,9 @@ msgstr "Представление по умолчанию"
 
 #. module: base
 #: model:res.groups,name:base.default_user_group
+#, fuzzy
 msgid "Default access for new users"
-msgstr ""
+msgstr "Доступ по умолчанию для новых пользователей"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_embedded_actions__filter_ids
@@ -26126,10 +26230,13 @@ msgstr "Действие удаления"
 #. module: base
 #. odoo-python
 #: code:addons/base/models/res_users.py:0
+#, fuzzy
 msgid ""
 "Deleting the public user is not allowed. Deleting this profile will "
 "compromise critical functionalities."
 msgstr ""
+"Удаление публичного пользователя запрещено. Удаление этого профиля нарушит "
+"работу критически важных функций."
 
 #. module: base
 #. odoo-python
@@ -26319,6 +26426,8 @@ msgid ""
 "Design, Fine Art, Artwork, Creative, Creativity, Galleries, Trends, Shows, "
 "Magazines, Blogs"
 msgstr ""
+"Дизайн, Изобразительное искусство, Творчество, Креатив, Галереи, Тренды, "
+"Шоу, Журналы, Блоги"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_mass_mailing_sms
@@ -26378,7 +26487,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_cobalt
 msgid "Development, IT development, Design, Tech, Computers, IT, Blogs"
-msgstr ""
+msgstr "Разработка, ИТ-разработка, Дизайн, Технологии, Компьютеры, ИТ, Блоги"
 
 #. module: base
 #: model:ir.model,name:base.model_res_device_log
@@ -26415,6 +26524,8 @@ msgid ""
 "Digital, Marketing, Copywriting, Media, Events, Non Profit, NGO, Corporate, "
 "Business, Services"
 msgstr ""
+"Цифровой маркетинг, Копирайтинг, Медиа, Мероприятия, Некоммерческие "
+"организации, НКО, Корпоративный сектор, Бизнес, Услуги"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_account_extract
@@ -26731,7 +26842,7 @@ msgstr "Отображаемые поля"
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_anelusia
 msgid "Diversity, Fashions, Trends, Clothes, Shoes, Sports, Fitness, Stores"
-msgstr ""
+msgstr "Разнообразие, Мода, Тренды, Одежда, Обувь, Спорт, Фитнес, Магазины"
 
 #. module: base
 #: model:res.country,name:base.dj
@@ -26982,8 +27093,9 @@ msgstr "Донг"
 
 #. module: base
 #: model:res.partner,website_short_description:base.res_partner_address_3
+#, fuzzy
 msgid "Douglas Fletcher is a mighty functional consultant at Acme Corporation"
-msgstr ""
+msgstr "Дуглас Флетчер – ведущий функциональный консультант в Acme Corporation"
 
 #. module: base
 #: model_terms:res.partner,website_description:base.res_partner_address_3
@@ -27525,8 +27637,9 @@ msgstr ""
 
 #. module: base
 #: model:ir.module.module,description:base.module_appointment_google_reserve
+#, fuzzy
 msgid "Enable a link between your appointment type and the google API"
-msgstr ""
+msgstr "Активируйте связь между вашим типом записи на прием и Google API"
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_appointment_sale
@@ -27592,7 +27705,7 @@ msgstr ""
 #: model:ir.module.module,description:base.module_theme_enark
 #: model:ir.module.module,shortdesc:base.module_theme_enark
 msgid "Enark Theme"
-msgstr ""
+msgstr "Тема Enark"
 
 #. module: base
 #: model:res.partner.industry,name:base.res_partner_industry_D
@@ -27643,8 +27756,9 @@ msgstr "Введите описание и цель ключа."
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_users_identitycheck_view_form
+#, fuzzy
 msgid "Enter your password"
-msgstr ""
+msgstr "Введите ваш пароль"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_event_track_gantt
@@ -27719,6 +27833,8 @@ msgid ""
 "Environment, Nature, Ecology, Sustainable Development, Non Profit, NGO, "
 "Travels"
 msgstr ""
+"Окружающая среда, Природа, Экология, Устойчивое развитие, Некоммерческие "
+"организации, НКО, Путешествия"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_environmental_agency
@@ -28428,6 +28544,8 @@ msgid ""
 "Event, Restaurants, Bars, Pubs, Cafes, Catering, Food, Drinks, Concerts, "
 "Shows, Musics, Dance, Party"
 msgstr ""
+"Мероприятия, Рестораны, Бары, Пабы, Кафе, Кейтеринг, Еда, Напитки, Концерты, "
+"Шоу, Музыка, Танцы, Вечеринки"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_website_event_exhibitor
@@ -28505,8 +28623,9 @@ msgstr ""
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_excise_management
+#, fuzzy
 msgid "Excise Management"
-msgstr ""
+msgstr "Управление акцизами"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.base_partner_merge_automatic_wizard_form
@@ -28565,8 +28684,9 @@ msgstr "Развернуть группы"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_expense_stripe
+#, fuzzy
 msgid "Expense cards"
-msgstr ""
+msgstr "Карты расходов"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_expense_stripe_demo
@@ -28596,12 +28716,12 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,description:base.module_theme_odoo_experts
 msgid "Experts Business Theme"
-msgstr ""
+msgstr "Бизнес-тема Experts"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_odoo_experts
 msgid "Experts Theme"
-msgstr ""
+msgstr "Тема Experts"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_users_apikeys__expiration_date
@@ -29495,12 +29615,13 @@ msgstr "Флорист"
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_orchid
 msgid "Florist, Gardens, Flowers, Nature, Green, Beauty, Stores"
-msgstr ""
+msgstr "Флорист, Сады, Цветы, Природа, Зелень, Красота, Магазины"
 
 #. module: base
 #: model:res.partner,website_short_description:base.res_partner_address_4
+#, fuzzy
 msgid "Floyd Steward is a mighty analyst at Acme Corporation."
-msgstr ""
+msgstr "Флойд Стюард – ведущий аналитик в Acme Corporation."
 
 #. module: base
 #: model_terms:res.partner,website_description:base.res_partner_address_4
@@ -29526,8 +29647,9 @@ msgstr "Фолио 27  210 x 330 мм"
 #. module: base
 #. odoo-python
 #: code:addons/base/models/ir_actions.py:0
+#, fuzzy
 msgid "Following child actions have warnings: %(children)s"
-msgstr ""
+msgstr "Следующие дочерние действия имеют предупреждения: %(children)s"
 
 #. module: base
 #. odoo-python
@@ -29886,7 +30008,7 @@ msgstr "Мебельный магазин"
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_loftspace
 msgid "Furniture, Toys, Games, Kids, Boys, Girls, Stores"
-msgstr ""
+msgstr "Мебель, Игрушки, Игры, Дети, Мальчики, Девочки, Магазины"
 
 #. module: base
 #: model:res.partner.industry,full_name:base.res_partner_industry_G
@@ -30294,8 +30416,9 @@ msgstr "Перейти к пользователям"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_google_address_autocomplete
+#, fuzzy
 msgid "Google Address Autocomplete"
-msgstr ""
+msgstr "Автозаполнение адресов Google"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_google_calendar
@@ -30354,7 +30477,7 @@ msgstr "График"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_graphene
 msgid "Graphene Theme"
-msgstr ""
+msgstr "Теma Graphene"
 
 #. module: base
 #: model:res.country,name:base.gr
@@ -32580,8 +32703,9 @@ msgstr "Недопустимый формат JSON в поле значения 
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_ui_view__invalid_locators
+#, fuzzy
 msgid "Invalid Locators"
-msgstr ""
+msgstr "Неверные локаторы"
 
 #. module: base
 #. odoo-python
@@ -32751,10 +32875,13 @@ msgstr ""
 #. module: base
 #. odoo-python
 #: code:addons/base/models/ir_default.py:0
+#, fuzzy
 msgid ""
 "Invalid value in Default Value field. Expected type '%(field_type)s' for '%"
 "(model_name)s.%(field_name)s'."
 msgstr ""
+"Недопустимое значение в поле «Значение по умолчанию». Ожидаемый тип «%"
+"(field_type)s» для «%(model_name)s.%(field_name)s»."
 
 #. module: base
 #. odoo-python
@@ -32765,11 +32892,15 @@ msgstr "Недопустимое определение представлени
 #. module: base
 #. odoo-python
 #: code:addons/base/models/ir_ui_view.py:0
+#, fuzzy
 msgid ""
 "Invalid view type: '%(view_type)s'.\n"
 "You might have used an invalid starting tag in the architecture.\n"
 "Allowed types are: %(valid_types)s"
 msgstr ""
+"Неверный тип представления: «%(view_type)s».\n"
+"Возможно, вы использовали недопустимый начальный тег в архитектуре.\n"
+"Допустимые типы: %(valid_types)s"
 
 #. module: base
 #. odoo-python
@@ -33290,7 +33421,7 @@ msgstr "Казахстан — Бухгалтерские отчеты"
 #: model:ir.module.module,description:base.module_theme_kea
 #: model:ir.module.module,shortdesc:base.module_theme_kea
 msgid "Kea Theme"
-msgstr ""
+msgstr "Тема Kea"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_users__password
@@ -33383,12 +33514,12 @@ msgstr "Хумс"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_kiddo
 msgid "Kiddo Theme"
-msgstr ""
+msgstr "Тема Kiddo"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_kiddo
 msgid "Kiddo theme for Odoo Website"
-msgstr ""
+msgstr "Тема Kiddo для вебсайта Odoo"
 
 #. module: base
 #: model:res.currency,currency_unit_label:base.PGK
@@ -33407,8 +33538,9 @@ msgstr "Кирибати"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_sale_mrp
+#, fuzzy
 msgid "Kit Availability"
-msgstr ""
+msgstr "Доступность наборов"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_sale_mrp_renting
@@ -33977,7 +34109,7 @@ msgstr "Legal 3 8,5 x 14 дюймов, 215,9 x 355,6 мм"
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_clean
 msgid "Legal, Corporate, Business, Tech, Services"
-msgstr ""
+msgstr "Юридические услуги, Корпоративный сектор, Бизнес, Технологии, Услуги"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.sequence_view
@@ -34066,7 +34198,7 @@ msgstr "Библиотека"
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_bookstore
 msgid "Library, Books, Magazines, Literature, Musics, Media, Store"
-msgstr ""
+msgstr "Библиотека, Книги, Журналы, Литература, Музыка, Медиа, Магазины"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_partner__tz__libya
@@ -34087,12 +34219,12 @@ msgstr "Лихтенштейн"
 #. module: base
 #: model:ir.module.category,name:base.module_category_theme_lifestyle
 msgid "Lifestyle"
-msgstr ""
+msgstr "Образ жизни"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_graphene
 msgid "Light colours, thin text, clean and sharp design."
-msgstr ""
+msgstr "Светлые тона, изящный текст, чистый и четкий дизайн."
 
 #. module: base
 #: model:res.currency,currency_unit_label:base.SZL
@@ -34367,18 +34499,19 @@ msgstr "Локализация"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_website_sale_localizations
+#, fuzzy
 msgid "Localizations"
-msgstr ""
+msgstr "Локализации"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_loftspace
 msgid "Loftspace Fashion Theme"
-msgstr ""
+msgstr "Тема Loftspace Fashion"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_loftspace
 msgid "Loftspace Theme"
-msgstr ""
+msgstr "Тема Loftspace"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.ir_logging_form_view
@@ -34581,8 +34714,9 @@ msgstr "Макао"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_machine_tool_rental
+#, fuzzy
 msgid "Machine & Tools Rental"
-msgstr ""
+msgstr "Аренда оборудования и инструментов"
 
 #. module: base
 #: model:res.country,name:base.mg
@@ -34710,7 +34844,7 @@ msgstr "Совершайте и принимайте телефонные зво
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_nano
 msgid "Maker, Agencies, Creative, Design, IT, Services, Fancy"
-msgstr ""
+msgstr "Мастерские, Агентства, Творчество, Дизайн, ИТ, Услуги, Креатив"
 
 #. module: base
 #: model:res.country,name:base.mw
@@ -34814,8 +34948,9 @@ msgstr "Управление интеграцией досок вакансий 
 
 #. module: base
 #: model:ir.module.module,summary:base.module_website_sale_mrp
+#, fuzzy
 msgid "Manage Kit product inventory & availability"
-msgstr ""
+msgstr "Управление запасами и доступностью наборов"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_room
@@ -35446,8 +35581,9 @@ msgstr "Клуб для участников"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_mental_therapy
+#, fuzzy
 msgid "Mental Therapy"
-msgstr ""
+msgstr "Ментальное здоровье"
 
 #. module: base
 #: model:ir.model,name:base.model_ir_ui_menu
@@ -35630,8 +35766,9 @@ msgstr "Пользователи Microsoft"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_cloud_storage_migration
+#, fuzzy
 msgid "Migrate local attachments to cloud storage"
-msgstr ""
+msgstr "Миграция локальных вложений в облачное хранилище"
 
 #. module: base
 #: model:res.currency,currency_subunit_label:base.TND
@@ -35838,8 +35975,9 @@ msgstr "Прочее"
 #. module: base
 #. odoo-python
 #: code:addons/template_inheritance.py:0
+#, fuzzy
 msgid "Missing 'expr' attribute in xpath specification"
-msgstr ""
+msgstr "Отсутствует атрибут «expr» в спецификации xpath"
 
 #. module: base
 #. odoo-python
@@ -36214,12 +36352,12 @@ msgstr "Понедельник"
 #. module: base
 #: model:ir.module.module,description:base.module_theme_monglia
 msgid "Monglia Catering Theme"
-msgstr ""
+msgstr "Тема Monglia Catering"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_monglia
 msgid "Monglia Theme"
-msgstr ""
+msgstr "Тема Monglia"
 
 #. module: base
 #: model:res.currency,currency_subunit_label:base.MNT
@@ -36324,8 +36462,9 @@ msgstr "Ремонт MRP"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_actions_server__state__multi
+#, fuzzy
 msgid "Multi Actions"
-msgstr ""
+msgstr "Множественные действия"
 
 #. module: base
 #: model:res.groups,name:base.group_multi_company
@@ -36504,12 +36643,12 @@ msgstr "Намибия"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_nano
 msgid "Nano Theme"
-msgstr ""
+msgstr "Тема Nano"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_nano
 msgid "Nano Theme - Responsive Bootstrap Theme for Odoo CMS"
-msgstr ""
+msgstr "Тема Nano – адаптивная тема Bootstrap для CMS Odoo"
 
 #. module: base
 #. odoo-python
@@ -36768,8 +36907,9 @@ msgstr "На данный момент ни одна группа не разр�
 #. module: base
 #. odoo-python
 #: code:addons/fields_relational.py:0
+#, fuzzy
 msgid "No inverse field \"%(inverse_field)s\" found for \"%(comodel)s\""
-msgstr ""
+msgstr "Обратное поле «%(inverse_field)s» не найдено для «%(comodel)s»"
 
 #. module: base
 #. odoo-python
@@ -36952,7 +37092,7 @@ msgstr "Заметки"
 #: model:ir.module.module,description:base.module_theme_notes
 #: model:ir.module.module,shortdesc:base.module_theme_notes
 msgid "Notes & Play Theme"
-msgstr ""
+msgstr "Тема Notes & Play"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_website_sale_stock_wishlist
@@ -36997,7 +37137,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_kiddo
 msgid "Nursery, Toys, Games, Kids, Boys, Girls, Stores"
-msgstr ""
+msgstr "Детский сад, Игрушки, Игры, Дети, Мальчики, Девочки, Магазины"
 
 #. module: base
 #: model:res.partner.industry,full_name:base.res_partner_industry_O
@@ -39647,12 +39787,12 @@ msgstr "Параметры"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_orchid
 msgid "Orchid Theme"
-msgstr ""
+msgstr "Тема Orchid"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_orchid
 msgid "Orchid Theme - Flowers, Beauty"
-msgstr ""
+msgstr "Тема Orchid – Цветы, Красота"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_model__order
@@ -40816,7 +40956,7 @@ msgstr "Размер бумаги"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_paptic
 msgid "Paptic Theme"
-msgstr ""
+msgstr "Тема Paptic"
 
 #. module: base
 #: model:res.country,name:base.pg
@@ -41266,8 +41406,9 @@ msgstr "Peppol"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_partner__company_type__person
+#, fuzzy
 msgid "Person"
-msgstr ""
+msgstr "Гость"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_theme_personal
@@ -41473,8 +41614,9 @@ msgstr "Фотография"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_physical_therapy
+#, fuzzy
 msgid "Physical Therapy"
-msgstr ""
+msgstr "Физиотерапия"
 
 #. module: base
 #: model:res.currency,currency_subunit_label:base.SSP
@@ -42508,8 +42650,9 @@ msgstr "Свойства"
 #: model:ir.model.fields,field_description:base.field_properties_base_definition_mixin__properties_base_definition_id
 #: model:ir.model.fields,field_description:base.field_res_partner__properties_base_definition_id
 #: model:ir.model.fields,field_description:base.field_res_users__properties_base_definition_id
+#, fuzzy
 msgid "Properties Base Definition"
-msgstr ""
+msgstr "Базовое определение свойств"
 
 #. module: base
 #: model:ir.model,name:base.model_properties_base_definition_mixin
@@ -42539,8 +42682,9 @@ msgstr ""
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_industry_real_estate
+#, fuzzy
 msgid "Property Management"
-msgstr ""
+msgstr "Управление недвижимостью"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_condominium
@@ -42962,8 +43106,9 @@ msgstr "Поле Qweb Многие ко многим"
 
 #. module: base
 #: model:ir.model,name:base.model_ir_qweb_field_one2many
+#, fuzzy
 msgid "Qweb field one2many"
-msgstr ""
+msgstr "Qweb поле one2many"
 
 #. module: base
 #: model:res.partner.industry,full_name:base.res_partner_industry_R
@@ -43068,12 +43213,12 @@ msgstr "Агентство недвижимости"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_real_estate
 msgid "Real Estate Theme"
-msgstr ""
+msgstr "Тема Real Estate"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_real_estate
 msgid "Real Estate Theme - Houses, Appartments, Real Estate Agencies"
-msgstr ""
+msgstr "Тема Real Estate – Дома, Квартиры, Агентства недвижимости"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_real_estate
@@ -43081,6 +43226,8 @@ msgid ""
 "Real Estate, Agencies, Construction, Services, Accomodations, Lodging, "
 "Hosting, Houses, Appartments, Vacations, Holidays, Travels"
 msgstr ""
+"Недвижимость, Агентства, Строительство, Услуги, Жилье, Аренда, Хостинг, "
+"Дома, Квартиры, Отпуск, Выходные, Путешествия"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_profile__duration
@@ -44846,8 +44993,9 @@ msgstr "Отправить деньги"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_sms_twilio
+#, fuzzy
 msgid "Send SMS messages using Twilio"
-msgstr ""
+msgstr "Отправка СМС через Twilio"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website_sms
@@ -45201,6 +45349,8 @@ msgstr "Маржа услуг в заказах на продажу"
 #: model:ir.module.module,summary:base.module_theme_graphene
 msgid "Service, Corporate, Design, Technology, Robotics, Computers, IT, Blogs"
 msgstr ""
+"Услуги, Корпоративный сектор, Дизайн, Технологии, Робототехника, Компьютеры, "
+"ИТ, Блоги"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_services
@@ -45238,8 +45388,9 @@ msgstr "Установить значение..."
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_server_action_form
+#, fuzzy
 msgid "Set an explicit name"
-msgstr ""
+msgstr "Задать явное имя"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.config_wizard_step_view_form
@@ -45310,8 +45461,9 @@ msgstr "Пользователь общего доступа"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.ir_filters_view_form
+#, fuzzy
 msgid "Shared with"
-msgstr ""
+msgstr "Доступ открыт для"
 
 #. module: base
 #: model:res.currency,currency_unit_label:base.ILS
@@ -45563,11 +45715,15 @@ msgstr "Пропустить эти контакты"
 #. module: base
 #. odoo-python
 #: code:addons/models.py:0
+#, fuzzy
 msgid ""
 "Skipping a company check for model %(model_name)s. Its fields %"
 "(field_names)s are set as company-dependent, but the model doesn't have a "
 "`company_id` or `company_ids` field!"
 msgstr ""
+"Пропуск проверки компании для модели %(model_name)s. Ее поля %(field_names)s "
+"установлены как зависящие от компании, но в модели отсутствует поле "
+"`company_id` или `company_ids`!"
 
 #. module: base
 #. odoo-python
@@ -45638,12 +45794,12 @@ msgstr "Обычная почта — Последующее действие"
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_common
 msgid "Snippets Library"
-msgstr ""
+msgstr "Библиотека сниппетов"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_common
 msgid "Snippets library containing snippets to be styled in themes."
-msgstr ""
+msgstr "Библиотека блоков, содержащая готовые элементы для стилизации в темах."
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_marketing_social
@@ -47055,7 +47211,7 @@ msgstr "Технологии"
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_kea
 msgid "Technology, Tech, IT, Computers, Stores, Virtual Reality"
-msgstr ""
+msgstr "Технологии, Хайтек, ИТ, Компьютеры, Магазины, Виртуальная реальность"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_actions_report__report_name
@@ -48251,7 +48407,7 @@ msgstr "Тема"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_common
 msgid "Theme Common"
-msgstr ""
+msgstr "Тема Common"
 
 #. module: base
 #: model:ir.actions.act_url,name:base.action_theme_store
@@ -48263,7 +48419,7 @@ msgstr "Магазин тем"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_themes
 msgid "Themes Testing Module"
-msgstr ""
+msgstr "Модуль тестирования тем"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.base_partner_merge_automatic_wizard_form
@@ -48519,12 +48675,17 @@ msgstr "Этот модуль добавляет функции управлен
 
 #. module: base
 #: model:ir.module.module,summary:base.module_account_add_gln
+#, fuzzy
 msgid ""
 "This module adds the Global Location Number to the partner. Used on delivery "
 "addresses, it is used to identify stock locations and is mandatory on the "
 "UBL/CII eInvoices (but not only). The module is intended be merged with "
 "account, later on, in master"
 msgstr ""
+"Этот модуль добавляет глобальный идентификационный номер для партнера. Он "
+"используется в адресах доставки для идентификации складских помещений и "
+"является обязательным в электронных счетах UBL/CII (но не только в них). "
+"Позже модуль планируется объединить с разделом учета в основной версии"
 
 #. module: base
 #: model:ir.module.module,description:base.module_mail_bot_hr
@@ -49477,17 +49638,17 @@ msgstr "Транспорт/Логистика"
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_aviato
 msgid "Travel, Excursion, Plane, Tour, Agency "
-msgstr ""
+msgstr "Путешествия, Экскурсии, Авиабилеты, Туры, Агентства "
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_treehouse
 msgid "Treehouse Theme"
-msgstr ""
+msgstr "Тема Treehouse"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_treehouse
 msgid "Treehouse Theme - Responsive Bootstrap Theme for Odoo CMS"
-msgstr ""
+msgstr "Тема Treehouse – адаптивная тема Bootstrap для CMS Odoo"
 
 #. module: base
 #. odoo-python
@@ -49763,8 +49924,9 @@ msgstr "Код URL"
 #. module: base
 #. odoo-python
 #: code:addons/base/models/ir_attachment.py:0
+#, fuzzy
 msgid "URL attachment (%s) shouldn't be migrated to local."
-msgstr ""
+msgstr "URL-вложение (%s) не должно мигрировать в локальное хранилище."
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_actions_server__webhook_url
@@ -49933,10 +50095,13 @@ msgstr "Украина — Бухгалтерия"
 #. module: base
 #. odoo-python
 #: code:addons/models.py:0
+#, fuzzy
 msgid ""
 "Unable to delete %(record)s because it is used as the default value of %"
 "(field)s"
 msgstr ""
+"Невозможно удалить %(record)s, так как оно используется как значение по "
+"умолчанию для %(field)s"
 
 #. module: base
 #. odoo-python
@@ -50002,10 +50167,13 @@ msgstr "Без категории"
 #. module: base
 #. odoo-python
 #: code:addons/base/models/ir_ui_view.py:0
+#, fuzzy
 msgid ""
 "Unicode strings with encoding declaration are not supported in XML.\n"
 "Remove the encoding declaration."
 msgstr ""
+"Строки Unicode с объявлением кодировки не поддерживаются в XML.\n"
+"Удалите объявление кодировки."
 
 #. module: base
 #. odoo-python
@@ -50163,7 +50331,7 @@ msgstr "Универсальный"
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_bewise
 msgid "University, Education, Schools, Young, Play, Kids"
-msgstr ""
+msgstr "Университет, Образование, Школы, Молодежь, Игры, Дети"
 
 #. module: base
 #. odoo-python
@@ -50189,8 +50357,9 @@ msgstr "Неизвестный идентификатор базы данных 
 #. module: base
 #. odoo-python
 #: code:addons/models.py:0
+#, fuzzy
 msgid "Unknown error during import: %(error_type)s: %(error_message)s"
-msgstr ""
+msgstr "Неизвестная ошибка при импорте: %(error_type)s: %(error_message)s"
 
 #. module: base
 #. odoo-python
@@ -50880,12 +51049,12 @@ msgstr "Вату"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_vehicle
 msgid "Vehicle Theme"
-msgstr ""
+msgstr "Тема Vehicle"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_vehicle
 msgid "Vehicle Theme - Cars, Motorbikes, Bikes, Tires"
-msgstr ""
+msgstr "Тема Vehicle – Автомобили, Мотоциклы, Велосипеды, Шины"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_vehicle
@@ -50893,6 +51062,8 @@ msgid ""
 "Vehicle, Cars, Motorbikes, Bikes, Tires, Transports, Repair, Mechanics, "
 "Garages, Sports, Services"
 msgstr ""
+"Транспорт, Автомобили, Мотоциклы, Велосипеды, Шины, Перевозки, Ремонт, "
+"Механика, Автосервисы, Спорт, Услуги"
 
 #. module: base
 #: model:res.partner.category,name:base.res_partner_category_0
@@ -51065,8 +51236,9 @@ msgstr "Представления, наследующие это предста
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_vineyard
+#, fuzzy
 msgid "Vineyard"
-msgstr ""
+msgstr "Виноградник"
 
 #. module: base
 #: model:res.country,name:base.vg
@@ -51398,8 +51570,9 @@ msgstr "Оплата на веб-сайте"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_website_sale
+#, fuzzy
 msgid "Website Sale"
-msgstr ""
+msgstr "Продажи через вебсайт"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_website_sale_full
@@ -51454,7 +51627,7 @@ msgstr "Организатор свадеб"
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_yes
 msgid "Wedding, Love, Photography, Services"
-msgstr ""
+msgstr "Свадьба, Любовь, Фотография, Услуги"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_lang__week_start__3
@@ -51881,12 +52054,12 @@ msgstr "Да (True)"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_yes
 msgid "Yes Theme"
-msgstr ""
+msgstr "Тема Yes"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_yes
 msgid "Yes Theme - Wedding"
-msgstr ""
+msgstr "Тема Yes – Свадьба"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.demo_force_install_form
@@ -52101,10 +52274,13 @@ msgstr "Вы не можете создавать рекурсивные нас�
 
 #. module: base
 #: model:ir.model.constraint,message:base.constraint_ir_sequence_date_range_unique_range_per_sequence
+#, fuzzy
 msgid ""
 "You cannot create two date ranges for the same sequence with the same date "
 "range."
 msgstr ""
+"Вы не можете создать два диапазона дат для одной и той же последовательности "
+"с идентичным периодом."
 
 #. module: base
 #. odoo-python
@@ -52115,10 +52291,13 @@ msgstr "Вы не можете деактивировать пользовате
 #. module: base
 #. odoo-python
 #: code:addons/models.py:0
+#, fuzzy
 msgid ""
 "You cannot delete %(to_delete_record)s, as it is used by %"
 "(on_restrict_record)s"
 msgstr ""
+"Вы не можете удалить %(to_delete_record)s, так как это используется в %"
+"(on_restrict_record)s"
 
 #. module: base
 #. odoo-python
@@ -52228,10 +52407,13 @@ msgstr "Вы не можете переименовать параметры к�
 #. module: base
 #. odoo-python
 #: code:addons/models.py:0
+#, fuzzy
 msgid ""
 "You cannot use “%(property_name)s” because the linked “%(model_name)s” model "
 "doesn't exist or is invalid"
 msgstr ""
+"Вы не можете использовать \"%(property_name)s\", потому что связанная модель "
+"\"%(model_name)s\" не существует или недействительна"
 
 #. module: base
 #. odoo-python
@@ -52373,12 +52555,12 @@ msgstr "Замбия — Бухгалтерские отчеты"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_theme_zap
 msgid "Zap Theme"
-msgstr ""
+msgstr "Тема Zap"
 
 #. module: base
 #: model:ir.module.module,description:base.module_theme_zap
 msgid "Zap Theme - Corporate, Business, Marketing, Copywriting"
-msgstr ""
+msgstr "Тема Zap – Корпоративный сектор, Бизнес, Маркетинг, Копирайтинг"
 
 #. module: base
 #: model:res.currency,currency_unit_label:base.ZIG
@@ -52926,8 +53108,9 @@ msgstr ""
 #. module: base
 #. odoo-python
 #: code:addons/base/models/res_company.py:0
+#, fuzzy
 msgid "parent_id"
-msgstr ""
+msgstr "parent_id"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_server_action_form

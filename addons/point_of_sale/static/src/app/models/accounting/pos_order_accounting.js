@@ -82,7 +82,7 @@ export class PosOrderAccounting extends Base {
     get remainingDue() {
         const isNegative = this.totalDue < 0;
         const total = this.totalDue;
-        const remaining = total - this.amountPaid;
+        const remaining = this.currency.round(total - this.amountPaid);
 
         // Amount paid covers the total due
         if ((isNegative && remaining >= 0) || (!isNegative && remaining <= 0)) {
@@ -126,7 +126,7 @@ export class PosOrderAccounting extends Base {
     get appliedRounding() {
         const total = this.prices.taxDetails.total_amount_no_rounding;
         const isNegative = this.amountPaid > total;
-        const remaining = total - this.amountPaid;
+        const remaining = this.currency.round(total - this.amountPaid);
         const amount =
             this.orderIsRounded &&
             this.config.rounding_method.asymmetricRound(total < 0 ? -remaining : remaining) == 0
@@ -254,7 +254,9 @@ export class PosOrderAccounting extends Base {
      */
     _constructPriceData(opts = {}) {
         const data = this._computeAllPrices(opts);
-        const noDiscount = this._computeAllPrices({ baseLineOpts: { discount: 0.0 }, ...opts });
+        const addedBlOpts = opts.baseLineOpts || {};
+        const ndBaseLineOpts = { ...addedBlOpts, discount: 0.0 };
+        const noDiscount = this._computeAllPrices({ ...opts, baseLineOpts: ndBaseLineOpts });
         const currency = this.currency;
 
         for (const key of Object.keys(data.baseLineByLineUuids)) {

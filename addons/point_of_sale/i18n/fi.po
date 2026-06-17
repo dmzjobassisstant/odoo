@@ -43,8 +43,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-01 17:35+0000\n"
-"PO-Revision-Date: 2026-04-24 12:08+0000\n"
+"POT-Creation-Date: 2026-06-12 17:35+0000\n"
+"PO-Revision-Date: 2026-06-12 21:10+0000\n"
 "Last-Translator: Saara Hakanen <sahak@odoo.com>\n"
 "Language-Team: Finnish <https://translate.odoo.com/projects/odoo-19/"
 "point_of_sale/fi/>\n"
@@ -53,7 +53,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.17\n"
+"X-Generator: Weblate 2026.6.1\n"
 
 #. module: point_of_sale
 #. odoo-python
@@ -509,12 +509,6 @@ msgstr "Tämän niminen huomautus on jo olemassa"
 #: model:ir.model.constraint,message:point_of_sale.constraint_pos_payment_unique_uuid
 msgid "A payment with this uuid already exists"
 msgstr "Tällä uuid:lla oleva maksu on jo olemassa"
-
-#. module: point_of_sale
-#. odoo-javascript
-#: code:addons/point_of_sale/static/src/app/screens/feedback_screen/feedback_screen.js:0
-msgid "A request is still being processed in the background. Please wait."
-msgstr "Pyyntöä käsitellään yhä taustalla. Odota hetki."
 
 #. module: point_of_sale
 #: model_terms:ir.actions.act_window,help:point_of_sale.action_pos_session
@@ -1420,7 +1414,7 @@ msgstr "Pankkitiliotteen rivi"
 #. odoo-javascript
 #: code:addons/point_of_sale/static/src/backend/pos_kanban_view/pos_kanban_view.js:0
 msgid "Bar"
-msgstr "Palkki"
+msgstr "Baari"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -1815,7 +1809,7 @@ msgstr "Käteisen pyöristäminen (kassa)"
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.pos_session_sales_details
 msgid "Cash Rounding:"
-msgstr ""
+msgstr "Käteisen pyöristäminen:"
 
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.res_config_settings_view_form
@@ -2906,7 +2900,7 @@ msgstr "Päivittäiset istunnot sisältävät kassasi myynnin."
 #. odoo-javascript
 #: code:addons/point_of_sale/static/src/app/components/popups/sync_popup/sync_popup.js:0
 msgid "Dangerous: Too Many Products"
-msgstr ""
+msgstr "Vaarallista: Liian monta tuotetta"
 
 #. module: point_of_sale
 #: model:ir.ui.menu,name:point_of_sale.menu_pos_dashboard
@@ -2917,7 +2911,7 @@ msgstr "Koontinäyttö"
 #. odoo-javascript
 #: code:addons/point_of_sale/static/src/app/models/utils/indexed_db.js:0
 msgid "Database Connection Lost"
-msgstr ""
+msgstr "Yhteys tietokantaan katkesi"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -3392,6 +3386,18 @@ msgstr "Lataa"
 #. module: point_of_sale
 #. odoo-javascript
 #: code:addons/point_of_sale/static/src/app/utils/debug/debug_widget.xml:0
+msgid "Download IDB Errors"
+msgstr "Lataa IDB-virheet"
+
+#. module: point_of_sale
+#. odoo-javascript
+#: code:addons/point_of_sale/static/src/app/utils/debug/debug_widget.xml:0
+msgid "Download IndexedDB error logs from localStorage"
+msgstr "Lataa IndexedDB-virhelokit localStorage:sta"
+
+#. module: point_of_sale
+#. odoo-javascript
+#: code:addons/point_of_sale/static/src/app/utils/debug/debug_widget.xml:0
 msgid "Download Logs"
 msgstr "Lataa lokit"
 
@@ -3623,12 +3629,6 @@ msgstr "Virhe! Et voi luoda rekursiivisia luokkia."
 #: code:addons/point_of_sale/static/src/app/utils/order_payment_validation.js:0
 msgid "Error: no internet connection."
 msgstr "Virhe: ei internet-yhteyttä."
-
-#. module: point_of_sale
-#. odoo-javascript
-#: code:addons/point_of_sale/static/src/app/screens/feedback_screen/feedback_screen.xml:0
-msgid "Everything is ready to go!"
-msgstr "Kaikki valmista!"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -4051,6 +4051,11 @@ msgstr "Sisältää viestin"
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_order__has_refundable_lines
 msgid "Has Refundable Lines"
 msgstr "Sisältää palautettavia rivejä"
+
+#. module: point_of_sale
+#: model:ir.model.fields,field_description:point_of_sale.field_stock_picking_type__has_stock_reports_to_print
+msgid "Has Stock Reports To Print"
+msgstr ""
 
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.res_config_settings_view_form
@@ -4792,7 +4797,7 @@ msgstr "Kannettavan tietokoneen malli X"
 #. odoo-javascript
 #: code:addons/point_of_sale/static/src/app/components/popups/sync_popup/sync_popup.js:0
 msgid "Large Product Count Detected"
-msgstr ""
+msgstr "Havaittu suuri tuotemäärä"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_config__iface_big_scrollbars
@@ -7480,6 +7485,12 @@ msgid "Proceed Anyway"
 msgstr "Jatka joka tapauksessa"
 
 #. module: point_of_sale
+#. odoo-javascript
+#: code:addons/point_of_sale/static/src/app/screens/feedback_screen/feedback_screen.xml:0
+msgid "Processing..."
+msgstr ""
+
+#. module: point_of_sale
 #: model:ir.model,name:point_of_sale.model_product_template
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_order_line__product_id
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_pack_operation_lot__product_id
@@ -7607,13 +7618,13 @@ msgstr "Tuotteen yksikkö"
 #. module: point_of_sale
 #: model:ir.model,name:point_of_sale.model_product_product
 msgid "Product Variant"
-msgstr "Tuotevariaatio"
+msgstr "Tuotevariantti"
 
 #. module: point_of_sale
 #: model:ir.actions.act_window,name:point_of_sale.product_product_action
 #: model:ir.ui.menu,name:point_of_sale.pos_config_menu_action_product_product
 msgid "Product Variants"
-msgstr "Tuotevariaatiot"
+msgstr "Tuotevariantit"
 
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.res_config_settings_view_form
@@ -7956,7 +7967,7 @@ msgstr "Aiheeseen liittyvä istunto: %(link)s"
 #. odoo-javascript
 #: code:addons/point_of_sale/static/src/app/models/utils/indexed_db.js:0
 msgid "Reload"
-msgstr ""
+msgstr "Lataa uudelleen"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -8839,12 +8850,6 @@ msgstr ""
 
 #. module: point_of_sale
 #. odoo-javascript
-#: code:addons/point_of_sale/static/src/app/screens/feedback_screen/feedback_screen.xml:0
-msgid "Some process are still running in background, please wait..."
-msgstr "Jotkut prosessit ovat vielä käynnissä taustalla, odota hetki..."
-
-#. module: point_of_sale
-#. odoo-javascript
 #: code:addons/point_of_sale/static/src/app/utils/order_payment_validation.js:0
 msgid "Some required information is missing."
 msgstr "Joitain pakollisia tietoja puuttuu."
@@ -9325,6 +9330,8 @@ msgid ""
 "The connection to the local database was lost. Reloading the page will "
 "restore it and prevent any loss of unsaved orders."
 msgstr ""
+"Yhteys paikalliseen tietokantaan katkesi. Sivun uudelleenlataaminen "
+"palauttaa yhteyden ja estää tallentamattomien tilausten menettämisen."
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -9843,6 +9850,9 @@ msgid ""
 "(limit)s). Loading all products may slow down the Point of Sale. Do you want "
 "to continue with Full Synchronization?"
 msgstr ""
+"Tälle kassajärjestelmälle on saatavilla %(count)s tuotetta (määritetty raja: "
+"%(limit)s). Kaikkien tuotteiden lataaminen voi hidastaa kassajärjestelmää. "
+"Haluatko jatkaa täydellä synkronoinnilla?"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -9853,6 +9863,11 @@ msgid ""
 "may cause it to crash or become unresponsive. It is strongly recommended to "
 "use Limited Synchronization instead. Do you still want to proceed?"
 msgstr ""
+"Tälle kassajärjestelmälle on saatavilla %(count)s tuotetta (määritetty raja: "
+"%(limit)s). Näin monen tuotteen lataaminen hidastaa järjestelmää "
+"huomattavasti ja voi aiheuttaa sen kaatumisen tai toimimattomuuden. "
+"Rajoitetun synkronoinnin käyttäminen on erittäin suositeltavaa. Haluatko "
+"silti jatkaa?"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -10060,6 +10075,13 @@ msgid ""
 msgstr ""
 "Tämä tilaus on jo maksettu. Et voi asettaa sitä luonnokseksi tai muokata "
 "sitä."
+
+#. module: point_of_sale
+#. odoo-javascript
+#: code:addons/point_of_sale/static/src/app/services/pos_store.js:0
+msgid ""
+"This order is currently syncing, please wait a moment before loading it."
+msgstr ""
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -10631,6 +10653,7 @@ msgstr "ALV"
 #. module: point_of_sale
 #. odoo-javascript
 #: code:addons/point_of_sale/static/src/app/components/popups/product_info_popup/product_info_popup.js:0
+#: model_terms:ir.ui.view,arch_db:point_of_sale.pos_session_sales_details
 msgid "VAT:"
 msgstr "ALV:"
 
@@ -10639,6 +10662,16 @@ msgstr "ALV:"
 #: code:addons/point_of_sale/static/src/app/screens/payment_screen/payment_screen.xml:0
 msgid "Validate"
 msgstr "Vahvista"
+
+#. module: point_of_sale
+#. odoo-python
+#: code:addons/point_of_sale/models/pos_payment_method.py:0
+msgid ""
+"Validation Error: You cannot assign the same Cash payment method to multiple "
+"POS Shops. Please create a separate Cash payment method for each shop."
+msgstr ""
+"Vahvistusvirhe: Et voi määrittää samaa käteismaksutapaa useille "
+"Kassajärjestelmän kaupoille. Luo kullekin kaupalle oma käteismaksutapa."
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_bill__value
@@ -10815,7 +10848,7 @@ msgstr "Haluatko jatkaa ilman tulostamista vai yrittää uudelleen?"
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.pos_session_sales_details
 msgid "X"
-msgstr ""
+msgstr "X"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -11086,6 +11119,12 @@ msgstr ""
 #. module: point_of_sale
 #. odoo-python
 #: code:addons/point_of_sale/models/pos_session.py:0
+msgid "You don't have the access rights to perform a cash in/out."
+msgstr "Sinulla ei ole käyttöoikeutta käteisnoston/-lisäyksen suorittamiseksi."
+
+#. module: point_of_sale
+#. odoo-python
+#: code:addons/point_of_sale/models/pos_session.py:0
 msgid ""
 "You have enabled the \"Identify Customer\" option for %(payment_method)s "
 "payment method,but the order %(order)s does not contain a customer."
@@ -11191,7 +11230,7 @@ msgstr "Sinun {{ object.config_id.name }} kuittisi"
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.pos_session_sales_details
 msgid "Z"
-msgstr ""
+msgstr "Z"
 
 #. module: point_of_sale
 #. odoo-javascript
@@ -11508,7 +11547,16 @@ msgstr "arvolla"
 #: code:addons/point_of_sale/static/src/app/components/navbar/sale_details_button/sales_detail_report.xml:0
 #: code:addons/point_of_sale/static/src/customer_display/customer_display.xml:0
 msgid "x"
-msgstr ""
+msgstr "x"
+
+#~ msgid "A request is still being processed in the background. Please wait."
+#~ msgstr "Pyyntöä käsitellään yhä taustalla. Odota hetki."
+
+#~ msgid "Everything is ready to go!"
+#~ msgstr "Kaikki valmista!"
+
+#~ msgid "Some process are still running in background, please wait..."
+#~ msgstr "Jotkut prosessit ovat vielä käynnissä taustalla, odota hetki..."
 
 #~ msgid "0.00"
 #~ msgstr "0.00"
