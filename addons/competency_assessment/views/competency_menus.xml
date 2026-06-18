@@ -13,12 +13,6 @@
         <field name="view_mode">list,form</field>
     </record>
 
-    <record id="action_role" model="ir.actions.act_window">
-        <field name="name">Roles</field>
-        <field name="res_model">competency.role</field>
-        <field name="view_mode">list,form</field>
-    </record>
-
     <record id="action_competency" model="ir.actions.act_window">
         <field name="name">Competencies</field>
         <field name="res_model">competency.competency</field>
@@ -51,12 +45,6 @@
         <field name="target">new</field>
     </record>
 
-    <record id="action_project_assessment" model="ir.actions.act_window">
-        <field name="name">Project Assessments</field>
-        <field name="res_model">competency.project.assessment</field>
-        <field name="view_mode">list,form</field>
-    </record>
-
     <!-- ===== Menus ===== -->
     <menuitem id="menu_competency_root" name="Competencies" sequence="50"/>
 
@@ -66,8 +54,6 @@
               action="action_discipline"/>
     <menuitem id="menu_level" name="Proficiency Levels" parent="menu_competency_config"
               action="action_level"/>
-    <menuitem id="menu_role" name="Roles" parent="menu_competency_config"
-              action="action_role"/>
 
     <menuitem id="menu_competency_framework" name="Framework" parent="menu_competency_root"/>
     <menuitem id="menu_competency" name="Competencies" parent="menu_competency_framework"
@@ -86,7 +72,4 @@
     <menuitem id="menu_assessment_historical" name="Historical Assessments" parent="menu_competency_assessments"
               action="action_assessment_historical"
               groups="competency_assessment.group_competency_admin"/>
-
-    <menuitem id="menu_project_assessment" name="Project Assessments" parent="menu_competency_root"
-              action="action_project_assessment"/>
 </odoo>

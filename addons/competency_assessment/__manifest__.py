@@ -23,7 +23,7 @@
     """,
     'author': 'Damuza Consulting',
     'website': 'https://bowtie-modeler.com',
-    'depends': ['base', 'hr', 'mail', 'project'],
+    'depends': ['base', 'hr', 'mail'],
     'data': [
         # Security
         'security/competency_security.xml',
@@ -35,8 +35,6 @@
         'views/competency_level_views.xml',
         'views/competency_competency_views.xml',
         'views/competency_assessment_views.xml',
-        'views/competency_role_views.xml',
-        'views/competency_project_views.xml',
         'views/competency_menus.xml',
         # Wizards
         'wizards/self_assessment_wizard_views.xml',
