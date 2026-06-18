@@ -47,4 +47,11 @@
         <field name="prefix">CMP</field>
         <field name="padding">6</field>
     </record>
+
+    <record id="seq_competency_project_assessment" model="ir.sequence">
+        <field name="name">Project Competency Assessment</field>
+        <field name="code">competency.project.assessment</field>
+        <field name="prefix">PCA</field>
+        <field name="padding">6</field>
+    </record>
 </odoo>
