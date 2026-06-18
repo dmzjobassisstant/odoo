@@ -115,6 +115,18 @@ class CompetencyProjectRoleAssignment(models.Model):
             }))
         self.competency_level_ids = [(5, 0, 0)] + lines
 
+    @api.onchange('employee_id', 'competency_level_ids')
+    def _onchange_trigger_gap(self):
+        """Recalculate gap analysis in the UI when employee or levels change."""
+        self._compute_gap()
+
+    def action_analyze_gap(self):
+        """Force-recalculate gap analysis for selected role assignments."""
+        self._compute_gap()
+        # Force the parent assessment to refresh
+        self.mapped('assessment_id')._compute_gap()
+        return {'type': 'ir.actions.client', 'tag': 'reload'}
+
     @api.depends('role_id', 'employee_id', 'competency_level_ids.required_level_id')
     def _compute_gap(self):
         for rec in self:

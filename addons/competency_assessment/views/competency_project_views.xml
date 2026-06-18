@@ -55,6 +55,9 @@
                                         <field name="met_competency_count"/>
                                         <field name="below_level_count"/>
                                         <field name="missing_competency_count"/>
+                                        <button name="action_analyze_gap" type="object"
+                                                string="Analyze Gap" class="btn-secondary"
+                                                colspan="2"/>
                                     </group>
                                     <group string="Required Competency Levels" colspan="4">
                                         <field name="competency_level_ids" nolabel="1">
