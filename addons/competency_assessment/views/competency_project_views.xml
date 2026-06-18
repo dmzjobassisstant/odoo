@@ -16,14 +16,14 @@
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
-                    <group>
+                    <group col="4">
                         <field name="name" readonly="1"/>
                         <field name="project_id"/>
                         <field name="assessment_date"/>
                     </group>
                     <field name="company_id" invisible="1"/>
-                    <group string="Description">
-                        <field name="description" nolabel="1"/>
+                    <group>
+                        <field name="description" nolabel="1" colspan="4"/>
                     </group>
                     <notebook>
                         <page string="Role Assignments">
