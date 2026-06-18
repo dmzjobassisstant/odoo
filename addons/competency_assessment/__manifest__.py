@@ -1,6 +1,6 @@
 {
     'name': 'Competency Assessment & Management',
-    'version': '19.0.0.1.1',
+    'version': '19.0.0.2.0',
     'category': 'Human Resources',
     'summary': 'Discipline-based competency frameworks with self-assessment, lead review, and evidence tracking.',
     'description': """
