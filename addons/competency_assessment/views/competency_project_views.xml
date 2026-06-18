@@ -17,11 +17,15 @@
                 </header>
                 <sheet>
                     <group>
-                        <field name="name" readonly="1"/>
-                        <field name="project_id"/>
-                        <field name="assessment_date"/>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="project_id"/>
+                            <field name="assessment_date"/>
+                        </group>
+                        <group>
+                            <field name="company_id" invisible="1"/>
+                        </group>
                     </group>
-                    <field name="company_id" invisible="1"/>
                     <group string="Description">
                         <field name="description" nolabel="1"/>
                     </group>
