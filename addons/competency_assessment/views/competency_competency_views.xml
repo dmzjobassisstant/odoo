@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_competency_tree" model="ir.ui.view">
+        <field name="name">competency.competency.tree</field>
+        <field name="model">competency.competency</field>
+        <field name="arch" type="xml">
+            <list string="Competencies">
+                <field name="competency_code"/>
+                <field name="name"/>
+                <field name="discipline_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_competency_form" model="ir.ui.view">
+        <field name="name">competency.competency.form</field>
+        <field name="model">competency.competency</field>
+        <field name="arch" type="xml">
+            <form string="Competency">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="competency_code" string="Competency ID"/>
+                            <field name="name"/>
+                            <field name="discipline_id"/>
+                        </group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group string="Description">
+                        <field name="description" nolabel="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Level Criteria">
+                            <field name="criterion_ids">
+                                <list editable="bottom">
+                                    <field name="level_id"/>
+                                    <field name="description"/>
+                                </list>
+                                <form>
+                                    <group>
+                                        <field name="level_id"/>
+                                    </group>
+                                    <group string="Criterion">
+                                        <field name="description" nolabel="1"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_level_tree" model="ir.ui.view">
+        <field name="name">competency.level.tree</field>
+        <field name="model">competency.level</field>
+        <field name="arch" type="xml">
+            <list string="Proficiency Levels" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_level_form" model="ir.ui.view">
+        <field name="name">competency.level.form</field>
+        <field name="model">competency.level</field>
+        <field name="arch" type="xml">
+            <form string="Proficiency Level">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="sequence"/>
+                        <field name="active"/>
+                    </group>
+                    <group string="Description">
+                        <field name="description" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

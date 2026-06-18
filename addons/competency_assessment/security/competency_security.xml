@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- User Groups -->
+    <record id="group_competency_user" model="res.groups">
+        <field name="name">Competency User</field>
+        <field name="comment">Can perform self-assessments and view own assessment records.</field>
+    </record>
+
+    <record id="group_discipline_lead" model="res.groups">
+        <field name="name">Discipline Lead</field>
+        <field name="implied_ids" eval="[(4, ref('group_competency_user'))]"/>
+        <field name="comment">Can review and confirm assessments for their discipline. Access to assessment registers.</field>
+    </record>
+
+    <record id="group_competency_admin" model="res.groups">
+        <field name="name">Competency Administrator</field>
+        <field name="implied_ids" eval="[(4, ref('group_discipline_lead'))]"/>
+        <field name="comment">Full access to configure frameworks, manage all assessments, and access historical records.</field>
+    </record>
+
+    <!-- Record Rules -->
+    <record id="rule_assessment_employee_own" model="ir.rule">
+        <field name="name">Employee: own assessments only</field>
+        <field name="model_id" ref="model_competency_assessment"/>
+        <field name="groups" eval="[(4, ref('group_competency_user'))]"/>
+        <field name="domain_force">[('employee_id.user_id', '=', user.id)]</field>
+    </record>
+
+    <record id="rule_assessment_lead_discipline" model="ir.rule">
+        <field name="name">Discipline Lead: assessments in discipline</field>
+        <field name="model_id" ref="model_competency_assessment"/>
+        <field name="groups" eval="[(4, ref('group_discipline_lead'))]"/>
+        <field name="domain_force">[('lead_id.user_id', '=', user.id)]</field>
+    </record>
+
+    <record id="rule_assessment_admin_all" model="ir.rule">
+        <field name="name">Admin: all assessments</field>
+        <field name="model_id" ref="model_competency_assessment"/>
+        <field name="groups" eval="[(4, ref('group_competency_admin'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+
+    <!-- IR Sequences -->
+    <record id="seq_competency_assessment" model="ir.sequence">
+        <field name="name">Competency Assessment</field>
+        <field name="code">competency.assessment</field>
+        <field name="prefix">CMP</field>
+        <field name="padding">6</field>
+    </record>
+</odoo>

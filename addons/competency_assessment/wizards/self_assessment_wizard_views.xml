@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_self_assessment_wizard_form" model="ir.ui.view">
+        <field name="name">competency.self.assessment.wizard.form</field>
+        <field name="model">competency.self.assessment.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Self-Assessment">
+                <sheet>
+                    <group string="Setup">
+                        <field name="employee_id"/>
+                        <field name="discipline_id"/>
+                        <field name="assessment_date"/>
+                    </group>
+                    <footer>
+                        <button name="action_load_competencies" type="object"
+                                string="Load Competencies" class="btn-primary"/>
+                        <button name="action_submit_assessment" type="object"
+                                string="Submit Assessment" class="btn-success"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                    <group string="Competency Evaluations">
+                        <field name="line_ids" nolabel="1">
+                            <list editable="bottom">
+                                <field name="competency_name" readonly="1"/>
+                                <field name="self_assessed_level_id"/>
+                                <field name="employee_comment"/>
+                            </list>
+                            <form string="Competency Detail">
+                                <sheet>
+                                    <group>
+                                        <field name="competency_name" readonly="1"/>
+                                        <field name="competency_description" readonly="1"/>
+                                    </group>
+                                    <group string="Criteria by Level">
+                                        <field name="criteria_snapshot" readonly="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="self_assessed_level_id"/>
+                                        <field name="employee_comment"/>
+                                    </group>
+                                    <group string="Evidence">
+                                        <field name="attachment_ids" widget="many2many_binary"/>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
