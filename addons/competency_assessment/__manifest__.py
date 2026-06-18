@@ -1,6 +1,6 @@
 {
     'name': 'Competency Assessment & Management',
-    'version': '19.0.0.1.0',
+    'version': '19.0.0.1.1',
     'category': 'Human Resources',
     'summary': 'Discipline-based competency frameworks with self-assessment, lead review, and evidence tracking.',
     'description': """
@@ -38,10 +38,16 @@
         'views/competency_role_views.xml',
         'views/competency_project_views.xml',
         'views/competency_menus.xml',
+        'views/competency_assets.xml',
         # Wizards
         'wizards/self_assessment_wizard_views.xml',
     ],
     'demo': [],
+    'assets': {
+        'web.assets_backend': [
+            'competency_assessment/static/src/css/form_layout.css',
+        ],
+    },
     'installable': True,
     'application': True,
     'auto_install': False,

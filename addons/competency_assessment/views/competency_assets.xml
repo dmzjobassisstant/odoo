@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css"
+                  href="/competency_assessment/static/src/css/form_layout.css"/>
+        </xpath>
+    </template>
+</odoo>

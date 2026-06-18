@@ -7,15 +7,11 @@
             <form string="Role">
                 <sheet>
                     <group>
-                        <group>
-                            <field name="name"/>
-                            <field name="code"/>
-                            <field name="discipline_id"/>
-                        </group>
-                        <group>
-                            <field name="active"/>
-                            <field name="sequence"/>
-                        </group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="discipline_id"/>
+                        <field name="active"/>
+                        <field name="sequence"/>
                     </group>
                     <group string="Description">
                         <field name="description" nolabel="1"/>
@@ -30,13 +26,9 @@
                                 </list>
                                 <form>
                                     <group>
-                                        <group>
-                                            <field name="competency_id"/>
-                                            <field name="required_level_id"/>
-                                        </group>
-                                        <group>
-                                            <field name="notes"/>
-                                        </group>
+                                        <field name="competency_id"/>
+                                        <field name="required_level_id"/>
+                                        <field name="notes"/>
                                     </group>
                                 </form>
                             </field>

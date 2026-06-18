@@ -20,15 +20,11 @@
             <form string="Competency">
                 <sheet>
                     <group>
-                        <group>
-                            <field name="competency_code" string="Competency ID"/>
-                            <field name="name"/>
-                            <field name="discipline_id"/>
-                        </group>
-                        <group>
-                            <field name="sequence"/>
-                            <field name="active"/>
-                        </group>
+                        <field name="competency_code" string="Competency ID"/>
+                        <field name="name"/>
+                        <field name="discipline_id"/>
+                        <field name="sequence"/>
+                        <field name="active"/>
                     </group>
                     <group string="Description">
                         <field name="description" nolabel="1"/>

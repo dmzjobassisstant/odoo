@@ -21,15 +21,11 @@
             <form string="Discipline">
                 <sheet>
                     <group>
-                        <group>
-                            <field name="name"/>
-                            <field name="code"/>
-                            <field name="lead_id"/>
-                        </group>
-                        <group>
-                            <field name="sequence"/>
-                            <field name="active"/>
-                        </group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="lead_id"/>
+                        <field name="sequence"/>
+                        <field name="active"/>
                     </group>
                     <group string="Description">
                         <field name="description" nolabel="1"/>

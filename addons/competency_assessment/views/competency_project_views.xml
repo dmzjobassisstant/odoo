@@ -15,14 +15,13 @@
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
+                    <label for="name" string="Assessment"/>
+                    <div class="o_row">
+                        <field name="name" readonly="1" nolabel="1"/>
+                    </div>
                     <group>
-                        <group string="Assessment">
-                            <field name="name" readonly="1"/>
-                            <field name="project_id"/>
-                        </group>
-                        <group string="Schedule">
-                            <field name="assessment_date"/>
-                        </group>
+                        <field name="project_id"/>
+                        <field name="assessment_date"/>
                     </group>
                     <field name="company_id" invisible="1"/>
                     <group string="Description">
@@ -46,24 +45,16 @@
                                 </list>
                                 <form>
                                     <group>
-                                        <group>
-                                            <field name="role_id"/>
-                                            <field name="employee_id"/>
-                                            <field name="assigned_date"/>
-                                        </group>
-                                        <group>
-                                            <field name="notes"/>
-                                        </group>
+                                        <field name="role_id"/>
+                                        <field name="employee_id"/>
+                                        <field name="assigned_date"/>
+                                        <field name="notes"/>
                                     </group>
                                     <group string="Gap Analysis">
-                                        <group>
-                                            <field name="required_competency_count"/>
-                                            <field name="met_competency_count"/>
-                                        </group>
-                                        <group>
-                                            <field name="below_level_count"/>
-                                            <field name="missing_competency_count"/>
-                                        </group>
+                                        <field name="required_competency_count"/>
+                                        <field name="met_competency_count"/>
+                                        <field name="below_level_count"/>
+                                        <field name="missing_competency_count"/>
                                     </group>
                                 </form>
                             </field>

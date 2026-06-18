@@ -1,0 +1,5 @@
+/* Fix o_form_sheet_bg being squeezed by oe_chatter in Odoo 19 flexbox layout */
+.o_form_renderer .o_form_sheet_bg { flex: 1 1 0% !important; min-width: 0 !important; overflow: auto !important; }
+.o_form_renderer .oe_chatter { flex: 0 0 420px !important; min-width: 0 !important; max-width: 480px !important; }
+.o_form_sheet .o_inner_group { width: 100% !important; }
+.o_form_sheet .o_row { width: 100% !important; }
