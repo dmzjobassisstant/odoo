@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form View -->
+    <record id="hr_issue_view_form" model="ir.ui.view">
+        <field name="name">hr.issue.form</field>
+        <field name="model">hr.issue</field>
+        <field name="arch" type="xml">
+            <form string="HR Issue">
+                <header>
+                    <button name="action_open" string="Open" type="object"
+                            class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button name="action_investigate" string="Investigate"
+                            type="object" class="btn-primary"
+                            invisible="state != 'open'"/>
+                    <button name="action_resolve" string="Resolve"
+                            type="object" class="btn-success"
+                            invisible="state not in ('open','investigating')"/>
+                    <button name="action_close" string="Close"
+                            type="object" class="btn-secondary"
+                            invisible="state != 'resolved'"/>
+                    <button name="action_reopen" string="Reopen"
+                            type="object" class="btn-warning"
+                            invisible="state not in ('resolved','closed')"/>
+                    <button name="action_set_draft" string="Set to Draft"
+                            type="object" class="btn-secondary"
+                            invisible="state not in ('resolved','closed')"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,open,investigating,resolved,closed"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="Employee Information">
+                            <field name="employee_id"/>
+                            <field name="reported_by"/>
+                            <field name="assigned_to"/>
+                        </group>
+                        <group string="Issue Details">
+                            <field name="issue_type"/>
+                            <field name="severity"/>
+                            <field name="is_confidential"/>
+                            <field name="date_reported"/>
+                            <field name="target_resolution_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"
+                                   placeholder="Describe the issue in detail..."/>
+                        </page>
+                        <page string="Resolution">
+                            <field name="resolution"
+                                   placeholder="Enter resolution details..."
+                                   invisible="state not in ('resolved','closed')"/>
+                            <field name="resolution_date"
+                                   invisible="state not in ('resolved','closed')"/>
+                        </page>
+                        <page string="Internal Notes">
+                            <field name="note_ids">
+                                <list string="Notes" editable="bottom">
+                                    <field name="date"/>
+                                    <field name="author_id"/>
+                                    <field name="note"/>
+                                    <field name="is_visible_to_employee"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="hr_issue_view_list" model="ir.ui.view">
+        <field name="name">hr.issue.list</field>
+        <field name="model">hr.issue</field>
+        <field name="arch" type="xml">
+            <list string="HR Issues">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="issue_type"/>
+                <field name="severity"/>
+                <field name="state"/>
+                <field name="assigned_to"/>
+                <field name="date_reported"/>
+                <field name="is_confidential"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="hr_issue_view_search" model="ir.ui.view">
+        <field name="name">hr.issue.search</field>
+        <field name="model">hr.issue</field>
+        <field name="arch" type="xml">
+            <search string="Search HR Issues">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="assigned_to"/>
+                <field name="description"/>
+                <filter name="filter_draft" string="Draft"
+                        domain="[('state','=','draft')]"/>
+                <filter name="filter_open" string="Open"
+                        domain="[('state','=','open')]"/>
+                <filter name="filter_investigating" string="Investigating"
+                        domain="[('state','=','investigating')]"/>
+                <filter name="filter_resolved" string="Resolved"
+                        domain="[('state','=','resolved')]"/>
+                <filter name="filter_closed" string="Closed"
+                        domain="[('state','=','closed')]"/>
+                <separator/>
+                <filter name="group_state" string="State"
+                        context="{'group_by': 'state'}"/>
+                <filter name="group_severity" string="Severity"
+                        context="{'group_by': 'severity'}"/>
+                <filter name="group_type" string="Type"
+                        context="{'group_by': 'issue_type'}"/>
+                <filter name="group_assigned" string="Assigned To"
+                        context="{'group_by': 'assigned_to'}"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

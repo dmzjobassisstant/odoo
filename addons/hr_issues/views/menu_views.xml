@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Actions -->
+    <record id="action_hr_issue" model="ir.actions.act_window">
+        <field name="name">HR Issues</field>
+        <field name="res_model">hr.issue</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="action_hr_issue_my" model="ir.actions.act_window">
+        <field name="name">My Issues</field>
+        <field name="res_model">hr.issue</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('employee_id.user_id', '=', uid)]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="action_hr_issue_all" model="ir.actions.act_window">
+        <field name="name">All Issues</field>
+        <field name="res_model">hr.issue</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+
+    </record>
+
+    <!-- Root Menu -->
+    <menuitem id="menu_hr_issues_root"
+              name="HR Issues"
+              web_icon="hr_issues,static/description/icon.png"
+              sequence="90"/>
+
+    <menuitem id="menu_hr_issue_my"
+              name="My Issues"
+              parent="menu_hr_issues_root"
+              action="action_hr_issue_my"
+              sequence="10"/>
+
+    <menuitem id="menu_hr_issue_all"
+              name="All Issues"
+              parent="menu_hr_issues_root"
+              action="action_hr_issue_all"
+              sequence="20"
+              groups="hr_issues.group_hr_issue_manager"/>
+
+</odoo>

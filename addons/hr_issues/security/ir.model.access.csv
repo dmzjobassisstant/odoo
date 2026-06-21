@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_issue_manager,hr.issue.manager,model_hr_issue,hr_issues.group_hr_issue_manager,1,1,1,1
+access_hr_issue_user,hr.issue.user,model_hr_issue,hr_issues.group_hr_issue_user,1,1,1,0
+access_hr_issue_note_manager,hr.issue.note.manager,model_hr_issue_note,hr_issues.group_hr_issue_manager,1,1,1,1
+access_hr_issue_note_user,hr.issue.note.user,model_hr_issue_note,hr_issues.group_hr_issue_user,1,1,1,0
