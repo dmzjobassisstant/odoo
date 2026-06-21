@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extend employee form view to add lifecycle tab -->
+    <record id="view_hr_employee_form_lifecycle" model="ir.ui.view">
+        <field name="name">hr.employee.form.lifecycle</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Lifecycle" name="lifecycle_tab"
+                      groups="hr_employee_lifecycle.group_hr_lifecycle_manager,hr_employee_lifecycle.group_hr_lifecycle_officer">
+                    <group name="lifecycle_status">
+                        <group string="Employment Status">
+                            <field name="employment_status" widget="badge"
+                                   decoration-success="employment_status == 'active'"
+                                   decoration-warning="employment_status == 'probation'"
+                                   decoration-danger="employment_status == 'terminated'"/>
+                            <field name="probation_end_date"
+                                   invisible="employment_status != 'probation'"/>
+                            <field name="notice_period_days"/>
+                        </group>
+                        <group string="Personal Finance">
+                            <field name="bank_account"/>
+                            <field name="bank_sort_code"/>
+                            <field name="emergency_contact_name"/>
+                            <field name="emergency_contact_phone"/>
+                        </group>
+                    </group>
+                    <div class="oe_button_box" name="lifecycle_buttons">
+                        <button name="action_confirm_probation" type="object"
+                                class="oe_stat_button" icon="fa-check"
+                                string="Confirm Probation"
+                                invisible="employment_status != 'probation'"
+                                groups="hr_employee_lifecycle.group_hr_lifecycle_manager"/>
+                    </div>
+                    <separator string="Contracts" name="contracts_separator"/>
+                    <field name="contract_ids"
+                           groups="hr_employee_lifecycle.group_hr_lifecycle_manager,hr_employee_lifecycle.group_hr_lifecycle_officer"/>
+                    <separator string="Offboarding Records" name="offboarding_separator"/>
+                    <field name="offboarding_ids"
+                           groups="hr_employee_lifecycle.group_hr_lifecycle_manager,hr_employee_lifecycle.group_hr_lifecycle_officer"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Add computed One2many fields to employee for lifecycle views -->
+    <record id="view_hr_employee_form_inherit_lifecycle" model="ir.ui.view">
+        <field name="name">hr.employee.form.lifecycle.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="contract_ids" invisible="1"/>
+                <field name="offboarding_ids" invisible="1"/>
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_employee_lifecycle_employee,hr.employee.lifecycle,model_hr_employee,hr.group_hr_user,1,0,0,0
+access_hr_employee_lifecycle_employee_manager,hr.employee.lifecycle.manager,model_hr_employee,hr_employee_lifecycle.group_hr_lifecycle_manager,1,1,1,1
+access_hr_lifecycle_contract_officer,hr.lifecycle.contract.officer,model_hr_lifecycle_contract,hr_employee_lifecycle.group_hr_lifecycle_officer,1,0,0,0
+access_hr_lifecycle_contract_manager,hr.lifecycle.contract.manager,model_hr_lifecycle_contract,hr_employee_lifecycle.group_hr_lifecycle_manager,1,1,1,1
+access_hr_offboarding_officer,hr.offboarding.officer,model_hr_offboarding,hr_employee_lifecycle.group_hr_lifecycle_officer,1,1,1,0
+access_hr_offboarding_manager,hr.offboarding.manager,model_hr_offboarding,hr_employee_lifecycle.group_hr_lifecycle_manager,1,1,1,1
+access_hr_offboarding_task_officer,hr.offboarding.task.officer,model_hr_offboarding_task,hr_employee_lifecycle.group_hr_lifecycle_officer,1,1,1,0
+access_hr_offboarding_task_manager,hr.offboarding.task.manager,model_hr_offboarding_task,hr_employee_lifecycle.group_hr_lifecycle_manager,1,1,1,1

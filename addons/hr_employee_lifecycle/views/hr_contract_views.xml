@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Contract List View -->
+    <record id="view_hr_lifecycle_contract_list" model="ir.ui.view">
+        <field name="name">hr.lifecycle.contract.list</field>
+        <field name="model">hr.lifecycle.contract</field>
+        <field name="arch" type="xml">
+            <list string="Contracts" editable="bottom"
+                  decoration-info="state == 'draft'"
+                  decoration-success="state == 'active'"
+                  decoration-muted="state in ('expired', 'terminated')">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="contract_type"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="wage"/>
+                <field name="state" widget="badge"/>
+                <field name="notice_period_employer_days"/>
+                <field name="notice_period_employee_days"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Contract Search View -->
+    <record id="view_hr_lifecycle_contract_search" model="ir.ui.view">
+        <field name="name">hr.lifecycle.contract.search</field>
+        <field name="model">hr.lifecycle.contract</field>
+        <field name="arch" type="xml">
+            <search string="Search Contracts">
+                <field name="name" string="Contract"/>
+                <field name="employee_id"/>
+                <separator/>
+                <filter name="active" string="Active" domain="[('state', '=', 'active')]"/>
+                <filter name="draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                <filter name="expired" string="Expired" domain="[('state', '=', 'expired')]"/>
+                <filter name="terminated" string="Terminated" domain="[('state', '=', 'terminated')]"/>
+                <filter name="permanent" string="Permanent" domain="[('contract_type', '=', 'permanent')]"/>
+                <filter name="fixed_term" string="Fixed Term" domain="[('contract_type', '=', 'fixed_term')]"/>
+                <separator/>
+                <filter name="group_employee" string="Employee" context="{'group_by': 'employee_id'}"/>
+                <filter name="group_type" string="Contract Type" context="{'group_by': 'contract_type'}"/>
+                <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Contract Form View -->
+    <record id="view_hr_lifecycle_contract_form" model="ir.ui.view">
+        <field name="name">hr.lifecycle.contract.form</field>
+        <field name="model">hr.lifecycle.contract</field>
+        <field name="arch" type="xml">
+            <form string="Contract">
+                <header>
+                    <button name="action_activate" type="object"
+                            string="Activate"
+                            class="btn-primary"
+                            invisible="state not in ('draft', 'expired')"
+                            groups="hr_employee_lifecycle.group_hr_lifecycle_manager"/>
+                    <button name="action_terminate" type="object"
+                            string="Terminate"
+                            class="btn-danger"
+                            invisible="state != 'active'"
+                            groups="hr_employee_lifecycle.group_hr_lifecycle_manager"/>
+                    <button name="action_expire" type="object"
+                            string="Set Expired"
+                            invisible="state != 'active'"
+                            groups="hr_employee_lifecycle.group_hr_lifecycle_manager"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,active,expired,terminated"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Contract Details">
+                            <field name="employee_id" required="1"/>
+                            <field name="department_id"/>
+                            <field name="job_id"/>
+                            <field name="contract_type" required="1"/>
+                            <field name="date_start" required="1"/>
+                            <field name="date_end"/>
+                            <field name="wage" required="1"/>
+                        </group>
+                        <group string="Notice &amp; Redundancy">
+                            <field name="notice_period_employer_days"/>
+                            <field name="notice_period_employee_days"/>
+                            <field name="statutory_redundancy_weeks"/>
+                        </group>
+                    </group>
+                    <group string="Compensation Details">
+                        <field name="salary_breakdown" colspan="2"/>
+                        <field name="benefits" colspan="2"/>
+                    </group>
+                    <group string="Notes">
+                        <field name="notes" colspan="2"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+</odoo>

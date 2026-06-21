@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Offboarding List View -->
+    <record id="view_hr_offboarding_list" model="ir.ui.view">
+        <field name="name">hr.offboarding.list</field>
+        <field name="model">hr.offboarding</field>
+        <field name="arch" type="xml">
+            <list string="Offboarding"
+                  decoration-info="state == 'draft'"
+                  decoration-warning="state == 'in_progress'"
+                  decoration-success="state == 'completed'"
+                  decoration-muted="state == 'cancelled'">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="offboarding_type"/>
+                <field name="initiated_by"/>
+                <field name="notice_given_date"/>
+                <field name="last_working_date"/>
+                <field name="state" widget="badge"/>
+                <field name="settlement_amount"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Offboarding Search View -->
+    <record id="view_hr_offboarding_search" model="ir.ui.view">
+        <field name="name">hr.offboarding.search</field>
+        <field name="model">hr.offboarding</field>
+        <field name="arch" type="xml">
+            <search string="Search Offboarding">
+                <field name="name" string="Reference"/>
+                <field name="employee_id"/>
+                <separator/>
+                <filter name="draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                <filter name="in_progress" string="In Progress" domain="[('state', '=', 'in_progress')]"/>
+                <filter name="completed" string="Completed" domain="[('state', '=', 'completed')]"/>
+                <filter name="cancelled" string="Cancelled" domain="[('state', '=', 'cancelled')]"/>
+                <filter name="resignation" string="Resignation" domain="[('offboarding_type', '=', 'resignation')]"/>
+                <filter name="redundancy" string="Redundancy" domain="[('offboarding_type', '=', 'redundancy')]"/>
+                <filter name="dismissal" string="Dismissal" domain="[('offboarding_type', '=', 'dismissal')]"/>
+                <separator/>
+                <filter name="group_type" string="Type" context="{'group_by': 'offboarding_type'}"/>
+                <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                <filter name="group_employee" string="Employee" context="{'group_by': 'employee_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Offboarding Form View -->
+    <record id="view_hr_offboarding_form" model="ir.ui.view">
+        <field name="name">hr.offboarding.form</field>
+        <field name="model">hr.offboarding</field>
+        <field name="arch" type="xml">
+            <form string="Offboarding">
+                <header>
+                    <button name="action_start" type="object"
+                            string="Start Process"
+                            class="btn-primary"
+                            invisible="state != 'draft'"
+                            groups="hr_employee_lifecycle.group_hr_lifecycle_manager,hr_employee_lifecycle.group_hr_lifecycle_officer"/>
+                    <button name="action_complete" type="object"
+                            string="Complete"
+                            class="btn-success"
+                            invisible="state != 'in_progress'"
+                            groups="hr_employee_lifecycle.group_hr_lifecycle_manager,hr_employee_lifecycle.group_hr_lifecycle_officer"/>
+                    <button name="action_cancel" type="object"
+                            string="Cancel"
+                            invisible="state in ('completed', 'cancelled')"
+                            groups="hr_employee_lifecycle.group_hr_lifecycle_manager"/>
+                    <button name="action_reset_to_draft" type="object"
+                            string="Reset to Draft"
+                            invisible="state != 'completed'"
+                            groups="hr_employee_lifecycle.group_hr_lifecycle_manager"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,in_progress,completed,cancelled"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Offboarding Details">
+                            <field name="employee_id" required="1"/>
+                            <field name="employee_status"/>
+                            <field name="department_id"/>
+                            <field name="offboarding_type" required="1"/>
+                            <field name="initiated_by" required="1"/>
+                            <field name="contract_id"/>
+                        </group>
+                        <group string="Timeline">
+                            <field name="notice_given_date"/>
+                            <field name="last_working_date"/>
+                        </group>
+                    </group>
+                    <group string="Reason">
+                        <field name="reason" colspan="2"/>
+                    </group>
+                    <group string="Settlement">
+                        <field name="settlement_amount"/>
+                        <field name="settlement_breakdown" colspan="2"/>
+                    </group>
+                    <separator string="Offboarding Tasks"/>
+                    <field name="task_ids">
+                        <list string="Tasks" editable="bottom">
+                            <field name="name"/>
+                            <field name="assigned_to"/>
+                            <field name="completed"/>
+                            <field name="completed_date"/>
+                            <field name="notes"/>
+                        </list>
+                    </field>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+</odoo>
