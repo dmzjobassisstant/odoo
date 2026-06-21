@@ -36,4 +36,10 @@
               action="action_board_report"
               sequence="20"/>
 
+    <menuitem id="menu_board_snapshot"
+              name="KPI Snapshots"
+              parent="menu_board_reporting_root"
+              action="action_board_snapshot"
+              sequence="30"/>
+
 </odoo>

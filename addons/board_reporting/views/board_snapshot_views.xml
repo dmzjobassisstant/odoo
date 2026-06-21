@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Snapshot List View -->
+    <record id="board_snapshot_view_list" model="ir.ui.view">
+        <field name="name">board.snapshot.list</field>
+        <field name="model">board.snapshot</field>
+        <field name="arch" type="xml">
+            <list string="Snapshots">
+                <field name="snapshot_date"/>
+                <field name="metric_id"/>
+                <field name="formatted_value" string="Value"/>
+                <field name="period_start"/>
+                <field name="period_end"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Snapshot Pivot / Graph View — timeline trends -->
+    <record id="board_snapshot_view_graph" model="ir.ui.view">
+        <field name="name">board.snapshot.graph</field>
+        <field name="model">board.snapshot</field>
+        <field name="arch" type="xml">
+            <graph string="KPI Trends" type="line" stacked="False">
+                <field name="snapshot_date" type="row" interval="month"/>
+                <field name="value" type="measure"/>
+                <field name="metric_id" type="col"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Snapshot Pivot View -->
+    <record id="board_snapshot_view_pivot" model="ir.ui.view">
+        <field name="name">board.snapshot.pivot</field>
+        <field name="model">board.snapshot</field>
+        <field name="arch" type="xml">
+            <pivot string="KPI Data">
+                <field name="metric_id" type="row"/>
+                <field name="snapshot_date" type="col" interval="month"/>
+                <field name="value" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Snapshot Search -->
+    <record id="board_snapshot_view_search" model="ir.ui.view">
+        <field name="name">board.snapshot.search</field>
+        <field name="model">board.snapshot</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="metric_id"/>
+                <field name="snapshot_label"/>
+                <filter string="Category" name="group_category"
+                        context="{'group_by': 'metric_category'}"/>
+                <filter string="Metric" name="group_metric"
+                        context="{'group_by': 'metric_id'}"/>
+                <separator/>
+                <filter string="Last 3 months" name="last_3m"
+                        domain="[('snapshot_date','&gt;=', (context_today() - relativedelta(months=3)).strftime('%Y-%m-%d'))]"/>
+                <filter string="Last 12 months" name="last_12m"
+                        domain="[('snapshot_date','&gt;=', (context_today() - relativedelta(months=12)).strftime('%Y-%m-%d'))]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Snapshot Action (standalone) -->
+    <record id="action_board_snapshot" model="ir.actions.act_window">
+        <field name="name">KPI Snapshots</field>
+        <field name="res_model">board.snapshot</field>
+        <field name="view_mode">graph,pivot,list</field>
+        <field name="search_view_id" ref="board_snapshot_view_search"/>
+    </record>
+</odoo>

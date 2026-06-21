@@ -5,3 +5,5 @@ access_board_report_manager,board.report.manager,model_board_report,board_report
 access_board_report_user,board.report.user,model_board_report,board_reporting.group_board_report_user,1,1,1,0
 access_board_metric_value_manager,board.metric.value.manager,model_board_metric_value,board_reporting.group_board_report_manager,1,1,1,1
 access_board_metric_value_user,board.metric.value.user,model_board_metric_value,board_reporting.group_board_report_user,1,0,0,0
+access_board_snapshot_manager,board.snapshot.manager,model_board_snapshot,board_reporting.group_board_report_manager,1,1,1,1
+access_board_snapshot_user,board.snapshot.user,model_board_snapshot,board_reporting.group_board_report_user,1,0,0,0

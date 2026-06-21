@@ -44,6 +44,18 @@
                     <group string="Calculation">
                         <field name="calculation_method" placeholder="Method name (e.g. _compute_headcount)" nolabel="1"/>
                     </group>
+                    <notebook>
+                        <page string="Historical Snapshots">
+                            <field name="snapshot_ids" nolabel="1">
+                                <list string="Snapshots" editable="bottom">
+                                    <field name="snapshot_date"/>
+                                    <field name="formatted_value" string="Value"/>
+                                    <field name="period_start"/>
+                                    <field name="period_end"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

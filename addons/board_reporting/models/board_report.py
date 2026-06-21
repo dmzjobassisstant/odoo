@@ -314,3 +314,34 @@ class BoardReport(models.Model):
             rec.state = 'draft'
             rec.message_post(body=_('Report reset to draft by %s.') % self.env.user.name)
         return True
+
+    # ---- Snapshot (data warehouse) ----
+
+    def action_save_snapshot(self):
+        """Save current metric values as historical snapshots for trend reporting."""
+        self.ensure_one()
+        if not self.metric_value_ids:
+            raise UserError(_(
+                'Cannot snapshot report "%s" — no metrics calculated yet. '
+                'Please calculate metrics first.'
+            ) % self.name)
+
+        Snapshot = self.env['board.snapshot']
+        now = fields.Datetime.now()
+        created = 0
+
+        for mv in self.metric_value_ids:
+            Snapshot.create({
+                'metric_id': mv.metric_id.id,
+                'report_id': self.id,
+                'value': mv.value,
+                'snapshot_date': now,
+                'period_start': self.period_start,
+                'period_end': self.period_end,
+            })
+            created += 1
+
+        self.message_post(body=_(
+            'Snapshot saved: %(count)d metrics captured for trend reporting.'
+        ) % {'count': created})
+        return True

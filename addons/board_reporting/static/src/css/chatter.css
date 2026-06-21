@@ -1,0 +1,59 @@
+/* Collapsible chatter — Odoo 19 form layout fix */
+
+/* Chatter toggle button */
+.o_form_view .oe_chatter_toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    padding: 4px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    background: #f0eef7;
+    border: 1px solid #dcd5f0;
+    border-radius: 0 0 0 6px;
+    color: #261e58;
+    user-select: none;
+}
+.o_form_view .oe_chatter_toggle:hover {
+    background: #e0dcf0;
+}
+
+/* Chatter container — default: visible, 420px wide */
+.o_form_renderer .oe_chatter {
+    flex: 0 0 420px !important;
+    min-width: 0 !important;
+    max-width: 480px !important;
+    position: relative;
+    transition: flex 0.3s ease, max-width 0.3s ease, padding 0.3s ease;
+}
+
+/* Form sheet — default: takes remaining space */
+.o_form_renderer .o_form_sheet_bg {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    overflow: auto !important;
+}
+
+/* COLLAPSED STATE — chatter hidden, form takes full width */
+.o_form_renderer.chatter-collapsed .oe_chatter {
+    flex: 0 0 0px !important;
+    max-width: 0px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    border: none !important;
+}
+.o_form_renderer.chatter-collapsed .oe_chatter > * {
+    display: none !important;
+}
+.o_form_renderer.chatter-collapsed .oe_chatter_toggle {
+    display: block !important;
+}
+
+/* Chatter toggle button inside collapsed state */
+.o_form_renderer.chatter-collapsed .oe_chatter .oe_chatter_toggle {
+    position: fixed;
+    top: 60px;
+    right: 8px;
+    border-radius: 0 0 6px 6px;
+}

@@ -1,6 +1,6 @@
 {
     'name': 'Board Reporting',
-    'version': '19.0.0.1.0',
+    'version': '19.0.0.2.0',
     'category': 'Human Resources',
     'summary': 'Configurable business metrics/KPIs for board presentations',
     'description': """
@@ -36,8 +36,15 @@ Built-in metrics:
         'views/board_metric_views.xml',
         'views/board_metric_value_views.xml',
         'views/board_report_views.xml',
+        'views/board_snapshot_views.xml',
         'views/menu_views.xml',
+        'views/assets.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'board_reporting/static/src/css/chatter.css',
+        ],
+    },
     'installable': True,
     'application': True,
     'auto_install': False,

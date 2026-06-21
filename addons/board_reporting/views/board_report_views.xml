@@ -33,6 +33,10 @@
                     <button name="action_reset_draft" string="Reset to Draft"
                             type="object" class="btn-secondary"
                             invisible="state != 'published'"/>
+                    <button name="action_save_snapshot" string="Save Snapshot"
+                            type="object" class="btn-info"
+                            invisible="state != 'published'"
+                            help="Capture current KPI values as historical data for trend reporting."/>
                     <field name="state" widget="statusbar"
                            statusbar_visible="draft,published"/>
                 </header>

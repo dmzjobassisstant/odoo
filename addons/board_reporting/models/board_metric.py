@@ -53,6 +53,10 @@ class BoardMetric(models.Model):
         string='Sequence',
         default=10,
     )
+    snapshot_ids = fields.One2many(
+        'board.snapshot', 'metric_id',
+        string='Historical Snapshots',
+    )
 
     _sql_constraints = [
         ('code_unique', 'UNIQUE(code)', 'The metric code must be unique!'),
