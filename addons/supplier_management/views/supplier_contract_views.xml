@@ -58,6 +58,7 @@
                         </group>
                         <group>
                             <field name="recurring_interval"/>
+                            <field name="currency_id" invisible="1"/>
                             <field name="recurring_amount" widget="monetary"/>
                             <field name="payment_method"/>
                             <field name="auto_generate_orders"/>
@@ -72,6 +73,7 @@
                                     <field name="product_id"/>
                                     <field name="description"/>
                                     <field name="quantity"/>
+                                    <field name="currency_id" column_invisible="1"/>
                                     <field name="unit_price" widget="monetary"/>
                                     <field name="tax_id"/>
                                     <field name="subtotal" widget="monetary" column_invisible="1"/>

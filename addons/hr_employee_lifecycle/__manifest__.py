@@ -19,7 +19,7 @@ Features:
 """,
     'author': 'Nous Research',
     'website': 'https://oodoo.bowtie-modeler.com',
-    'depends': ['hr', 'hr_holidays'],
+    'depends': ['hr', 'hr_holidays', 'employee_training'],
     'data': [
         'security/hr_employee_lifecycle_groups.xml',
         'security/ir.model.access.csv',

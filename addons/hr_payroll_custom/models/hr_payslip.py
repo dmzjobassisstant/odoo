@@ -82,7 +82,7 @@ class HRPayslip(models.Model):
         for rec in self:
             rec.net_pay = rec.gross_pay - rec.total_deductions
 
-    @api.depends('employee_id')
+    @api.depends('name', 'employee_id')
     def _compute_display_name(self):
         for rec in self:
             if rec.name and rec.name != 'New':
@@ -192,23 +192,28 @@ class HRPayslip(models.Model):
             gross_pay = 0.0
 
         line_seq = 10
+        standard_hours = 160.0
 
         # Create earning lines
         if total_hours > 0 and hourly_rate > 0:
+            regular_hours = min(total_hours, standard_hours)
+            basic_pay = regular_hours * hourly_rate
+            # Reset gross_pay so percentage rules below use the correct base
+            # (basic pay + overtime), not the inflated all-hours-at-regular value.
+            gross_pay = basic_pay
             self.env['hr.payslip.line'].create({
                 'payslip_id': self.id,
                 'name': _('Basic Pay (%(hours).2f hours × £%(rate).2f/hr)') % {
-                    'hours': total_hours,
+                    'hours': regular_hours,
                     'rate': hourly_rate,
                 },
                 'category': 'earning',
-                'amount': gross_pay,
+                'amount': basic_pay,
                 'sequence': line_seq,
             })
             line_seq += 10
 
             # Overtime (hours > standard ~160/month for full-time)
-            standard_hours = 160.0
             if total_hours > standard_hours:
                 overtime_hours = total_hours - standard_hours
                 overtime_pay = overtime_hours * hourly_rate * 1.5

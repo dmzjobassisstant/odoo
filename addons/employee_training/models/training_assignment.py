@@ -50,6 +50,8 @@ class TrainingAssignment(models.Model):
 
     def action_complete(self):
         self.ensure_one()
+        if self.state == 'completed':
+            return True  # Already completed — prevent duplicate completion records
         self.state = 'completed'
         self.progress_pct = 100.0
         self.completed_date = fields.Date.today()

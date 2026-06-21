@@ -38,7 +38,7 @@ class TimesheetAddTasksWizard(models.TransientModel):
 
         domain = [
             '|',
-            ('user_ids', 'in', [self.employee_id.id]),
+            ('user_ids', 'in', self.employee_id.user_id.ids),
             ('user_ids', '=', False),
             ('project_id.active', '=', True),
             ('active', '=', True),

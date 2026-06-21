@@ -244,6 +244,7 @@ class ReminderRule(models.Model):
                 'activity_type_id': activity_type.id,
                 'res_id': record.id,
                 'res_model_id': self.env['ir.model']._get(record._name).id,
+                'res_model': record._name,
                 'user_id': user.id,
                 'summary': self.name,
                 'note': message,

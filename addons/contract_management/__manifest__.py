@@ -18,6 +18,7 @@ Client Contract & Sales Management Module
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
+        'security/contract_security_rules.xml',
         'data/ir_sequence_data.xml',
         'views/client_contract_views.xml',
         'views/client_return_views.xml',

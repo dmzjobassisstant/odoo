@@ -72,14 +72,13 @@ class SupplierContract(models.Model):
     )
     active = fields.Boolean(default=True)
 
-    def name_get(self):
-        result = []
+    @api.depends('name', 'partner_id.display_name')
+    def _compute_display_name(self):
         for rec in self:
-            name = rec.name
             if rec.partner_id:
-                name = '%s - %s' % (name, rec.partner_id.display_name)
-            result.append((rec.id, name))
-        return result
+                rec.display_name = f"{rec.name} - {rec.partner_id.display_name}"
+            else:
+                rec.display_name = rec.name or ''
 
     @api.model_create_multi
     def create(self, vals_list):

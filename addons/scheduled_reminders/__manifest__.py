@@ -19,7 +19,7 @@ Features:
 - Deduplication via reminder.log
     """,
     'author': 'Nous Research',
-    'depends': ['base', 'mail', 'timesheet_management', 'hr'],
+    'depends': ['base', 'mail', 'hr'],
     'data': [
         'security/ir.model.access.csv',
         'data/reminder_cron.xml',

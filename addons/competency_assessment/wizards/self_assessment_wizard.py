@@ -57,6 +57,10 @@ class SelfAssessmentWizard(models.TransientModel):
     def action_submit_assessment(self):
         """Submit the self-assessment: create the assessment record and snapshot."""
         self.ensure_one()
+        if not self.env.user.has_group('competency_assessment.group_competency_admin'):
+            if self.employee_id.user_id != self.env.user:
+                from odoo.exceptions import AccessError
+                raise AccessError(_('You can only submit assessments for yourself.'))
         if not self.line_ids:
             raise UserError(_('Please load competencies first.'))
         # Create the assessment

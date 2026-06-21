@@ -123,6 +123,10 @@ class CompetencyAssessment(models.Model):
 
     def action_self_assess(self):
         self.ensure_one()
+        for rec in self:
+            if not self.env.user.has_group('competency_assessment.group_competency_admin'):
+                if rec.employee_id.user_id != self.env.user:
+                    raise AccessError(_('You can only self-assess your own assessments.'))
         if self.state != 'draft':
             raise UserError(_('Assessment must be in Draft state to submit.'))
         if not self.line_ids:
@@ -148,8 +152,10 @@ class CompetencyAssessment(models.Model):
 
     def action_employee_accept(self):
         self.ensure_one()
-        if self.employee_id.user_id != self.env.user:
-            raise AccessError(_('Only the assessed employee can accept.'))
+        # Allow admin/lead to accept on behalf, or if employee has no user
+        if self.employee_id.user_id and self.employee_id.user_id != self.env.user:
+            if not self.env.user.has_group('competency_assessment.group_competency_admin'):
+                raise UserError(_('Only the assessed employee can accept the assessment.'))
         if self.state != 'lead_reviewed':
             raise UserError(_('Assessment must be lead-reviewed first.'))
         self.employee_acceptance_date = fields.Datetime.now()

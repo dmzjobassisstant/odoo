@@ -31,8 +31,7 @@ class TimesheetEntry(models.Model):
         string='Task',
         required=True,
         tracking=True,
-        domain="[('user_ids', 'in', [week_id.employee_id.id]), "
-               " '|', ('user_ids', '=', False)]",
+        domain="['|', ('user_ids', 'in', week_id.employee_id.user_id.ids), ('user_ids', '=', False)]",
     )
     project_id = fields.Many2one(
         'project.project',

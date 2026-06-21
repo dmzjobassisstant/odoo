@@ -89,10 +89,8 @@ class HROffboarding(models.Model):
         readonly=True,
     )
     training_plan_ids = fields.Many2many(
-        'training.plan', 'offboarding_training_plan_rel',
-        'offboarding_id', 'plan_id',
+        'training.plan', 'hr_offboarding_training_plan_rel',
         string='Training Plans',
-        help='Training plans to assign to the employee during offboarding.',
     )
 
     @api.model_create_multi
@@ -189,12 +187,12 @@ class HROffboarding(models.Model):
         if self.offboarding_type == 'redundancy' and self.contract_id:
             contract = self.contract_id
             if contract.statutory_redundancy_weeks and contract.wage:
-                weekly_pay = contract.wage / 4.33
+                weekly_pay = contract.wage / 52
                 self.settlement_amount = (
                     weekly_pay * contract.statutory_redundancy_weeks
                 )
                 self.settlement_breakdown = (
-                    'Weekly pay: %.2f (Wage %.2f / 4.33) × %s weeks\n'
+                    'Weekly pay: %.2f (Wage %.2f / 52) × %s weeks\n'
                     'Total: %.2f'
                 ) % (
                     weekly_pay, contract.wage,

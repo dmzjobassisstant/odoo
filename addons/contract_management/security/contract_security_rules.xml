@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="1">
+    <!-- Multi-company record rules.
+         All four models expose a (stored related) company_id field:
+         client.contract, client.contract.line, client.return, client.return.line -->
+
+    <record model="ir.rule" id="client_contract_comp_rule">
+        <field name="name">Client Contract multi-company</field>
+        <field name="model_id" ref="model_client_contract"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record model="ir.rule" id="client_contract_line_comp_rule">
+        <field name="name">Client Contract Line multi-company</field>
+        <field name="model_id" ref="model_client_contract_line"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record model="ir.rule" id="client_return_comp_rule">
+        <field name="name">Client Return multi-company</field>
+        <field name="model_id" ref="model_client_return"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record model="ir.rule" id="client_return_line_comp_rule">
+        <field name="name">Client Return Line multi-company</field>
+        <field name="model_id" ref="model_client_return_line"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</data>
+</odoo>

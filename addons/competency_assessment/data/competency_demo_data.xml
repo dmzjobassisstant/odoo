@@ -20,12 +20,7 @@
         <field name="description">Works autonomously. Guides and mentors others. Handles complex and novel scenarios.</field>
     </record>
 
-    <!-- Assessment Sequence -->
-    <record id="seq_assessment" model="ir.sequence">
-        <field name="name">Competency Assessment</field>
-        <field name="code">competency.assessment</field>
-        <field name="prefix">ASMT/%(year)s/</field>
-        <field name="padding">5</field>
-        <field name="company_id" eval="False"/>
-    </record>
+    <!-- Assessment Sequence is defined in security/competency_security.xml
+         (seq_competency_assessment). The duplicate that was here has been
+         removed to avoid a duplicate ir.sequence code conflict. -->
 </odoo>

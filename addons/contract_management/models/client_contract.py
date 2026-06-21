@@ -1,7 +1,11 @@
+import logging
+
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
+
+_logger = logging.getLogger(__name__)
 
 
 class ClientContract(models.Model):
@@ -263,5 +267,5 @@ class ClientContract(models.Model):
         for contract in contracts:
             try:
                 contract.action_generate_invoice()
-            except Exception:
-                pass
+            except Exception as e:
+                _logger.exception('Failed to generate recurring invoice for contract %s: %s', contract.name, e)

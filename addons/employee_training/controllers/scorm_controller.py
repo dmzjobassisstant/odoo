@@ -11,11 +11,31 @@ _logger = logging.getLogger(__name__)
 
 class ScormController(http.Controller):
 
+    def _check_assignment_access(self, assignment_id):
+        """Verify the current user owns this assignment (or is HR manager)."""
+        assignment = request.env['training.assignment'].browse(assignment_id)
+        if not assignment.exists():
+            return None
+        # Allow if user is the assigned employee, or has HR training manager rights
+        if assignment.employee_id.user_id == request.env.user:
+            return assignment
+        if request.env.user.has_group('employee_training.group_training_manager'):
+            return assignment.sudo()
+        return None
+
+    def _safe_path(self, extract_dir, entry_point):
+        """Ensure entry_point is within extract_dir (prevent path traversal)."""
+        target = os.path.abspath(os.path.join(extract_dir, entry_point))
+        base = os.path.abspath(extract_dir) + os.sep
+        if not target.startswith(base):
+            return None
+        return target
+
     @http.route('/training/scorm/<int:assignment_id>', type='http', auth='user', csrf=False)
     def scorm_launch(self, assignment_id, **kwargs):
         """Launch SCORM course for the given assignment."""
-        assignment = request.env['training.assignment'].sudo().browse(assignment_id)
-        if not assignment.exists():
+        assignment = self._check_assignment_access(assignment_id)
+        if not assignment:
             return request.not_found()
 
         course = assignment.course_id
@@ -32,9 +52,9 @@ class ScormController(http.Controller):
         if not entry_point:
             return "No SCORM entry point configured for this course."
 
-        entry_path = os.path.join(extract_dir, entry_point)
-        if not os.path.exists(entry_path):
-            return f"SCORM content not found: {entry_point}"
+        entry_path = self._safe_path(extract_dir, entry_point)
+        if not entry_path or not os.path.exists(entry_path):
+            return "SCORM content not found."
 
         content = open(entry_path, 'rb').read()
         content_str = content.decode('utf-8', errors='replace')
@@ -55,9 +75,9 @@ class ScormController(http.Controller):
     @http.route('/training/scorm/api/<int:assignment_id>', type='jsonrpc', auth='user', csrf=False)
     def scorm_api(self, assignment_id, **kwargs):
         """SCORM API backend for LMSCommit, etc."""
-        assignment = request.env['training.assignment'].sudo().browse(assignment_id)
-        if not assignment.exists():
-            return {'error': 'Assignment not found'}
+        assignment = self._check_assignment_access(assignment_id)
+        if not assignment:
+            return {'error': 'Access denied'}
 
         data = request.jsonrequest
         action = data.get('action')

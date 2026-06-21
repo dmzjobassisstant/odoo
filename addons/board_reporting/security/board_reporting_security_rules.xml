@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="1">
+    <record model="ir.rule" id="board_report_comp_rule">
+        <field name="name">Board Report multi-company</field>
+        <field name="model_id" ref="model_board_report"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record model="ir.rule" id="board_snapshot_comp_rule">
+        <field name="name">Board Snapshot multi-company</field>
+        <field name="model_id" ref="model_board_snapshot"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <!-- board.metric is a global catalog of metric definitions — no company scoping -->
+</data>
+</odoo>

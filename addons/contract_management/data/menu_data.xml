@@ -4,7 +4,6 @@
     <menuitem
         id="menu_contract_management_root"
         name="Contract Management"
-        web_icon="contract_management,static/description/icon.png"
         sequence="80"
     />
 

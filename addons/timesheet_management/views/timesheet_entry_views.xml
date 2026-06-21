@@ -29,7 +29,7 @@
                             <field name="week_id"/>
                             <field name="date"/>
                             <field name="task_id"
-                                domain="[('user_ids', 'in', [week_id.employee_id]), '|', ('user_ids', '=', False)]"/>
+                                domain="['|', ('user_ids', 'in', week_id.employee_id.user_id.ids), ('user_ids', '=', False)]"/>
                             <field name="project_id" readonly="1"/>
                         </group>
                         <group>

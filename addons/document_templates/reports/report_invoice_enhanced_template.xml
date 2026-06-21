@@ -30,7 +30,7 @@
                 <!-- Custom CSS from document template (overrides) -->
                 <t t-if="css_override">
                     <style type="text/css">
-                        <t t-raw="css_override"/>
+                        <t t-out="css_override"/>
                     </style>
                 </t>
                 <t t-call="web.external_layout">
@@ -39,7 +39,7 @@
                         <!-- Custom Header -->
                         <t t-if="custom_header">
                             <div class="custom-header mb-3">
-                                <t t-raw="custom_header"/>
+                                <t t-out="custom_header"/>
                             </div>
                         </t>
 
@@ -359,7 +359,7 @@
                         <t t-if="custom_footer">
                             <div class="row mt-4 pt-3 border-top">
                                 <div class="col-12">
-                                    <t t-raw="custom_footer"/>
+                                    <t t-out="custom_footer"/>
                                 </div>
                             </div>
                         </t>

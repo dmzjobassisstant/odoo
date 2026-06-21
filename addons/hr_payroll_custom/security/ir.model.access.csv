@@ -5,4 +5,4 @@ access_hr_payslip_line_manager,hr.payslip.line.manager,model_hr_payslip_line,hr_
 access_hr_payslip_line_user,hr.payslip.line.user,model_hr_payslip_line,hr_payroll_custom.group_hr_payroll_user,1,1,1,1
 access_hr_salary_rule_manager,hr.salary.rule.manager,model_hr_salary_rule,hr_payroll_custom.group_hr_payroll_manager,1,1,1,1
 access_hr_salary_rule_user,hr.salary.rule.user,model_hr_salary_rule,hr_payroll_custom.group_hr_payroll_user,1,0,0,0
-access_hr_payslip_generate_wizard,hr.payslip.generate.wizard.all,model_hr_payslip_generate_wizard,base.group_user,1,1,1,1
+access_hr_payslip_generate_wizard,hr.payslip.generate.wizard.all,model_hr_payslip_generate_wizard,hr_payroll_custom.group_hr_payroll_user,1,1,1,1

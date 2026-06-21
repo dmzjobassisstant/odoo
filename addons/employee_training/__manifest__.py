@@ -18,6 +18,7 @@ Features:
     'author': 'Nous Research',
     'depends': ['base', 'hr', 'mail'],
     'data': [
+        'security/training_security.xml',
         'security/ir.model.access.csv',
         'data/training_cron.xml',
         'views/training_plan_views.xml',

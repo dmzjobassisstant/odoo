@@ -106,6 +106,7 @@ class DocumentTemplate(models.Model):
                     ('template_type', '=', rec.template_type),
                     ('company_id', '=', rec.company_id.id),
                     ('is_default', '=', True),
+                    ('active', '=', True),
                     ('id', '!=', rec.id),
                 ])
                 if existing:
@@ -114,4 +115,3 @@ class DocumentTemplate(models.Model):
                     ))
 
     # ---- Template stub constraint (Odoo 19 style) ----
-    _sql_constraints = []

@@ -58,9 +58,10 @@ class BoardMetric(models.Model):
         string='Historical Snapshots',
     )
 
-    _sql_constraints = [
-        ('code_unique', 'UNIQUE(code)', 'The metric code must be unique!'),
-    ]
+    _code_unique = models.Constraint(
+        'UNIQUE(code)',
+        'The metric code must be unique!',
+    )
 
     def _run_calculation(self, report):
         """Execute the calculation method for this metric on the given report.
@@ -69,13 +70,16 @@ class BoardMetric(models.Model):
         self.ensure_one()
         method_name = (self.calculation_method or '').strip()
         if not method_name:
-            raise UserError(_(
-                'Metric "%s" has no calculation method defined.'
-            ) % self.name)
-        # Try to call a method on the report by name
-        if hasattr(report, method_name):
-            return getattr(report, method_name)(
-                report.period_start, report.period_end)
-        raise UserError(_(
-            'Calculation method "%s" not found on report for metric "%s".'
-        ) % (method_name, self.name))
+            raise UserError(_('Metric "%s" has no calculation method defined.') % self.name)
+        # Security: whitelist allowed calculation methods
+        allowed = {
+            '_compute_timesheet_hours', '_compute_leave_days',
+            '_compute_headcount', '_compute_revenue_per_employee',
+            '_compute_absenteeism_rate', '_compute_turnover_rate',
+            '_compute_avg_salary', '_compute_training_completion',
+            '_compute_issue_resolution_time',
+        }
+        if method_name not in allowed:
+            raise UserError(_('Unknown calculation method: %s') % method_name)
+        result = getattr(report, method_name)(report.period_start, report.period_end)
+        return result

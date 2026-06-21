@@ -31,6 +31,7 @@ Built-in metrics:
     'depends': ['hr', 'timesheet_management', 'hr_employee_lifecycle', 'hr_payroll_custom'],
     'data': [
         'security/board_reporting_security.xml',
+        'security/board_reporting_security_rules.xml',
         'security/ir.model.access.csv',
         'data/board_metric_data.xml',
         'views/board_metric_views.xml',

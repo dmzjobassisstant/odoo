@@ -1,9 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_client_contract_manager,client.contract.manager,model_client_contract,contract_management.group_contract_manager,1,1,1,1
-access_client_contract_user,client.contract.user,model_client_contract,,1,0,0,0
+access_client_contract_user,client.contract.user,model_client_contract,base.group_user,1,0,0,0
 access_client_contract_line_manager,client.contract.line.manager,model_client_contract_line,contract_management.group_contract_manager,1,1,1,1
-access_client_contract_line_user,client.contract.line.user,model_client_contract_line,,1,0,0,0
+access_client_contract_line_user,client.contract.line.user,model_client_contract_line,base.group_user,1,0,0,0
 access_client_return_manager,client.return.manager,model_client_return,contract_management.group_contract_manager,1,1,1,1
-access_client_return_user,client.return.user,model_client_return,,1,0,0,0
+access_client_return_user,client.return.user,model_client_return,base.group_user,1,0,0,0
 access_client_return_line_manager,client.return.line.manager,model_client_return_line,contract_management.group_contract_manager,1,1,1,1
-access_client_return_line_user,client.return.line.user,model_client_return_line,,1,0,0,0
+access_client_return_line_user,client.return.line.user,model_client_return_line,base.group_user,1,0,0,0

@@ -12,7 +12,11 @@
             <field name="is_active" eval="True"/>
         </record>
 
-        <!-- Rule 2: Training overdue reminder -->
+        <!-- Rule 2: Training overdue reminder DISABLED.
+             'training.assignment' comes from the employee_training module,
+             which is now a soft dependency (removed from the depends list).
+             The rule is deactivated to avoid referencing a non-existent model
+             until that module is installed. -->
         <record id="reminder_rule_training_overdue" model="reminder.rule">
             <field name="name">Training Overdue Reminder</field>
             <field name="model">training.assignment</field>
@@ -21,7 +25,7 @@
             <field name="remind_before_days">1</field>
             <field name="message_template">Your training assignment {{object.name}} is due soon. Please complete it.</field>
             <field name="recipient_field">employee_id.user_id</field>
-            <field name="is_active" eval="True"/>
+            <field name="is_active" eval="False"/>
         </record>
     </data>
 </odoo>

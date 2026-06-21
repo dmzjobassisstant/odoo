@@ -28,7 +28,7 @@ class HRSalaryRule(models.Model):
                                   default=lambda self: self.env.company)
     active = fields.Boolean(string='Active', default=True)
 
-    _sql_constraints = [
-        ('code_unique', 'unique(code, company_id)',
-         'Salary rule code must be unique per company!'),
-    ]
+    _code_unique = models.Constraint(
+        'unique(code, company_id)',
+        'Salary rule code must be unique per company!',
+    )

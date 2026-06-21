@@ -51,7 +51,14 @@ class TrainingCourse(models.Model):
 
         zip_bytes = base64.b64decode(scorm_data)
         with zipfile.ZipFile(io.BytesIO(zip_bytes)) as zf:
-            zf.extractall(extract_dir)
+            # Prevent Zip Slip: verify each member path stays within extract_dir
+            extract_abs = os.path.abspath(extract_dir)
+            for member in zf.infolist():
+                member_path = os.path.abspath(os.path.join(extract_dir, member.filename))
+                if not member_path.startswith(extract_abs + os.sep):
+                    _logger.warning('Skipping unsafe path in SCORM zip: %s', member.filename)
+                    continue
+                zf.extract(member, extract_dir)
 
         # Find imsmanifest.xml
         manifest_path = None
@@ -106,12 +113,19 @@ class TrainingCourse(models.Model):
 
         return None
 
-    @api.model
-    def create(self, vals):
-        if vals.get('scorm_package') and vals.get('course_type') == 'scorm':
-            # Can't extract yet because course doesn't have an id
-            pass
-        return super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        courses = super().create(vals_list)
+        for course in courses:
+            if course.scorm_package and course.course_type == 'scorm':
+                entry_point = course._extract_scorm_package(
+                    course.scorm_package, course.id
+                )
+                if entry_point:
+                    super(TrainingCourse, course).write({
+                        'scorm_entry_point': entry_point,
+                    })
+        return courses
 
     def write(self, vals):
         res = super().write(vals)
