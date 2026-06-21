@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Partner form extension: Contracts & Returns tabs -->
+    <record id="view_res_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.contract</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Contracts" name="contracts">
+                    <field name="contract_ids">
+                        <list>
+                            <field name="name"/>
+                            <field name="contract_type"/>
+                            <field name="state"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="recurring_amount"/>
+                        </list>
+                    </field>
+                </page>
+                <page string="Returns" name="returns">
+                    <field name="return_ids">
+                        <list>
+                            <field name="name"/>
+                            <field name="return_reason"/>
+                            <field name="state"/>
+                            <field name="sale_order_id"/>
+                            <field name="refund_invoice_id"/>
+                        </list>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

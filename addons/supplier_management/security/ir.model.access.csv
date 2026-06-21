@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_supplier_contract_manager,supplier.contract manager,model_supplier_contract,group_supplier_manager,1,1,1,1
+access_supplier_contract_user,supplier.contract user,model_supplier_contract,base.group_user,1,0,0,0
+access_supplier_contract_line_manager,supplier.contract.line manager,model_supplier_contract_line,group_supplier_manager,1,1,1,1
+access_supplier_contract_line_user,supplier.contract.line user,model_supplier_contract_line,base.group_user,1,0,0,0

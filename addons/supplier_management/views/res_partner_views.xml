@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Extend res.partner form: supplier rating, bank details, direct debit -->
+    <record id="view_partner_supplier_form" model="ir.ui.view">
+        <field name="name">res.partner.supplier.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="priority">38</field>
+        <field name="arch" type="xml">
+            <!-- Bank and direct debit details in the Sales & Purchase page -->
+            <page name="sales_purchases" position="inside">
+                <group name="supplier_bank_details" string="Bank &amp; Direct Debit Details"
+                       groups="supplier_management.group_supplier_manager">
+                    <group>
+                        <field name="supplier_rating" widget="badge" decoration-success="supplier_rating == 'A'"
+                               decoration-warning="supplier_rating == 'C'" decoration-danger="supplier_rating == 'D'"/>
+                        <field name="payment_terms_days"/>
+                        <field name="direct_debit_active"/>
+                        <field name="direct_debit_mandate_ref"
+                               invisible="not direct_debit_active"/>
+                    </group>
+                    <group>
+                        <field name="bank_account"/>
+                        <field name="bank_sort_code"/>
+                        <field name="bank_iban"/>
+                    </group>
+                </group>
+            </page>
+
+            <!-- Contracts tab -->
+            <page name="sales_purchases" position="after">
+                <page name="supplier_contracts" string="Contracts"
+                      groups="supplier_management.group_supplier_manager">
+                    <field name="contract_ids" nolabel="1" colspan="2"
+                           context="{'default_partner_id': id}"/>
+                </page>
+            </page>
+
+            <!-- Contracts button in button box -->
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" name="action_view_supplier_contracts"
+                        type="object" groups="supplier_management.group_supplier_manager"
+                        icon="fa-file-text-o">
+                    <field string="Contracts" name="contract_count" widget="statinfo"/>
+                </button>
+            </div>
+        </field>
+    </record>
+
+</odoo>

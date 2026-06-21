@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_document_templates_root"
+              name="Documents"
+              sequence="80"/>
+
+    <menuitem id="menu_document_template_config"
+              name="Configuration"
+              parent="menu_document_templates_root"
+              sequence="10"/>
+
+    <menuitem id="menu_document_template"
+              name="Document Templates"
+              parent="menu_document_template_config"
+              action="action_document_template"
+              sequence="10"/>
+</odoo>

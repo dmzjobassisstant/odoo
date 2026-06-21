@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root menu for Contract Management -->
+    <menuitem
+        id="menu_contract_management_root"
+        name="Contract Management"
+        web_icon="contract_management,static/description/icon.png"
+        sequence="80"
+    />
+
+    <!-- Contracts menu -->
+    <menuitem
+        id="menu_client_contract"
+        name="Contracts"
+        parent="menu_contract_management_root"
+        action="action_client_contract"
+        sequence="10"
+    />
+
+    <!-- Returns menu -->
+    <menuitem
+        id="menu_client_return"
+        name="Returns / RMA"
+        parent="menu_contract_management_root"
+        action="action_client_return"
+        sequence="20"
+    />
+
+    <!-- Contracts by type menu -->
+    <menuitem
+        id="menu_contract_service"
+        name="Service Contracts"
+        parent="menu_client_contract"
+        action="action_client_contract"
+        sequence="10"
+    />
+    <menuitem
+        id="menu_contract_subscription"
+        name="Subscriptions"
+        parent="menu_client_contract"
+        action="action_client_contract"
+        sequence="20"
+    />
+    <menuitem
+        id="menu_contract_retainer"
+        name="Retainers"
+        parent="menu_client_contract"
+        action="action_client_contract"
+        sequence="30"
+    />
+
+    <!-- Returns by status menu -->
+    <menuitem
+        id="menu_return_draft"
+        name="Draft Returns"
+        parent="menu_client_return"
+        action="action_client_return"
+        sequence="10"
+    />
+    <menuitem
+        id="menu_return_approved"
+        name="Approved Returns"
+        parent="menu_client_return"
+        action="action_client_return"
+        sequence="20"
+    />
+</odoo>

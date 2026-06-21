@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_document_template_tree" model="ir.ui.view">
+        <field name="name">document.template.tree</field>
+        <field name="model">document.template</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="template_type"/>
+                <field name="model"/>
+                <field name="is_default"/>
+                <field name="company_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_document_template_form" model="ir.ui.view">
+        <field name="name">document.template.form</field>
+        <field name="model">document.template</field>
+        <field name="arch" type="xml">
+            <form string="Document Template">
+                <header>
+                    <field name="is_default" widget="boolean_toggle"
+                           string="Default Template"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Template Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="template_type"/>
+                            <field name="model"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="company_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Header">
+                            <field name="header_html" placeholder="&lt;p&gt;Custom header HTML content here...&lt;/p&gt;"/>
+                        </page>
+                        <page string="Footer">
+                            <field name="footer_html" placeholder="&lt;p&gt;Custom footer HTML content here...&lt;/p&gt;"/>
+                        </page>
+                        <page string="CSS">
+                            <field name="css_override" placeholder="/* Custom CSS rules */"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_document_template_search" model="ir.ui.view">
+        <field name="name">document.template.search</field>
+        <field name="model">document.template</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="model"/>
+                <filter string="Template Type" name="filter_template_type"
+                        context="{'group_by': 'template_type'}"/>
+                <filter string="Model" name="filter_model"
+                        context="{'group_by': 'model'}"/>
+                <filter string="Default" name="filter_is_default"
+                        domain="[('is_default', '=', True)]"/>
+                <separator/>
+                <filter string="Archived" name="inactive"
+                        domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_document_template" model="ir.actions.act_window">
+        <field name="name">Document Templates</field>
+        <field name="res_model">document.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define document templates with custom headers, footers, and CSS
+            </p>
+            <p>
+                Create templates for invoices, payslips, contracts, and reports
+                to customize the PDF output with your branding and formatting.
+            </p>
+        </field>
+    </record>
+</odoo>

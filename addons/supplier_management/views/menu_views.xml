@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Main menu entry under Purchases -->
+    <menuitem id="menu_supplier_management_root"
+              name="Supplier Management"
+              sequence="40"
+              web_icon="supplier_management,static/description/icon.png"
+              groups="supplier_management.group_supplier_manager">
+    </menuitem>
+
+    <!-- Supplier Contracts menu action -->
+    <record id="action_supplier_contract" model="ir.actions.act_window">
+        <field name="name">Supplier Contracts</field>
+        <field name="res_model">supplier.contract</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_supplier_contract_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new supplier contract
+            </p><p>
+                Track recurring supplier agreements, auto-generate purchase
+                orders, and manage direct debit mandates.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_supplier_contract"
+              name="Contracts"
+              parent="menu_supplier_management_root"
+              sequence="10"
+              action="action_supplier_contract"/>
+
+    <!-- Direct Debit Management action -->
+    <record id="action_supplier_direct_debit" model="ir.actions.act_window">
+        <field name="name">Direct Debit Management</field>
+        <field name="res_model">supplier.contract</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('payment_method', '=', 'direct_debit')]</field>
+        <field name="search_view_id" ref="view_supplier_contract_search"/>
+        <field name="context">{'search_default_filter_direct_debit': 1}</field>
+    </record>
+
+    <menuitem id="menu_supplier_direct_debit"
+              name="Direct Debit"
+              parent="menu_supplier_management_root"
+              sequence="20"
+              action="action_supplier_direct_debit"/>
+
+</odoo>

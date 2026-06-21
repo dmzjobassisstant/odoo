@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="invoice_enhanced_report" model="ir.actions.report">
+        <field name="name">Enhanced Invoice</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">document_templates.report_invoice_enhanced</field>
+        <field name="report_file">document_templates.report_invoice_enhanced</field>
+        <field name="print_report_name">('Enhanced_Invoice_%s' % object.name.replace('/', '_') if object.name else 'Enhanced_Invoice')</field>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
