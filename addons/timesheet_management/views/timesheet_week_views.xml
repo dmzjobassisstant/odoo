@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ===== Timesheet Week Form View ===== -->
+    <record id="view_timesheet_week_form" model="ir.ui.view">
+        <field name="name">timesheet.week.form</field>
+        <field name="model">timesheet.week</field>
+        <field name="arch" type="xml">
+            <form string="Timesheet Week">
+                <header>
+                    <!-- Draft: task management + submit -->
+                    <button name="action_add_tasks" type="object"
+                        string="Add Tasks" class="btn-primary"
+                        invisible="state != 'draft'"/>
+                    <button name="action_copy_previous_week_tasks" type="object"
+                        string="Copy Tasks from Previous Week" class="btn-secondary"
+                        invisible="state != 'draft'"/>
+                    <button name="action_submit" type="object"
+                        string="Submit" class="btn-primary"
+                        invisible="state != 'draft'"
+                        confirm="Submit this timesheet? It will be locked — no further edits."/>
+                    <!-- Submitted: admin complete / unlock -->
+                    <button name="action_complete" type="object"
+                        string="Mark Completed" class="btn-success"
+                        groups="timesheet_management.group_timesheet_admin"
+                        invisible="state != 'submitted'"
+                        confirm="Mark as completed (billed)?"/>
+                    <button name="action_unlock" type="object"
+                        string="Unlock" class="btn-secondary"
+                        groups="timesheet_management.group_timesheet_admin"
+                        invisible="state not in ('submitted', 'completed')"
+                        confirm="Unlock back to Draft?"/>
+                    <!-- Completed: admin dispute return -->
+                    <button name="action_return_to_submitted" type="object"
+                        string="Return to Submitted" class="btn-warning"
+                        groups="timesheet_management.group_timesheet_admin"
+                        invisible="state != 'completed'"
+                        confirm="Return to Submitted (billing dispute)?"/>
+                    <button name="action_reset_draft" type="object"
+                        string="Reset to Draft"
+                        groups="timesheet_management.group_timesheet_admin"
+                        invisible="state not in ('submitted', 'completed')"/>
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft,submitted,completed"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Details">
+                            <field name="employee_id" readonly="1"/>
+                            <field name="week_start"/>
+                            <field name="week_end" readonly="1"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group string="Status">
+                            <field name="user_id" readonly="1"/>
+                            <field name="total_hours" widget="float_time"/>
+                            <field name="submitted_date" readonly="1"
+                                invisible="state not in ('submitted', 'completed')"/>
+                            <field name="completed_date" readonly="1"
+                                invisible="state != 'completed'"/>
+                        </group>
+                    </group>
+                    <!-- Matrix-like entry grid: grouped by task, each row = one day -->
+                    <group string="Time Entries" colspan="4">
+                        <field name="entry_ids" nolabel="1" colspan="4"
+                            invisible="state not in ('draft', 'submitted', 'completed')">
+                            <list string="Entries" editable="bottom"
+                                  default_group_by="task_id"
+                                  decoration-muted="hours == 0">
+                                <field name="day_name" readonly="1"/>
+                                <field name="date"/>
+                                <field name="task_id" readonly="1"/>
+                                <field name="project_id" readonly="1"/>
+                                <field name="description"/>
+                                <field name="hours" widget="float_time" sum="Daily Total"/>
+                            </list>
+                        </field>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="total_hours" widget="float_time"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- ===== Timesheet Week List View ===== -->
+    <record id="view_timesheet_week_list" model="ir.ui.view">
+        <field name="name">timesheet.week.list</field>
+        <field name="model">timesheet.week</field>
+        <field name="arch" type="xml">
+            <list string="Timesheets"
+                  decoration-warning="state == 'draft'"
+                  decoration-info="state == 'submitted'"
+                  decoration-success="state == 'completed'">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="week_start"/>
+                <field name="state" widget="badge"/>
+                <field name="total_hours" sum="Total"/>
+                <field name="submitted_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ===== Timesheet Week Search View ===== -->
+    <record id="view_timesheet_week_search" model="ir.ui.view">
+        <field name="name">timesheet.week.search</field>
+        <field name="model">timesheet.week</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <filter name="filter_draft" string="Draft"
+                    domain="[('state', '=', 'draft')]"/>
+                <filter name="filter_submitted" string="Submitted"
+                    domain="[('state', '=', 'submitted')]"/>
+                <filter name="filter_completed" string="Completed"
+                    domain="[('state', '=', 'completed')]"/>
+                <separator/>
+                <filter name="filter_my_weeks" string="My Timesheets"
+                    domain="[('user_id', '=', uid)]"/>
+                <separator/>
+                <filter name="group_employee" string="Employee"
+                    context="{'group_by': 'employee_id'}"/>
+                <filter name="group_week" string="Week"
+                    context="{'group_by': 'week_start'}"/>
+                <filter name="group_state" string="State"
+                    context="{'group_by': 'state'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- ===== Actions ===== -->
+    <record id="action_timesheet_week" model="ir.actions.act_window">
+        <field name="name">Timesheets</field>
+        <field name="res_model">timesheet.week</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new timesheet week to start tracking your time!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_my_timesheets" model="ir.actions.act_window">
+        <field name="name">My Timesheets</field>
+        <field name="res_model">timesheet.week</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('user_id', '=', uid)]</field>
+    </record>
+
+</odoo>

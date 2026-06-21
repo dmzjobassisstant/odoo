@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ===== Timesheet Entry Tree ===== -->
+    <record id="view_timesheet_entry_tree" model="ir.ui.view">
+        <field name="name">timesheet.entry.tree</field>
+        <field name="model">timesheet.entry</field>
+        <field name="arch" type="xml">
+            <list string="Timesheet Entries">
+                <field name="day_name"/>
+                <field name="date"/>
+                <field name="week_id"/>
+                <field name="task_id"/>
+                <field name="project_id"/>
+                <field name="description"/>
+                <field name="hours" widget="float_time" sum="Total"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ===== Timesheet Entry Form ===== -->
+    <record id="view_timesheet_entry_form" model="ir.ui.view">
+        <field name="name">timesheet.entry.form</field>
+        <field name="model">timesheet.entry</field>
+        <field name="arch" type="xml">
+            <form string="Timesheet Entry">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="week_id"/>
+                            <field name="date"/>
+                            <field name="task_id"
+                                domain="[('user_ids', 'in', [week_id.employee_id]), '|', ('user_ids', '=', False)]"/>
+                            <field name="project_id" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="hours" widget="float_time"/>
+                        </group>
+                    </group>
+                    <group string="Description">
+                        <field name="description" nolabel="1" colspan="2"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ===== Timesheet Entry Search ===== -->
+    <record id="view_timesheet_entry_search" model="ir.ui.view">
+        <field name="name">timesheet.entry.search</field>
+        <field name="model">timesheet.entry</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="date"/>
+                <field name="task_id"/>
+                <field name="project_id"/>
+                <field name="description"/>
+                <filter name="group_date" string="Date"
+                    context="{'group_by': 'date'}"/>
+                <filter name="group_task" string="Task"
+                    context="{'group_by': 'task_id'}"/>
+                <filter name="group_project" string="Project"
+                    context="{'group_by': 'project_id'}"/>
+                <filter name="group_week" string="Week"
+                    context="{'group_by': 'week_id'}"/>
+            </search>
+        </field>
+    </record>
+</odoo>

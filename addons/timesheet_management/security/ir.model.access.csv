@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_timesheet_week_user,timesheet.week.user,model_timesheet_week,group_timesheet_user,1,1,1,0
+access_timesheet_week_admin,timesheet.week.admin,model_timesheet_week,group_timesheet_admin,1,1,1,1
+access_timesheet_entry_user,timesheet.entry.user,model_timesheet_entry,group_timesheet_user,1,1,1,0
+access_timesheet_entry_admin,timesheet.entry.admin,model_timesheet_entry,group_timesheet_admin,1,1,1,1
+access_timesheet_report_wizard_user,timesheet.report.wizard.user,model_timesheet_report_wizard,group_timesheet_user,1,1,1,1
+access_timesheet_report_wizard_admin,timesheet.report.wizard.admin,model_timesheet_report_wizard,group_timesheet_admin,1,1,1,1
+access_timesheet_add_tasks_wizard_user,timesheet.add.tasks.wizard.user,model_timesheet_add_tasks_wizard,group_timesheet_user,1,1,1,1
+access_timesheet_add_tasks_wizard_admin,timesheet.add.tasks.wizard.admin,model_timesheet_add_tasks_wizard,group_timesheet_admin,1,1,1,1

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ===== Root Menu ===== -->
+    <menuitem id="menu_timesheet_root"
+              name="Timesheets"
+              sequence="55"
+              web_icon="timesheet_management,static/description/icon.png"
+              action="action_my_timesheets"/>
+
+    <menuitem id="menu_timesheet_my"
+              name="My Timesheets"
+              parent="menu_timesheet_root"
+              action="action_my_timesheets"/>
+
+    <menuitem id="menu_timesheet_all"
+              name="All Timesheets"
+              parent="menu_timesheet_root"
+              groups="timesheet_management.group_timesheet_admin"
+              action="action_timesheet_week"/>
+
+    <menuitem id="menu_timesheet_reports"
+              name="Timesheet Reports"
+              parent="menu_timesheet_root"
+              groups="timesheet_management.group_timesheet_admin"
+              action="action_timesheet_report_wizard"/>
+
+</odoo>
