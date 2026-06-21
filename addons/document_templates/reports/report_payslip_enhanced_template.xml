@@ -3,7 +3,27 @@
     <template id="report_payslip_enhanced">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <!-- Inject custom CSS from document template -->
+                <style type="text/css">
+                    body {
+                        font-family: <t t-out="font_family"/>;
+                    }
+                    .page h2, .page h3, .page h6, .page strong, .page th {
+                        color: <t t-out="primary_color"/>;
+                    }
+                    .page .thead-light th {
+                        background-color: <t t-out="secondary_color"/>;
+                        color: <t t-out="primary_color"/>;
+                        font-weight: 600;
+                    }
+                    .page .table-bordered, .page .table-bordered td, .page .table-bordered th {
+                        border-color: <t t-out="secondary_color"/>;
+                    }
+                    .page .border-top { border-color: <t t-out="secondary_color"/> !important; }
+                    .page .table-success td { background-color: #e8f5e9 !important; }
+                    .page .table-danger td { background-color: #ffebee !important; }
+                    .page .table-primary td { background-color: #e3f2fd !important; }
+                    .page td.text-right strong { color: <t t-out="primary_color"/>; }
+                </style>
                 <t t-if="css_override">
                     <style type="text/css">
                         <t t-raw="css_override"/>
@@ -19,17 +39,29 @@
                             </div>
                         </t>
 
-                        <!-- Header -->
+                        <!-- Header with optional logo -->
                         <div class="row mb-4">
                             <div class="col-6">
-                                <h2>Payslip</h2>
+                                <t t-if="logo">
+                                    <img t-att-src="'data:image/png;base64,%s' % logo"
+                                         style="max-height: 50px; max-width: 200px;"
+                                         alt="Logo"/>
+                                </t>
+                                <t t-else="">
+                                    <h2>Payslip</h2>
+                                </t>
                                 <p>
                                     <strong t-out="o.name"/>
                                 </p>
                             </div>
                             <div class="col-6 text-right">
                                 <p>
-                                    <span t-field="o.company_id.name"/>
+                                    <t t-if="not logo">
+                                        <strong t-out="o.company_id.name"/>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-field="o.company_id.name"/>
+                                    </t>
                                     <br/>
                                     <span t-if="o.company_id.partner_id.street"
                                           t-field="o.company_id.partner_id.street"/>
@@ -85,7 +117,7 @@
                         </div>
 
                         <!-- Payslip Lines Table -->
-                        <table class="table table-bordered table-sm mb-4" name="enhanced_payslip_lines">
+                        <table class="table table-bordered table-sm mb-4">
                             <thead class="thead-light">
                                 <tr>
                                     <th>Description</th>
@@ -93,7 +125,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Earnings -->
                                 <tr class="table-success">
                                     <td colspan="2"><strong>Earnings</strong></td>
                                 </tr>
@@ -116,7 +147,6 @@
                                     </td>
                                 </tr>
 
-                                <!-- Deductions -->
                                 <tr class="table-danger">
                                     <td colspan="2"><strong>Deductions</strong></td>
                                 </tr>
@@ -139,7 +169,6 @@
                                     </td>
                                 </tr>
 
-                                <!-- Net Pay -->
                                 <tr class="table-primary" style="font-size: 1.2em;">
                                     <td class="text-right"><strong>Net Pay</strong></td>
                                     <td class="text-right">
@@ -161,7 +190,6 @@
                             </div>
                         </t>
 
-                        <!-- Default Footer -->
                         <div class="row mt-5 pt-4 border-top">
                             <div class="col-12 text-center text-muted" style="font-size: 0.85em;">
                                 <p>

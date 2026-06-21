@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_document_templates_root"
-              name="Documents"
-              sequence="80"/>
+    <!-- ===== Root Menu — standalone app in drawer ===== -->
+    <menuitem id="menu_document_layouts_root"
+              name="Document Layouts"
+              sequence="85"
+              web_icon="document_templates,static/description/icon.png"
+              action="action_document_template"/>
 
-    <menuitem id="menu_document_template_config"
+    <!-- Configuration submenu -->
+    <menuitem id="menu_document_layout_config"
               name="Configuration"
-              parent="menu_document_templates_root"
+              parent="menu_document_layouts_root"
               sequence="10"/>
 
     <menuitem id="menu_document_template"
-              name="Document Templates"
-              parent="menu_document_template_config"
+              name="Document Layouts"
+              parent="menu_document_layout_config"
               action="action_document_template"
               sequence="10"/>
 </odoo>

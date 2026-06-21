@@ -9,7 +9,6 @@ class ReportInvoiceEnhanced(models.AbstractModel):
     def _get_report_values(self, docids, data=None):
         docs = self.env['account.move'].browse(docids)
 
-        # Look up the default document template for this model/type
         template = self.env['document.template'].search([
             ('model', '=', 'account.move'),
             ('template_type', '=', 'invoice'),
@@ -17,15 +16,23 @@ class ReportInvoiceEnhanced(models.AbstractModel):
             ('company_id', '=', self.env.company.id),
         ], limit=1)
 
-        css_override = template.css_override or ''
-        header_html = template.header_html or ''
-        footer_html = template.footer_html or ''
+        # Build font-family CSS value
+        font_map = {
+            'helvetica': '"Helvetica Neue", Helvetica, Arial, sans-serif',
+            'times': '"Times New Roman", Times, serif',
+            'courier': '"Courier New", Courier, monospace',
+        }
+        font = font_map.get(template.font_family or 'helvetica', font_map['helvetica'])
 
         return {
             'doc_ids': docids,
             'doc_model': 'account.move',
             'docs': docs,
-            'css_override': css_override,
-            'custom_header': header_html,
-            'custom_footer': footer_html,
+            'logo': template.logo or False,
+            'primary_color': template.primary_color or '#261e58',
+            'secondary_color': template.secondary_color or '#f0eef7',
+            'font_family': font,
+            'css_override': template.css_override or '',
+            'custom_header': template.header_html or '',
+            'custom_footer': template.footer_html or '',
         }

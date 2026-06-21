@@ -4,7 +4,30 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-set="lang" t-value="o.partner_id.lang"/>
-                <!-- Inject custom CSS from document template -->
+                <style type="text/css">
+                    body {
+                        font-family: <t t-out="font_family"/>;
+                    }
+                    .page h2, .page h3, .page h6, .page strong {
+                        color: <t t-out="primary_color"/>;
+                    }
+                    .page .thead-light th {
+                        background-color: <t t-out="secondary_color"/>;
+                        color: <t t-out="primary_color"/>;
+                        font-weight: 600;
+                    }
+                    .page .card-header {
+                        background-color: <t t-out="secondary_color"/> !important;
+                        color: <t t-out="primary_color"/>;
+                    }
+                    .page .table-bordered, .page .table-bordered td, .page .table-bordered th {
+                        border-color: <t t-out="secondary_color"/>;
+                    }
+                    .page .border-bottom { border-color: <t t-out="secondary_color"/> !important; }
+                    .page .border-top { border-color: <t t-out="secondary_color"/> !important; }
+                    .page .bg-light { background-color: <t t-out="secondary_color"/> !important; }
+                </style>
+                <!-- Custom CSS from document template (overrides) -->
                 <t t-if="css_override">
                     <style type="text/css">
                         <t t-raw="css_override"/>
@@ -13,19 +36,26 @@
                 <t t-call="web.external_layout">
                     <div class="page">
 
-                        <!-- Custom Header from document template -->
+                        <!-- Custom Header -->
                         <t t-if="custom_header">
                             <div class="custom-header mb-3">
                                 <t t-raw="custom_header"/>
                             </div>
                         </t>
 
-                        <!-- Company Header Block -->
+                        <!-- Company Header with optional logo -->
                         <div class="row mb-4 border-bottom pb-3">
                             <div class="col-7">
-                                <h2>
-                                    <span t-field="o.company_id.name"/>
-                                </h2>
+                                <t t-if="logo">
+                                    <img t-att-src="'data:image/png;base64,%s' % logo"
+                                         style="max-height: 60px; max-width: 220px;"
+                                         alt="Logo"/>
+                                </t>
+                                <t t-else="">
+                                    <h2>
+                                        <span t-field="o.company_id.name"/>
+                                    </h2>
+                                </t>
                                 <address class="mb-0">
                                     <t t-if="o.company_id.partner_id.street">
                                         <span t-field="o.company_id.partner_id.street"/><br/>
@@ -66,7 +96,8 @@
                         <!-- Title -->
                         <div class="row mb-3">
                             <div class="col-12">
-                                <h3 class="text-center bg-light py-2">
+                                <h3 class="text-center py-2"
+                                    t-att-style="'background-color: %s;' % secondary_color">
                                     <t t-if="o.move_type == 'out_invoice' and o.state == 'posted'">
                                         INVOICE
                                     </t>
@@ -83,12 +114,11 @@
                             </div>
                         </div>
 
-                        <!-- Client Address + Invoice Metadata Row -->
+                        <!-- Client Address + Invoice Metadata -->
                         <div class="row mb-4">
-                            <!-- Client Details -->
                             <div class="col-6">
                                 <div class="card">
-                                    <div class="card-header bg-light"><strong>Bill To</strong></div>
+                                    <div class="card-header"><strong>Bill To</strong></div>
                                     <div class="card-body py-2">
                                         <address class="mb-0" t-field="o.partner_id"
                                             t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
@@ -105,7 +135,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Invoice Metadata -->
                             <div class="col-6">
                                 <table class="table table-sm table-borderless mb-0">
                                     <tr>
@@ -160,7 +189,6 @@
                                 <t t-foreach="lines" t-as="line">
                                     <t t-if="line.display_type == 'product'">
                                         <tr>
-                                            <!-- Code column: default_code from product, or custom code -->
                                             <td>
                                                 <t t-if="line.product_id">
                                                     <span t-field="line.product_id.default_code"/>
@@ -169,24 +197,19 @@
                                                     <span class="text-muted">-</span>
                                                 </t>
                                             </td>
-                                            <!-- Description -->
                                             <td>
                                                 <span t-if="line.name" t-field="line.name" t-options="{'widget': 'text'}"/>
                                             </td>
-                                            <!-- Quantity -->
                                             <td class="text-right">
                                                 <span t-field="line.quantity" class="text-nowrap"/>
                                                 <span t-field="line.product_uom_id" groups="uom.group_uom"/>
                                             </td>
-                                            <!-- Unit Price -->
                                             <td class="text-right">
                                                 <span class="text-nowrap" t-field="line.price_unit"/>
                                             </td>
-                                            <!-- Discount -->
                                             <td t-if="display_discount" class="text-right">
                                                 <span class="text-nowrap" t-field="line.discount"/>
                                             </td>
-                                            <!-- Tax Rate -->
                                             <td t-if="has_taxes" class="text-right">
                                                 <t t-if="line.tax_ids">
                                                     <t t-set="tax_labels" t-value="', '.join(tax.tax_label or tax.name for tax in line.tax_ids)"/>
@@ -196,7 +219,6 @@
                                                     <span class="text-muted">0%</span>
                                                 </t>
                                             </td>
-                                            <!-- Line Total -->
                                             <td class="text-right">
                                                 <t t-if="o.company_price_include == 'tax_excluded'">
                                                     <span class="text-nowrap" t-field="line.price_subtotal"/>
@@ -208,7 +230,8 @@
                                         </tr>
                                     </t>
                                     <t t-elif="line.display_type in ('line_section', 'line_subsection')">
-                                        <tr class="fw-bold bg-light">
+                                        <tr class="fw-bold"
+                                            t-att-style="'background-color: %s;' % secondary_color">
                                             <td colspan="7">
                                                 <span t-if="line.name" t-field="line.name" t-options="{'widget': 'text'}"/>
                                             </td>
@@ -228,7 +251,6 @@
                         <!-- Totals Block -->
                         <div class="row">
                             <div class="col-7">
-                                <!-- Payment Terms -->
                                 <t t-if="o.invoice_payment_term_id">
                                     <div class="mb-3">
                                         <strong>Payment Terms:</strong>
@@ -238,7 +260,6 @@
                                         </t>
                                     </div>
                                 </t>
-                                <!-- Payment Details -->
                                 <t t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference">
                                     <div class="mb-3">
                                         <strong>Payment Reference:</strong>
@@ -248,7 +269,6 @@
                             </div>
                             <div class="col-5">
                                 <table class="table table-borderless table-sm o_total_table">
-                                    <!-- Tax Summary -->
                                     <t t-if="o.tax_totals">
                                         <t t-foreach="o.tax_totals.get('subtotals', [])" t-as="subtotal">
                                             <tr>
@@ -272,7 +292,7 @@
                                                 </tr>
                                             </t>
                                         </t>
-                                        <tr class="fw-bold" style="font-size: 1.1em; border-top: 2px solid #333;">
+                                        <tr class="fw-bold" style="font-size: 1.1em; border-top: 2px solid;">
                                             <td class="text-right">Total:</td>
                                             <td class="text-right">
                                                 <strong>
@@ -283,7 +303,7 @@
                                         </tr>
                                     </t>
                                     <t t-else="">
-                                        <tr class="fw-bold" style="border-top: 2px solid #333;">
+                                        <tr class="fw-bold" style="border-top: 2px solid;">
                                             <td class="text-right">Total:</td>
                                             <td class="text-right">
                                                 <strong>
@@ -293,7 +313,6 @@
                                             </td>
                                         </tr>
                                     </t>
-                                    <!-- Amount Due if payments exist -->
                                     <t t-if="o.amount_residual != o.amount_total and o.state == 'posted'">
                                         <tr class="fw-bold">
                                             <td class="text-right">Amount Due:</td>
@@ -336,7 +355,7 @@
                             </div>
                         </div>
 
-                        <!-- Custom Footer from document template -->
+                        <!-- Custom Footer -->
                         <t t-if="custom_footer">
                             <div class="row mt-4 pt-3 border-top">
                                 <div class="col-12">

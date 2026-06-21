@@ -1,54 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_document_template_tree" model="ir.ui.view">
-        <field name="name">document.template.tree</field>
+    <!-- Kanban / Card view — visual layout cards -->
+    <record id="view_document_template_kanban" model="ir.ui.view">
+        <field name="name">document.template.kanban</field>
         <field name="model">document.template</field>
         <field name="arch" type="xml">
-            <list>
+            <kanban class="o_kanban_mobile" default_group_by="template_type">
                 <field name="name"/>
-                <field name="template_type"/>
                 <field name="model"/>
+                <field name="template_type"/>
                 <field name="is_default"/>
-                <field name="company_id"/>
+                <field name="primary_color"/>
                 <field name="active"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <i class="fa fa-file-text-o fa-2x"
+                                   t-att-style="'color: %s' % (record.primary_color.raw_value or '#261e58')"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </strong>
+                                <div class="text-muted small">
+                                    <t t-out="dict(record.model.raw_value and record.model.value or {})"/>
+                                    <t t-if="record.is_default.raw_value">
+                                        <span class="badge bg-success ms-1">Default</span>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- List / Tree view -->
+    <record id="view_document_template_list" model="ir.ui.view">
+        <field name="name">document.template.list</field>
+        <field name="model">document.template</field>
+        <field name="arch" type="xml">
+            <list string="Document Layouts" editable="bottom">
+                <field name="name"/>
+                <field name="template_type" widget="badge"/>
+                <field name="model"/>
+                <field name="is_default" widget="boolean_toggle"/>
+                <field name="primary_color" widget="color"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="active" widget="boolean_toggle"/>
             </list>
         </field>
     </record>
 
+    <!-- Form view -->
     <record id="view_document_template_form" model="ir.ui.view">
         <field name="name">document.template.form</field>
         <field name="model">document.template</field>
         <field name="arch" type="xml">
-            <form string="Document Template">
+            <form string="Document Layout">
                 <header>
                     <field name="is_default" widget="boolean_toggle"
-                           string="Default Template"/>
+                           string="Default Layout"/>
                 </header>
                 <sheet>
                     <div class="oe_title">
                         <h1>
-                            <field name="name" placeholder="Template Name"/>
+                            <field name="name" placeholder="e.g. Standard Invoice"/>
                         </h1>
                     </div>
-                    <group>
+
+                    <!-- === Branding Section === -->
+                    <group string="Branding" colspan="4">
+                        <group>
+                            <field name="logo" widget="image"
+                                   string="Logo"
+                                   options="{'preview_image': 'logo', 'size': [180, 80]}"/>
+                        </group>
+                        <group>
+                            <field name="primary_color" widget="color"
+                                   string="Primary Color"/>
+                            <field name="secondary_color" widget="color"
+                                   string="Secondary Color"/>
+                            <field name="font_family"/>
+                        </group>
+                    </group>
+
+                    <!-- === Assignment Section === -->
+                    <group string="Assignment" colspan="4">
                         <group>
                             <field name="template_type"/>
                             <field name="model"/>
-                            <field name="active"/>
                         </group>
                         <group>
-                            <field name="company_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="active"/>
                         </group>
                     </group>
+
+                    <!-- === Layout Overrides === -->
                     <notebook>
-                        <page string="Header">
-                            <field name="header_html" placeholder="&lt;p&gt;Custom header HTML content here...&lt;/p&gt;"/>
+                        <page string="Header HTML">
+                            <group colspan="4">
+                                <field name="header_html" nolabel="1"
+                                       widget="html"
+                                       placeholder="&lt;div style='text-align: center;'&gt;&#10;  &lt;h2&gt;Your Custom Header&lt;/h2&gt;&#10;&lt;/div&gt;"
+                                       class="oe_inline"/>
+                            </group>
+                            <div class="text-muted small mt-2">
+                                <i class="fa fa-info-circle"/> Leave blank to use the standard header with logo and company details.
+                            </div>
                         </page>
-                        <page string="Footer">
-                            <field name="footer_html" placeholder="&lt;p&gt;Custom footer HTML content here...&lt;/p&gt;"/>
+                        <page string="Footer HTML">
+                            <group colspan="4">
+                                <field name="footer_html" nolabel="1"
+                                       widget="html"
+                                       placeholder="&lt;p style='text-align: center; color: #999;'&gt;&#10;  Page {page_number} — Generated on {date}&#10;&lt;/p&gt;"/>
+                            </group>
+                            <div class="text-muted small mt-2">
+                                <i class="fa fa-info-circle"/> Leave blank to use the standard footer.
+                            </div>
                         </page>
-                        <page string="CSS">
-                            <field name="css_override" placeholder="/* Custom CSS rules */"/>
+                        <page string="Custom CSS">
+                            <group colspan="4">
+                                <field name="css_override" nolabel="1"
+                                       class="oe_inline"
+                                       placeholder="/* Fine-tune specific elements */&#10;.page h2 { font-size: 26px; }&#10;.o_total_table td { padding: 4px 8px; }"/>
+                            </group>
+                            <div class="text-muted small mt-2">
+                                <i class="fa fa-info-circle"/> Primary/secondary colors are applied automatically. Use this for fine-tuning.
+                            </div>
                         </page>
                     </notebook>
                 </sheet>
@@ -61,6 +143,7 @@
         </field>
     </record>
 
+    <!-- Search view -->
     <record id="view_document_template_search" model="ir.ui.view">
         <field name="name">document.template.search</field>
         <field name="model">document.template</field>
@@ -68,12 +151,19 @@
             <search>
                 <field name="name"/>
                 <field name="model"/>
-                <filter string="Template Type" name="filter_template_type"
+                <filter string="Type" name="filter_template_type"
                         context="{'group_by': 'template_type'}"/>
-                <filter string="Model" name="filter_model"
+                <filter string="Module" name="filter_model"
                         context="{'group_by': 'model'}"/>
                 <filter string="Default" name="filter_is_default"
                         domain="[('is_default', '=', True)]"/>
+                <separator/>
+                <filter string="Invoices" name="filter_invoice"
+                        domain="[('template_type', '=', 'invoice')]"/>
+                <filter string="Payslips" name="filter_payslip"
+                        domain="[('template_type', '=', 'payslip')]"/>
+                <filter string="Contracts" name="filter_contract"
+                        domain="[('template_type', '=', 'contract')]"/>
                 <separator/>
                 <filter string="Archived" name="inactive"
                         domain="[('active', '=', False)]"/>
@@ -83,16 +173,17 @@
 
     <!-- Action -->
     <record id="action_document_template" model="ir.actions.act_window">
-        <field name="name">Document Templates</field>
+        <field name="name">Document Layouts</field>
         <field name="res_model">document.template</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,list,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Define document templates with custom headers, footers, and CSS
+                Define document layouts with your branding
             </p>
             <p>
-                Create templates for invoices, payslips, contracts, and reports
-                to customize the PDF output with your branding and formatting.
+                Create layouts for invoices, payslips, contracts, and reports.
+                Upload your logo, pick colors, and every PDF automatically
+                picks up your branding when you print.
             </p>
         </field>
     </record>
