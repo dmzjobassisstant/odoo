@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Payslip List View -->
+    <record id="view_hr_payslip_list" model="ir.ui.view">
+        <field name="name">hr.payslip.list</field>
+        <field name="model">hr.payslip</field>
+        <field name="arch" type="xml">
+            <list string="Payslips">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="period_start"/>
+                <field name="period_end"/>
+                <field name="gross_pay" widget="monetary"/>
+                <field name="total_deductions" widget="monetary"/>
+                <field name="net_pay" widget="monetary"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Payslip Form View -->
+    <record id="view_hr_payslip_form" model="ir.ui.view">
+        <field name="name">hr.payslip.form</field>
+        <field name="model">hr.payslip</field>
+        <field name="arch" type="xml">
+            <form string="Payslip">
+                <header>
+                    <button name="action_generate_lines" type="object"
+                            string="Generate Lines" class="btn-primary"
+                            invisible="state != 'draft'"
+                            help="Pull timesheet data and calculate pay"/>
+                    <button name="action_confirm" type="object"
+                            string="Confirm" class="btn-primary"
+                            invisible="state != 'draft'"
+                            help="Confirm this payslip"/>
+                    <button name="action_mark_paid" type="object"
+                            string="Mark as Paid" class="btn-success"
+                            invisible="state != 'confirmed'"
+                            help="Mark this payslip as paid"/>
+                    <button name="action_reset_draft" type="object"
+                            string="Reset to Draft"
+                            invisible="state not in ('confirmed', 'paid')"
+                            help="Reset this payslip back to draft"/>
+                    <button name="action_print_payslip" type="object"
+                            string="Print Payslip"
+                            invisible="state not in ('confirmed', 'paid')"
+                            help="Generate PDF payslip"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,confirmed,paid"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group string="Employee Details">
+                            <field name="employee_id"
+                                   domain="[('employment_status', 'in', ('active', 'probation'))]"/>
+                            <field name="contract_id"
+                                   domain="[('employee_id', '=', employee_id), ('state', '=', 'active')]"/>
+                        </group>
+                        <group string="Period">
+                            <field name="period_start"/>
+                            <field name="period_end"/>
+                        </group>
+                    </group>
+                    <group string="Timesheets">
+                        <field name="timesheet_ids" widget="many2many_tags"
+                               options="{'no_create': True}"
+                               domain="[('employee_id', '=', employee_id), ('state', 'in', ('submitted', 'completed'))]"/>
+                    </group>
+                    <notebook>
+                        <page string="Payslip Lines">
+                            <field name="payslip_line_ids" nolabel="1">
+                                <list editable="bottom" default_order="category, sequence">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="category" widget="badge"/>
+                                    <field name="name"/>
+                                    <field name="amount" widget="monetary"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Summary">
+                            <group>
+                                <group string="Earnings">
+                                    <field name="gross_pay" widget="monetary"
+                                           nolabel="1"/>
+                                </group>
+                                <group string="Deductions">
+                                    <field name="ni_deduction" widget="monetary"/>
+                                    <field name="tax_deduction" widget="monetary"/>
+                                    <field name="pension_deduction" widget="monetary"/>
+                                    <field name="other_deductions" widget="monetary"/>
+                                    <field name="total_deductions" widget="monetary"/>
+                                </group>
+                            </group>
+                            <group string="Net Pay">
+                                <field name="net_pay" widget="monetary"
+                                       nolabel="1"
+                                       style="font-size: 1.5em; font-weight: bold;"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Payslip Search View -->
+    <record id="view_hr_payslip_search" model="ir.ui.view">
+        <field name="name">hr.payslip.search</field>
+        <field name="model">hr.payslip</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <filter string="Draft" name="filter_draft"
+                        domain="[('state', '=', 'draft')]"/>
+                <filter string="Confirmed" name="filter_confirmed"
+                        domain="[('state', '=', 'confirmed')]"/>
+                <filter string="Paid" name="filter_paid"
+                        domain="[('state', '=', 'paid')]"/>
+                <separator/>
+                <filter string="Current Month" name="filter_current_month"
+                        domain="[('period_start', '&lt;=', context_today().strftime('%Y-%m-%d')), ('period_end', '&gt;=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter string="My Department" name="filter_my_dept"
+                        domain="[('employee_id.department_id.manager_id.user_id', '=', uid)]"/>
+                <separator/>
+                <filter string="Employee" name="group_employee"
+                        context="{'group_by': 'employee_id'}"/>
+                <filter string="Status" name="group_state"
+                        context="{'group_by': 'state'}"/>
+                <filter string="Period" name="group_period"
+                        context="{'group_by': 'period_start'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Payslip Action -->
+    <record id="action_hr_payslip" model="ir.actions.act_window">
+        <field name="name">Payslips</field>
+        <field name="res_model">hr.payslip</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No payslips yet
+            </p>
+            <p>
+                Use the "Generate Payslip" button to create a new payslip
+                from timesheet data.
+            </p>
+        </field>
+    </record>
+</odoo>
