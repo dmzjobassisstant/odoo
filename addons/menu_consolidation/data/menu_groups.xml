@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ===== Group Parent Menus ===== -->
+
+    <!-- HR & Payroll -->
+    <record id="menu_group_hr_payroll" model="ir.ui.menu">
+        <field name="name">HR &amp; Payroll</field>
+        <field name="sequence">10</field>
+        <field name="web_icon">menu_consolidation,static/description/icon_hr.png</field>
+    </record>
+
+    <!-- Finance -->
+    <record id="menu_group_finance" model="ir.ui.menu">
+        <field name="name">Finance</field>
+        <field name="sequence">20</field>
+        <field name="web_icon">menu_consolidation,static/description/icon_finance.png</field>
+    </record>
+
+    <!-- Operations -->
+    <record id="menu_group_operations" model="ir.ui.menu">
+        <field name="name">Operations</field>
+        <field name="sequence">30</field>
+        <field name="web_icon">menu_consolidation,static/description/icon_operations.png</field>
+    </record>
+
+    <!-- Supply Chain -->
+    <record id="menu_group_supply_chain" model="ir.ui.menu">
+        <field name="name">Supply Chain</field>
+        <field name="sequence">40</field>
+        <field name="web_icon">menu_consolidation,static/description/icon_supply.png</field>
+    </record>
+
+    <!-- Strategy -->
+    <record id="menu_group_strategy" model="ir.ui.menu">
+        <field name="name">Strategy</field>
+        <field name="sequence">50</field>
+        <field name="web_icon">menu_consolidation,static/description/icon_strategy.png</field>
+    </record>
+
+    <!-- Tools -->
+    <record id="menu_group_tools" model="ir.ui.menu">
+        <field name="name">Tools</field>
+        <field name="sequence">60</field>
+        <field name="web_icon">menu_consolidation,static/description/icon_tools.png</field>
+    </record>
+
+    <!-- System -->
+    <record id="menu_group_system" model="ir.ui.menu">
+        <field name="name">System</field>
+        <field name="sequence">70</field>
+        <field name="web_icon">menu_consolidation,static/description/icon_system.png</field>
+    </record>
+
+
+    <!-- ===== Reparent existing menus ===== -->
+
+    <!-- HR & Payroll: Employees, Recruitment, Time Off, Payroll, HR Issues -->
+    <record id="hr.menu_hr_root" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_hr_payroll"/>
+    </record>
+    <record id="hr_recruitment.menu_hr_recruitment_root" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_hr_payroll"/>
+    </record>
+    <record id="hr_holidays.menu_hr_holidays_root" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_hr_payroll"/>
+    </record>
+    <record id="hr_payroll_custom.menu_hr_payroll_root" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_hr_payroll"/>
+    </record>
+    <record id="hr_issues.menu_hr_issues_root" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_hr_payroll"/>
+    </record>
+
+    <!-- Finance: Invoicing, Sales, Expenses -->
+    <record id="account.menu_finance" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_finance"/>
+    </record>
+    <record id="sale.sale_menu_root" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_finance"/>
+    </record>
+    <record id="hr_expense.menu_hr_expense_root" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_finance"/>
+    </record>
+
+    <!-- Operations: Timesheets, Project, To-do -->
+    <record id="timesheet_management.menu_timesheet_root" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_operations"/>
+    </record>
+    <record id="project.menu_main_pm" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_operations"/>
+    </record>
+    <record id="project_todo.menu_todo_todos" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_operations"/>
+    </record>
+
+    <!-- Supply Chain: Purchase, Supplier Management, Contract Management -->
+    <record id="purchase.menu_purchase_root" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_supply_chain"/>
+    </record>
+    <record id="supplier_management.menu_supplier_management_root" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_supply_chain"/>
+    </record>
+    <record id="contract_management.menu_contract_management_root" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_supply_chain"/>
+    </record>
+
+    <!-- Strategy: Board Reports, Competencies, Dashboards -->
+    <record id="board_reporting.menu_board_reporting_root" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_strategy"/>
+    </record>
+    <record id="competency_assessment.menu_competency_root" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_strategy"/>
+    </record>
+    <record id="spreadsheet_dashboard.spreadsheet_dashboard_menu_root" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_strategy"/>
+    </record>
+
+    <!-- Tools: Calendar, Contacts, Discuss, Document Layouts -->
+    <record id="calendar.mail_menu_calendar" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_tools"/>
+    </record>
+    <record id="contacts.menu_contacts" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_tools"/>
+    </record>
+    <record id="mail.menu_root_discuss" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_tools"/>
+    </record>
+    <record id="document_templates.menu_document_layouts_root" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_tools"/>
+    </record>
+
+    <!-- System: Settings, Link Tracker, Website -->
+    <record id="base.menu_administration" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_system"/>
+    </record>
+    <record id="utm.menu_link_tracker_root" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_system"/>
+    </record>
+    <record id="website.menu_website_configuration" model="ir.ui.menu">
+        <field name="parent_id" ref="menu_group_system"/>
+    </record>
+
+    <!-- Hide: Apps, Tests (remove from app drawer by clearing web_icon) -->
+    <record id="base.menu_management" model="ir.ui.menu">
+        <field name="web_icon" eval="False"/>
+    </record>
+    <record id="base.menu_tests" model="ir.ui.menu">
+        <field name="web_icon" eval="False"/>
+    </record>
+</odoo>
