@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Training Course Form View -->
+    <record id="view_training_course_form" model="ir.ui.view">
+        <field name="name">training.course.form</field>
+        <field name="model">training.course</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object"
+                                class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                                options='{"terminology": "active"}'/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archived" invisible="active"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Course Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="course_type"/>
+                            <field name="plan_id"/>
+                            <field name="duration_hours"/>
+                            <field name="sequence"/>
+                        </group>
+                        <group>
+                            <field name="scorm_entry_point" invisible="course_type != 'scorm'"/>
+                        </group>
+                    </group>
+                    <group string="SCORM Package" invisible="course_type != 'scorm'">
+                        <group>
+                            <field name="scorm_package" widget="binary" filename="scorm_package_filename"/>
+                            <field name="scorm_package_filename" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Training Course List View -->
+    <record id="view_training_course_list" model="ir.ui.view">
+        <field name="name">training.course.list</field>
+        <field name="model">training.course</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="course_type"/>
+                <field name="plan_id"/>
+                <field name="duration_hours"/>
+                <field name="sequence"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_training_course" model="ir.actions.act_window">
+        <field name="name">Training Courses</field>
+        <field name="res_model">training.course</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

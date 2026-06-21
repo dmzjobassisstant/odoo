@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Training Assignment Form View -->
+    <record id="view_training_assignment_form" model="ir.ui.view">
+        <field name="name">training.assignment.form</field>
+        <field name="model">training.assignment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_start" string="Start" type="object"
+                            invisible="state not in ('assigned',)"/>
+                    <button name="action_complete" string="Complete" type="object"
+                            invisible="state not in ('in_progress',)"/>
+                    <button name="action_launch_scorm" string="Launch SCORM" type="object"
+                            invisible="course_id.course_type != 'scorm' or state in ('completed','expired')"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="course_id"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="plan_id"/>
+                            <field name="assigned_by"/>
+                            <field name="assigned_date"/>
+                        </group>
+                        <group>
+                            <field name="due_date"/>
+                            <field name="progress_pct" widget="progressbar"/>
+                            <field name="score"/>
+                            <field name="completed_date"/>
+                        </group>
+                    </group>
+                    <group string="SCORM Data" invisible="not scorm_data">
+                        <field name="scorm_data" widget="ace" mode="json"/>
+                    </group>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Training Assignment List View -->
+    <record id="view_training_assignment_list" model="ir.ui.view">
+        <field name="name">training.assignment.list</field>
+        <field name="model">training.assignment</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="employee_id"/>
+                <field name="course_id"/>
+                <field name="plan_id" optional="hide"/>
+                <field name="state"/>
+                <field name="progress_pct" widget="progressbar"/>
+                <field name="score"/>
+                <field name="assigned_date"/>
+                <field name="due_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_training_assignment" model="ir.actions.act_window">
+        <field name="name">Training Assignments</field>
+        <field name="res_model">training.assignment</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_group_state': 1}</field>
+    </record>
+
+</odoo>

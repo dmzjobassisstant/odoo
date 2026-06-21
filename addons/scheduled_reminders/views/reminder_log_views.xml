@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Reminder Log List View (read-only) -->
+    <record id="view_reminder_log_list" model="ir.ui.view">
+        <field name="name">reminder.log.list</field>
+        <field name="model">reminder.log</field>
+        <field name="arch" type="xml">
+            <list create="false" edit="false">
+                <field name="rule_id"/>
+                <field name="record_model"/>
+                <field name="record_id"/>
+                <field name="recipient_id"/>
+                <field name="sent_date"/>
+                <field name="acknowledged"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Reminder Log Form View (read-only) -->
+    <record id="view_reminder_log_form" model="ir.ui.view">
+        <field name="name">reminder.log.form</field>
+        <field name="model">reminder.log</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="rule_id"/>
+                            <field name="record_model"/>
+                            <field name="record_id"/>
+                        </group>
+                        <group>
+                            <field name="recipient_id"/>
+                            <field name="sent_date"/>
+                            <field name="acknowledged"/>
+                        </group>
+                    </group>
+                    <group string="Message">
+                        <field name="message"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Reminder Log Search View -->
+    <record id="view_reminder_log_search" model="ir.ui.view">
+        <field name="name">reminder.log.search</field>
+        <field name="model">reminder.log</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="rule_id"/>
+                <field name="recipient_id"/>
+                <field name="record_model"/>
+                <filter name="unacknowledged" string="Unacknowledged"
+                        domain="[('acknowledged','=',False)]"/>
+                <filter name="acknowledged" string="Acknowledged"
+                        domain="[('acknowledged','=',True)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Reminder Log Action -->
+    <record id="action_reminder_log" model="ir.actions.act_window">
+        <field name="name">Reminder Logs</field>
+        <field name="res_model">reminder.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No reminder logs yet
+            </p>
+            <p>
+                Reminder logs record every notification that has been sent.
+            </p>
+        </field>
+    </record>
+</odoo>

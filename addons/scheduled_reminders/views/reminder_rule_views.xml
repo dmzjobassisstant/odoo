@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Reminder Rule List View -->
+    <record id="view_reminder_rule_list" model="ir.ui.view">
+        <field name="name">reminder.rule.list</field>
+        <field name="model">reminder.rule</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="model"/>
+                <field name="trigger_type"/>
+                <field name="trigger_date_field"/>
+                <field name="remind_before_days"/>
+                <field name="recipient_field"/>
+                <field name="recipient_group_id"/>
+                <field name="is_active"/>
+                <field name="last_checked"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Reminder Rule Form View -->
+    <record id="view_reminder_rule_form" model="ir.ui.view">
+        <field name="name">reminder.rule.form</field>
+        <field name="model">reminder.rule</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Rule Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="model"/>
+                            <field name="trigger_type"/>
+                            <field name="is_active"/>
+                        </group>
+                        <group>
+                            <field name="last_checked"/>
+                        </group>
+                    </group>
+                    <group string="Trigger Configuration">
+                        <field name="trigger_domain"
+                               widget="ace"
+                               invisible="trigger_type == 'date'"
+                               placeholder='[["state","=","draft"]]'/>
+                        <field name="trigger_date_field"
+                               invisible="trigger_type == 'state'"
+                               required="trigger_type == 'date'"/>
+                        <field name="remind_before_days"
+                               invisible="trigger_type == 'state'"/>
+                    </group>
+                    <group string="Notification">
+                        <field name="message_template"
+                               widget="ace"
+                               placeholder="Your timesheet {{object.name}} needs to be submitted."/>
+                        <field name="recipient_field"
+                               placeholder="e.g. employee_id.user_id"/>
+                        <field name="recipient_group_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Reminder Rule Search View -->
+    <record id="view_reminder_rule_search" model="ir.ui.view">
+        <field name="name">reminder.rule.search</field>
+        <field name="model">reminder.rule</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="model"/>
+                <field name="trigger_type"/>
+                <filter name="active" string="Active"
+                        domain="[('is_active','=',True)]"/>
+                <filter name="inactive" string="Inactive"
+                        domain="[('is_active','=',False)]"/>
+                <separator/>
+                <filter name="state_trigger" string="State Trigger"
+                        domain="[('trigger_type','=','state')]"/>
+                <filter name="date_trigger" string="Date Trigger"
+                        domain="[('trigger_type','=','date')]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Reminder Rule Action -->
+    <record id="action_reminder_rule" model="ir.actions.act_window">
+        <field name="name">Reminder Rules</field>
+        <field name="res_model">reminder.rule</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a reminder rule to automatically notify users
+            </p>
+            <p>
+                Reminder rules check records on a schedule and send
+                notifications when conditions are met.
+            </p>
+        </field>
+    </record>
+</odoo>

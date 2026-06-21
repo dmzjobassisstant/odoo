@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Rule 1: Timesheet submission reminder -->
+        <record id="reminder_rule_timesheet_draft" model="reminder.rule">
+            <field name="name">Timesheet Submission Reminder</field>
+            <field name="model">timesheet.week</field>
+            <field name="trigger_type">state</field>
+            <field name="trigger_domain">[["state","=","draft"]]</field>
+            <field name="message_template">Your timesheet {{object.name}} needs to be submitted.</field>
+            <field name="recipient_field">employee_id.user_id</field>
+            <field name="is_active" eval="True"/>
+        </record>
+
+        <!-- Rule 2: Training overdue reminder -->
+        <record id="reminder_rule_training_overdue" model="reminder.rule">
+            <field name="name">Training Overdue Reminder</field>
+            <field name="model">training.assignment</field>
+            <field name="trigger_type">date</field>
+            <field name="trigger_date_field">due_date</field>
+            <field name="remind_before_days">1</field>
+            <field name="message_template">Your training assignment {{object.name}} is due soon. Please complete it.</field>
+            <field name="recipient_field">employee_id.user_id</field>
+            <field name="is_active" eval="True"/>
+        </record>
+    </data>
+</odoo>

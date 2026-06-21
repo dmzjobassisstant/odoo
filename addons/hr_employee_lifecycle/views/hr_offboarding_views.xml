@@ -102,6 +102,11 @@
                         <field name="settlement_breakdown" colspan="2"/>
                     </group>
                     <separator string="Offboarding Tasks"/>
+                    <group string="Training" colspan="4">
+                        <field name="training_plan_ids" widget="many2many_tags"
+                               options="{'no_create': True}"
+                               placeholder="Assign training plans to complete during offboarding..."/>
+                    </group>
                     <field name="task_ids">
                         <list string="Tasks" editable="bottom">
                             <field name="name"/>

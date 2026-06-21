@@ -88,6 +88,12 @@ class HROffboarding(models.Model):
         string='Department',
         readonly=True,
     )
+    training_plan_ids = fields.Many2many(
+        'training.plan', 'offboarding_training_plan_rel',
+        'offboarding_id', 'plan_id',
+        string='Training Plans',
+        help='Training plans to assign to the employee during offboarding.',
+    )
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -117,6 +123,24 @@ class HROffboarding(models.Model):
                         'name': task_tmpl.name,
                         'assigned_to': task_tmpl.assigned_to.id,
                     })
+            # Auto-create training assignments from linked plans
+            if record.training_plan_ids:
+                Assignment = self.env.get('training.assignment')
+                if Assignment:
+                    for plan in record.training_plan_ids:
+                        for course in plan.course_ids:
+                            existing = Assignment.search([
+                                ('employee_id', '=', record.employee_id.id),
+                                ('course_id', '=', course.id),
+                            ])
+                            if not existing:
+                                Assignment.create({
+                                    'employee_id': record.employee_id.id,
+                                    'course_id': course.id,
+                                    'assigned_by': record.employee_id.id,
+                                    'assigned_date': fields.Date.today(),
+                                    'state': 'assigned',
+                                })
         return True
 
     def action_complete(self):

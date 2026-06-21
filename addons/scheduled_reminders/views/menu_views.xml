@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Menu -->
+    <menuitem id="menu_scheduled_reminders_root"
+              name="Scheduled Reminders"
+              sequence="90"
+              groups="base.group_system"/>
+
+    <menuitem id="menu_scheduled_reminders_reminder_rule"
+              name="Reminder Rules"
+              parent="menu_scheduled_reminders_root"
+              action="action_reminder_rule"
+              sequence="10"/>
+
+    <menuitem id="menu_scheduled_reminders_reminder_log"
+              name="Reminder Logs"
+              parent="menu_scheduled_reminders_root"
+              action="action_reminder_log"
+              sequence="20"/>
+</odoo>
