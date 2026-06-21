@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_board_metric_manager,board.metric.manager,model_board_metric,board_reporting.group_board_report_manager,1,1,1,1
+access_board_metric_user,board.metric.user,model_board_metric,board_reporting.group_board_report_user,1,0,0,0
+access_board_report_manager,board.report.manager,model_board_report,board_reporting.group_board_report_manager,1,1,1,1
+access_board_report_user,board.report.user,model_board_report,board_reporting.group_board_report_user,1,1,1,0
+access_board_metric_value_manager,board.metric.value.manager,model_board_metric_value,board_reporting.group_board_report_manager,1,1,1,1
+access_board_metric_value_user,board.metric.value.user,model_board_metric_value,board_reporting.group_board_report_user,1,0,0,0

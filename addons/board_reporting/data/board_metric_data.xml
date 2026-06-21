@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Employee Utilisation Rate -->
+        <record id="metric_employee_utilisation_rate" model="board.metric">
+            <field name="name">Employee Utilisation Rate</field>
+            <field name="code">employee_utilisation_rate</field>
+            <field name="description">Total timesheet hours submitted divided by (headcount × working hours in period), expressed as a percentage.</field>
+            <field name="category">hr</field>
+            <field name="metric_type">percentage</field>
+            <field name="calculation_method">_compute_employee_utilisation_rate</field>
+            <field name="target_value" eval="80.0"/>
+            <field name="is_active" eval="True"/>
+            <field name="sequence" eval="10"/>
+        </record>
+
+        <!-- Headcount -->
+        <record id="metric_headcount" model="board.metric">
+            <field name="name">Headcount</field>
+            <field name="code">headcount</field>
+            <field name="description">Total number of active and probation employees.</field>
+            <field name="category">hr</field>
+            <field name="metric_type">count</field>
+            <field name="calculation_method">_compute_headcount</field>
+            <field name="target_value" eval="0.0"/>
+            <field name="is_active" eval="True"/>
+            <field name="sequence" eval="20"/>
+        </record>
+
+        <!-- Attrition/Turnover Rate -->
+        <record id="metric_attrition_rate" model="board.metric">
+            <field name="name">Attrition / Turnover Rate</field>
+            <field name="code">attrition_rate</field>
+            <field name="description">Employees terminated in period divided by average headcount, expressed as a percentage.</field>
+            <field name="category">hr</field>
+            <field name="metric_type">percentage</field>
+            <field name="calculation_method">_compute_attrition_rate</field>
+            <field name="target_value" eval="10.0"/>
+            <field name="is_active" eval="True"/>
+            <field name="sequence" eval="30"/>
+        </record>
+
+        <!-- Absenteeism Rate -->
+        <record id="metric_absenteeism_rate" model="board.metric">
+            <field name="name">Absenteeism Rate</field>
+            <field name="code">absenteeism_rate</field>
+            <field name="description">Leave days taken divided by total working days in period, expressed as a percentage.</field>
+            <field name="category">hr</field>
+            <field name="metric_type">percentage</field>
+            <field name="calculation_method">_compute_absenteeism_rate</field>
+            <field name="target_value" eval="5.0"/>
+            <field name="is_active" eval="True"/>
+            <field name="sequence" eval="40"/>
+        </record>
+
+        <!-- Billable Hours -->
+        <record id="metric_billable_hours" model="board.metric">
+            <field name="name">Billable Hours</field>
+            <field name="code">billable_hours</field>
+            <field name="description">Sum of submitted and completed timesheet hours in the period.</field>
+            <field name="category">operations</field>
+            <field name="metric_type">hours</field>
+            <field name="calculation_method">_compute_billable_hours</field>
+            <field name="target_value" eval="0.0"/>
+            <field name="is_active" eval="True"/>
+            <field name="sequence" eval="50"/>
+        </record>
+
+        <!-- Revenue per Employee -->
+        <record id="metric_revenue_per_employee" model="board.metric">
+            <field name="name">Revenue per Employee</field>
+            <field name="code">revenue_per_employee</field>
+            <field name="description">Total payroll cost divided by headcount.</field>
+            <field name="category">finance</field>
+            <field name="metric_type">currency</field>
+            <field name="calculation_method">_compute_revenue_per_employee</field>
+            <field name="target_value" eval="0.0"/>
+            <field name="is_active" eval="True"/>
+            <field name="sequence" eval="60"/>
+        </record>
+
+        <!-- Average Resolution Time -->
+        <record id="metric_avg_resolution_time" model="board.metric">
+            <field name="name">Average Resolution Time</field>
+            <field name="code">average_resolution_time</field>
+            <field name="description">Average number of days from issue opened to resolved for HR issues.</field>
+            <field name="category">operations</field>
+            <field name="metric_type">hours</field>
+            <field name="calculation_method">_compute_average_resolution_time</field>
+            <field name="target_value" eval="7.0"/>
+            <field name="is_active" eval="True"/>
+            <field name="sequence" eval="70"/>
+        </record>
+
+        <!-- Open Issues -->
+        <record id="metric_open_issues" model="board.metric">
+            <field name="name">Open Issues</field>
+            <field name="code">open_issues</field>
+            <field name="description">Count of HR issues that are not in resolved or closed state.</field>
+            <field name="category">operations</field>
+            <field name="metric_type">count</field>
+            <field name="calculation_method">_compute_open_issues</field>
+            <field name="target_value" eval="0.0"/>
+            <field name="is_active" eval="True"/>
+            <field name="sequence" eval="80"/>
+        </record>
+
+    </data>
+</odoo>

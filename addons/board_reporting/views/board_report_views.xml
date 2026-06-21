@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Report List View -->
+    <record id="board_report_view_list" model="ir.ui.view">
+        <field name="name">board.report.list</field>
+        <field name="model">board.report</field>
+        <field name="arch" type="xml">
+            <list string="Board Reports">
+                <field name="name"/>
+                <field name="period_start"/>
+                <field name="period_end"/>
+                <field name="state" widget="badge" decoration-success="state=='published'" decoration-info="state=='draft'"/>
+                <field name="generated_by"/>
+                <field name="generated_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Report Form View (Dashboard) -->
+    <record id="board_report_view_form" model="ir.ui.view">
+        <field name="name">board.report.form</field>
+        <field name="model">board.report</field>
+        <field name="arch" type="xml">
+            <form string="Board Report">
+                <header>
+                    <button name="action_calculate_metrics" string="Calculate Metrics"
+                            type="object" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button name="action_publish" string="Publish"
+                            type="object" class="btn-success"
+                            invisible="state != 'draft'"/>
+                    <button name="action_reset_draft" string="Reset to Draft"
+                            type="object" class="btn-secondary"
+                            invisible="state != 'published'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,published"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="e.g. Q2 2026 Board Report"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Period">
+                            <field name="period_start"/>
+                            <field name="period_end"/>
+                        </group>
+                        <group string="Info">
+                            <field name="generated_by"/>
+                            <field name="generated_date"/>
+                        </group>
+                    </group>
+
+                    <!-- Metric Tiles Dashboard -->
+                    <group string="KPIs">
+                        <field name="metric_value_ids" nolabel="1">
+                            <list string="Metric Values" editable="top">
+                                <field name="metric_id" string="Metric" readonly="1"/>
+                                <field name="formatted_value" string="Value" readonly="1"/>
+                                <field name="trend" string="Trend" widget="badge"
+                                       decoration-success="trend=='up'"
+                                       decoration-danger="trend=='down'"
+                                       decoration-info="trend=='stable'"
+                                       readonly="1"/>
+                                <field name="previous_value" string="Previous" readonly="1"/>
+                                <field name="notes" optional="show"/>
+                            </list>
+                        </field>
+                    </group>
+
+                    <group string="Executive Summary">
+                        <field name="notes" placeholder="Write executive summary notes here..." nolabel="1"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Report Search View -->
+    <record id="board_report_view_search" model="ir.ui.view">
+        <field name="name">board.report.search</field>
+        <field name="model">board.report</field>
+        <field name="arch" type="xml">
+            <search string="Search Board Reports">
+                <field name="name"/>
+                <field name="period_start"/>
+                <field name="period_end"/>
+                <filter name="draft" string="Draft" domain="[('state','=','draft')]"/>
+                <filter name="published" string="Published" domain="[('state','=','published')]"/>
+                <separator/>
+                <filter name="period_this_year" string="This Year"
+                        domain="[('period_start','&gt;=', (context_today().strftime('%%Y') + '-01-01'))]"/>
+                <separator/>
+                <filter name="group_by_state" string="State" context="{'group_by': 'state'}"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

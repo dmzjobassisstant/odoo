@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Metric Value List View (used inline in report form) -->
+    <record id="board_metric_value_view_list" model="ir.ui.view">
+        <field name="name">board.metric.value.list</field>
+        <field name="model">board.metric.value</field>
+        <field name="arch" type="xml">
+            <list string="Metric Values">
+                <field name="metric_id"/>
+                <field name="value"/>
+                <field name="formatted_value"/>
+                <field name="trend" widget="badge" decoration-success="trend=='up'" decoration-danger="trend=='down'" decoration-info="trend=='stable'"/>
+                <field name="previous_value"/>
+                <field name="notes"/>
+            </list>
+        </field>
+    </record>
+
+</odoo>

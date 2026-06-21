@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Metric List View -->
+    <record id="board_metric_view_list" model="ir.ui.view">
+        <field name="name">board.metric.list</field>
+        <field name="model">board.metric</field>
+        <field name="arch" type="xml">
+            <list string="Metrics" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="category"/>
+                <field name="metric_type"/>
+                <field name="target_value"/>
+                <field name="is_active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Metric Form View -->
+    <record id="board_metric_view_form" model="ir.ui.view">
+        <field name="name">board.metric.form</field>
+        <field name="model">board.metric</field>
+        <field name="arch" type="xml">
+            <form string="Board Metric">
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Metric Name"/></h1>
+                    </div>
+                    <group>
+                        <group string="Definition">
+                            <field name="code"/>
+                            <field name="category"/>
+                            <field name="metric_type"/>
+                            <field name="target_value"/>
+                            <field name="is_active"/>
+                            <field name="sequence"/>
+                        </group>
+                    </group>
+                    <group string="Description">
+                        <field name="description" placeholder="Describe what this metric measures..." nolabel="1"/>
+                    </group>
+                    <group string="Calculation">
+                        <field name="calculation_method" placeholder="Method name (e.g. _compute_headcount)" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Metric Search View -->
+    <record id="board_metric_view_search" model="ir.ui.view">
+        <field name="name">board.metric.search</field>
+        <field name="model">board.metric</field>
+        <field name="arch" type="xml">
+            <search string="Search Metrics">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="category"/>
+                <filter name="active" string="Active" domain="[('is_active','=',True)]"/>
+                <filter name="inactive" string="Inactive" domain="[('is_active','=',False)]"/>
+                <filter name="category_hr" string="HR" domain="[('category','=','hr')]"/>
+                <filter name="category_finance" string="Finance" domain="[('category','=','finance')]"/>
+                <filter name="category_operations" string="Operations" domain="[('category','=','operations')]"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>
