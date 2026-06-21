@@ -20,6 +20,8 @@ Document Templates Module
         'views/menu_views.xml',
         'reports/report_invoice_enhanced_action.xml',
         'reports/report_invoice_enhanced_template.xml',
+        'reports/report_payslip_enhanced_action.xml',
+        'reports/report_payslip_enhanced_template.xml',
     ],
     'demo': [],
     'installable': True,

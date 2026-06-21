@@ -4,8 +4,21 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-set="lang" t-value="o.partner_id.lang"/>
+                <!-- Inject custom CSS from document template -->
+                <t t-if="css_override">
+                    <style type="text/css">
+                        <t t-raw="css_override"/>
+                    </style>
+                </t>
                 <t t-call="web.external_layout">
                     <div class="page">
+
+                        <!-- Custom Header from document template -->
+                        <t t-if="custom_header">
+                            <div class="custom-header mb-3">
+                                <t t-raw="custom_header"/>
+                            </div>
+                        </t>
 
                         <!-- Company Header Block -->
                         <div class="row mb-4 border-bottom pb-3">
@@ -322,6 +335,15 @@
                                 </t>
                             </div>
                         </div>
+
+                        <!-- Custom Footer from document template -->
+                        <t t-if="custom_footer">
+                            <div class="row mt-4 pt-3 border-top">
+                                <div class="col-12">
+                                    <t t-raw="custom_footer"/>
+                                </div>
+                            </div>
+                        </t>
 
                     </div>
                 </t>

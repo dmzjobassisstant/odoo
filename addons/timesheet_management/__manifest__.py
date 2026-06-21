@@ -19,7 +19,7 @@ A comprehensive weekly timesheet module for Odoo 19 that provides:
 """,
     'author': 'Damuza Consulting',
     'website': 'https://oodoo.bowtie-modeler.com',
-    'depends': ['base', 'hr', 'hr_timesheet', 'project', 'mail', 'web'],
+    'depends': ['base', 'hr', 'project', 'mail', 'web'],
     'data': [
         'security/timesheet_security.xml',
         'security/ir.model.access.csv',

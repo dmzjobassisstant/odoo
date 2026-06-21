@@ -328,8 +328,12 @@ class HRPayslip(models.Model):
         return True
 
     def action_print_payslip(self):
-        """Return the PDF report action."""
+        """Return the PDF report action — uses enhanced template when available."""
         self.ensure_one()
+        # Try enhanced report from document_templates, fallback to original
+        enhanced_ref = self.env.ref('document_templates.action_report_payslip_enhanced', raise_if_not_found=False)
+        if enhanced_ref:
+            return enhanced_ref.report_action(self)
         return self.env.ref('hr_payroll_custom.action_report_payslip').report_action(self)
 
     # ---- Constraints ----

@@ -1,18 +1,17 @@
 from odoo import models, api
 
 
-class ReportInvoiceEnhanced(models.AbstractModel):
-    _name = 'report.document_templates.report_invoice_enhanced'
-    _description = 'Enhanced Invoice Report'
+class ReportPayslipEnhanced(models.AbstractModel):
+    _name = 'report.document_templates.report_payslip_enhanced'
+    _description = 'Enhanced Payslip Report'
 
     @api.model
     def _get_report_values(self, docids, data=None):
-        docs = self.env['account.move'].browse(docids)
+        docs = self.env['hr.payslip'].browse(docids)
 
-        # Look up the default document template for this model/type
         template = self.env['document.template'].search([
-            ('model', '=', 'account.move'),
-            ('template_type', '=', 'invoice'),
+            ('model', '=', 'hr.payslip'),
+            ('template_type', '=', 'payslip'),
             ('is_default', '=', True),
             ('company_id', '=', self.env.company.id),
         ], limit=1)
@@ -23,7 +22,7 @@ class ReportInvoiceEnhanced(models.AbstractModel):
 
         return {
             'doc_ids': docids,
-            'doc_model': 'account.move',
+            'doc_model': 'hr.payslip',
             'docs': docs,
             'css_override': css_override,
             'custom_header': header_html,

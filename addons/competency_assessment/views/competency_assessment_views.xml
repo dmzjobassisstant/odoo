@@ -51,21 +51,42 @@
         <field name="arch" type="xml">
             <form string="Competency Assessment">
                 <header>
-                    <button name="action_self_assess" type="object" string="Submit Self-Assessment" class="btn-primary" confirm="Submit your self-assessment for lead review?"/>
-                    <button name="action_lead_review" type="object" string="Lead Review Complete" class="btn-warning" groups="competency_assessment.group_discipline_lead"/>
-                    <button name="action_employee_accept" type="object" string="Accept" class="btn-success" confirm="Accept the lead's assessment?"/>
-                    <button name="action_lead_confirm" type="object" string="Confirm Final" class="btn-primary" groups="competency_assessment.group_discipline_lead" confirm="Confirm the assessment as final?"/>
-                    <button name="action_cancel" type="object" string="Cancel"/>
-                    <button name="action_reset_draft" type="object" string="Reset to Draft"/>
+                    <button name="action_self_assess" type="object"
+                        string="Submit Self-Assessment" class="btn-primary"
+                        invisible="state != 'draft'"
+                        confirm="Submit your self-assessment for lead review?"/>
+                    <button name="action_employee_accept" type="object"
+                        string="Accept" class="btn-success"
+                        invisible="state != 'lead_reviewed'"
+                        confirm="Accept the lead's assessment?"/>
+                    <button name="action_lead_review" type="object"
+                        string="Lead Review Complete" class="btn-warning"
+                        groups="competency_assessment.group_discipline_lead"
+                        invisible="state != 'self_assessed'"/>
+                    <button name="action_lead_confirm" type="object"
+                        string="Confirm Final" class="btn-primary"
+                        groups="competency_assessment.group_discipline_lead"
+                        invisible="state != 'employee_accepted'"
+                        confirm="Confirm the assessment as final?"/>
+                    <button name="action_cancel" type="object"
+                        string="Cancel"
+                        invisible="state in ('done', 'cancelled')"/>
+                    <button name="action_reset_draft" type="object"
+                        string="Reset to Draft"
+                        groups="competency_assessment.group_discipline_lead"
+                        invisible="state not in ('cancelled',)"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
                     <group>
                         <field name="name" readonly="1"/>
-                        <field name="employee_id"/>
-                        <field name="discipline_id"/>
+                        <field name="employee_id"
+                            readonly="state != 'draft'"/>
+                        <field name="discipline_id"
+                            readonly="state != 'draft'"/>
                         <field name="assessment_date"/>
                         <field name="lead_id" readonly="1"/>
+                        <!-- Approvers: editable by lead/admin. Python write() blocks non-approvers. -->
                         <field name="approver_ids" widget="many2many_tags"/>
                         <field name="employee_acceptance_date" readonly="1"/>
                         <field name="lead_confirmation_date" readonly="1"/>
@@ -76,8 +97,11 @@
                             <field name="line_ids">
                                 <list editable="bottom">
                                     <field name="competency_name" readonly="1"/>
-                                    <field name="self_assessed_level_id"/>
-                                    <field name="employee_comment"/>
+                                    <field name="self_assessed_level_id"
+                                        readonly="state != 'draft'"/>
+                                    <field name="employee_comment"
+                                        readonly="state != 'draft'"/>
+                                    <!-- Lead fields: visible to all, Python restricts edits -->
                                     <field name="lead_evaluation"/>
                                     <field name="lead_assigned_level_id"/>
                                     <field name="lead_comment"/>

@@ -102,6 +102,13 @@ class CompetencyAssessment(models.Model):
         if self.discipline_id.lead_id:
             self.approver_ids = [(4, self.discipline_id.lead_id.id)]
 
+    is_approver = fields.Boolean(compute='_compute_is_approver', default=False,
+        help='True if the current user is an admin, the discipline lead, or in approver_ids.')
+
+    def _compute_is_approver(self):
+        for rec in self:
+            rec.is_approver = rec._is_approver()
+
     def _is_approver(self):
         """Check if the current user is an approver or the discipline lead."""
         self.ensure_one()

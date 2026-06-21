@@ -51,6 +51,12 @@
         <field name="target">new</field>
     </record>
 
+    <record id="action_my_assessments" model="ir.actions.act_window">
+        <field name="name">My Assessments</field>
+        <field name="res_model">competency.assessment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
     <record id="action_project_assessment" model="ir.actions.act_window">
         <field name="name">Project Assessments</field>
         <field name="res_model">competency.project.assessment</field>
@@ -58,9 +64,13 @@
     </record>
 
     <!-- ===== Menus ===== -->
-    <menuitem id="menu_competency_root" name="Competencies" sequence="50"/>
+    <menuitem id="menu_competency_root" name="Competencies" sequence="50"
+              web_icon="competency_assessment,static/description/icon.png"
+              action="action_my_assessments"/>
 
-    <menuitem id="menu_competency_config" name="Configuration" parent="menu_competency_root"/>
+    <!-- Configuration: admin only -->
+    <menuitem id="menu_competency_config" name="Configuration" parent="menu_competency_root"
+              groups="competency_assessment.group_competency_admin"/>
 
     <menuitem id="menu_discipline" name="Disciplines" parent="menu_competency_config"
               action="action_discipline"/>
@@ -69,14 +79,18 @@
     <menuitem id="menu_role" name="Roles" parent="menu_competency_config"
               action="action_role"/>
 
-    <menuitem id="menu_competency_framework" name="Framework" parent="menu_competency_root"/>
+    <!-- Framework: admin only -->
+    <menuitem id="menu_competency_framework" name="Framework" parent="menu_competency_root"
+              groups="competency_assessment.group_competency_admin"/>
     <menuitem id="menu_competency" name="Competencies" parent="menu_competency_framework"
               action="action_competency"/>
 
+    <!-- Assessments: visible to all users -->
     <menuitem id="menu_competency_assessments" name="Assessments" parent="menu_competency_root"/>
     <menuitem id="menu_self_assessment" name="Self Assessment" parent="menu_competency_assessments"
               action="action_self_assessment_wizard"/>
 
+    <!-- Assessment Register: lead+ only -->
     <menuitem id="menu_assessment_register" name="Assessment Register"
               parent="menu_competency_assessments" action="action_assessment_register"
               groups="competency_assessment.group_discipline_lead"/>
@@ -87,6 +101,8 @@
               parent="menu_competency_assessments" action="action_assessment_historical"
               groups="competency_assessment.group_competency_admin"/>
 
+    <!-- Project Assessments: lead+ only -->
     <menuitem id="menu_project_assessment" name="Project Assessments"
-              parent="menu_competency_root" action="action_project_assessment"/>
+              parent="menu_competency_root" action="action_project_assessment"
+              groups="competency_assessment.group_discipline_lead"/>
 </odoo>
